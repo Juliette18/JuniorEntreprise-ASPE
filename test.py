@@ -25,7 +25,20 @@ class LoginScreen (GridLayout):
         self.add_widget(Label(text="Authentification bifactorielle:"))
         self.tfa=TextInput(multiline = False)
         self.add_widget(self.tfa)
+        
+        
+        self.forgotpwd=Label(text= "Mot de passe oublié ? Envoyez un email à : jesuisundebileamnesique@je.fr")       
+
+        self.add_widget(self.forgotpwd)
+
+class Welcome (GridLayout):
+    def __init__(self,**kwargs):
+        super(Welcome,self).__init__(**kwargs)
+        self.rows= 2
+        
     
+    
+   
 
 class SimpleKivy(App):
     def build (self):
@@ -33,6 +46,7 @@ class SimpleKivy(App):
 
 if __name__ =="__main__":
     SimpleKivy().run()
+    
     
     
     

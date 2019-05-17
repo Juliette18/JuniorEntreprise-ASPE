@@ -24,9 +24,9 @@ class LoginScreen (GridLayout):
         self.add_widget(Label(text="Mot de passe:"))
         self.password=TextInput(multiline = False, password = True)
         self.add_widget(self.password)
-        self.add_widget(Label(text="Authentification bifactorielle:"))
-        self.tfa=TextInput(multiline = False)
-        self.add_widget(self.tfa)
+#        self.add_widget(Label(text="Authentification bifactorielle:"))
+#        self.tfa=TextInput(multiline = False)
+#        self.add_widget(self.tfa)
         self.join = Button(text="Connexion")
         self.join.bind(on_press=self.join_button)
         self.add_widget(Label())
@@ -42,7 +42,13 @@ class LoginScreen (GridLayout):
             username = self.username.text
 #            password = self.password.text
 #            tfa = self.tfa.text            
-            print("Bienvenue",username)        
+            #print("Bienvenue",username)
+            with open("prev_details.txt","w") as f:
+                f.write(f"{username}")
+                
+            info = f"Bienvenue {username}"
+            je_app.info_page.update_info(info)
+            je_app.screen_manager.current ='Info'
         
             
             
@@ -62,7 +68,7 @@ class SimpleKivy(App):
         
         self.screen_manager= ScreenManager()
         
-        self.connect_page = ConnectPage()
+        self.connect_page = LoginScreen()
         screen = Screen(name='Connexion')
         screen.add_widget(self.connect_page)
         self.screen_manager.add_widget(screen)
@@ -96,7 +102,8 @@ class InfoPage (GridLayout):
         
 
 if __name__ =="__main__":
-    SimpleKivy().run()
+    je_app= SimpleKivy()
+    je_app.run()
     
     
     

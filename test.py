@@ -15,7 +15,7 @@ from kivy.uix.button import Button
 
 class LoginScreen (GridLayout):
     def __init__(self,**kwargs):
-        super(LoginScreen,self).__init__(**kwargs)
+        super().__init__(**kwargs)
         self.cols=2
         self.add_widget(Label(text="Utilisateur:"))
         self.username=TextInput(multiline = False)
@@ -27,7 +27,7 @@ class LoginScreen (GridLayout):
         self.tfa=TextInput(multiline = False)
         self.add_widget(self.tfa)
         self.join = Button(text="Connexion")
-        #self.join.bind(on_press=self.join_button)
+        self.join.bind(on_press=self.join_button)
         self.add_widget(Label())
         self.add_widget(self.join)   
         
@@ -35,11 +35,14 @@ class LoginScreen (GridLayout):
         self.forgotpwd=Label(text= "Mot de passe oublié ? Envoyez un email à : jesuisundebileamnesique@je.fr")       
 
         self.add_widget(self.forgotpwd)
+
+    def join_button (self,instance):           
+            
+            username = self.username.text
+#            password = self.password.text
+#            tfa = self.tfa.text            
+            print("Bienvenue",username)        
         
-#        def join_button (self,instance):
-#            username = self.username.text
-#            
-#            print(username)
             
             
             

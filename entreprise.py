@@ -16,6 +16,7 @@ class Entreprise:
         self.debiteur= False
         self.sommeF
         self.sommeP
+        self.sommeR
         
         
     def ajoutFacture(self,facture):
@@ -37,30 +38,24 @@ class Entreprise:
          
             
         return self.sommeP
+    
+    def sommeRestante (self):
+        self.sommeR= self.sommeF-self.sommeP
+        return self.sommeR
         
-    def estDebiteur (self,debiteur):
-        self.debiteur=debiteur
+        
+    def estDebiteur (self):
+        if self.sommeR<0:
+            self.debiteur=True
+            
+        return self.debiteur
+    
         
             
      
-#class Paiement (Entreprise):
-#    
-#    def __init__(self,num,montant):
-#        
-#        self.num = num
-#        self.montant= montant
-        
-#    def getNum ():
-#        return self.num
-#    
-#    def getMontant():
-#        return self.montant
-    
 
-    
-p= Paiement(1,150)
-print(p.num)
-print(p.montant)
+
+
     
     
     

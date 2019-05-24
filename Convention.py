@@ -6,38 +6,40 @@ Created on Fri May 17 04:52:51 2019
 """
 
 from datetime import date
-from abc import ABC, abstractmethod
+import os
 from reportlab.pdfgen import canvas
 from reportlab.lib.units import inch
-import Document.py
+import Facture
 
-class Convention(Document):
+class Convention():
+    
     
     numeroConvention = 0
-    nomClient
-    nomEtudiant
-    descriptionMission
+    nomClient = ""
+    nomEtudiant = ""
+    descriptionMission = ""
     mentionSpeciale = ""
     statut = "En cours"
-    facture
+    
     
     def __init__(self):
-        super().__init__(self)
-        numeroConvention=numeroConvention+1
-        facture = self.creerFacture()
+        self.numeroConvention = self.numeroConvention + 1
+        self.facture = self.creerFacture()
+        self.day = date.today().strftime("%d/%m/%Y") #put the date in string format
+        self.yr = date.today().strftime("%Y")
 		
-    def creerFacture():
-        return Facture(numeroConvention) 
+    def creerFacture(self):
+        return Facture(self.numeroConvention) 
         pass
   
     #enregistrer les champs rempli par user
-    # et update csv doc 
+    # et update BDD 
     def enregistrerBrouillonConvention(self):
         pass
     
     #enregistrer les champs rempli par user
     # et update csv doc 
-    def enregistrerBrouillonFacture():
+    def enregistrerBrouillonFacture(self):
         #mentions speciales
         pass
         
@@ -64,7 +66,7 @@ class Convention(Document):
         f.write(nom_etudiant+"\n")
         f.write(description_mission+"\n")
         f.write(mention_speciale+"\n")
-        f.write("\n Fais le : "+temp_date)
+        f.write("\n Fais le : "+ temp_date)
         
         #read reads the file and stores it in a variable
         text = f.read
@@ -82,8 +84,8 @@ class Convention(Document):
         my_canvas.setFont(font, font_size)
         my_canvas.drawRightString(x, y, text)
         my_canvas.save()
-        changerStatutConvention()
-        #os.startfile(nomfichier+".pdf")
+        self.changerStatutConvention(self)
+        os.startfile(nomfichier+".pdf")
     
     def changerStatutConvention(self):
         if self.statut=="En cours":
@@ -94,18 +96,33 @@ class Convention(Document):
     def getStatut(self):
         return self.statut
     
+    def setStatut(self, st):
+        self.statut= st
+    
     def getNumeroConvention(self):
         return self.numeroConvention
     
     def getNomClient(self):
         return self.NomClient
     
+    def setNomClient(self, nom):
+        self.NomClient = nom
+    
     def getNomEtudiant(self):
         return self.nomEtudiant
+    
+    def setNomEtudiant(self, nom):
+        self.nomEtudiant = nom
     
     def getDescriptionMission(self):
         return self.descriptionMission
     
+    def setDescriptionMission(self, str):
+        self.descriptionMission = str
+    
     def getMentionSpeciale(self):
         return self.mentionSpeciale
+    
+    def setMentionSpeciale(self, str):
+        self.mentionSpeciale = str
     

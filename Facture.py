@@ -6,23 +6,22 @@ Created on Fri May 17 04:52:21 2019
 """
 
 from datetime import date
-from abc import ABC, abstractmethod
+import os
 from reportlab.pdfgen import canvas
 from reportlab.lib.units import inch
-import Document
-import Convention.py
+import Convention
+#Convention.reload(Convention)
 
 
-class Facture(Document):
+class Facture():
     
     numeroFacture = 0
     statut = "En attente"
     montant = 0
-    numeroConvention
+    #numeroConvention
     
-    def __init__(self, numeroConvention):
-        super().__init__(self)
-        numeroFacture = numeroFacture + 1
+    def __init__(self, numeroConvention, numeroFacture):
+        self.numeroFacture = self.numeroFacture + 1
         self.numeroConvention = numeroConvention
     
     def setMontant(self, montant): 
@@ -31,13 +30,13 @@ class Facture(Document):
     
     #methode PDF facture
     def créerPDFFacture(self):
-         #on définit les variables contenant les infos     
+        #on définit les variables contenant les infos     
         nom_client = str("Client: "+ self.nomClient)
         nom_etudiant = str("Etudiant: "+ self.nomEtudiant)
         montant = str("Montant: " + self.montant)
         numero_facture = str("Numero de Facture: "+ self.numeroFacture)
         numero_convention = str("Numero de Convention: "+ self.numeroConvention)
-        temp_date = str(date.today().strtime("%d/%m/%Y"))
+        day = str(date.today().strtime("%d/%m/%Y"))
         
         #variable contenant le nom du fichier: C pour convention
         nomfichier = "F_"+self.numeroFacture
@@ -52,7 +51,7 @@ class Facture(Document):
         f.write(nom_client+"\n")
         f.write(nom_etudiant+"\n")
         f.write(montant+"\n")
-        f.write("\n Fais le : "+temp_date)
+        f.write("\n Fais le : "+ day)
         
         #read reads the file and stores it in a variable
         text = f.read
@@ -70,7 +69,7 @@ class Facture(Document):
         my_canvas.setFont(font, font_size)
         my_canvas.drawRightString(x, y, text)
         my_canvas.save()
-        changerStatutFacture()
+        self.changerStatutFacture(self)
         
         os.startfile(nomfichier+".pdf")
     

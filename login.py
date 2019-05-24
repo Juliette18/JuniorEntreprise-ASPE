@@ -40,11 +40,11 @@ class LoginScreen (GridLayout):
     def join_button (self,instance):           
             
             username = self.username.text
-#            password = self.password.text
+            password = self.password.text
 #            tfa = self.tfa.text            
             #print("Bienvenue",username)
-            with open("prev_details.txt","w") as f:
-                f.write(f"{username}")
+            with open("prev_details.csv","w") as f:
+                f.write(f"{username,password}")
                 
             info = f"Bienvenue {username}"
             je_app.info_page.update_info(info)

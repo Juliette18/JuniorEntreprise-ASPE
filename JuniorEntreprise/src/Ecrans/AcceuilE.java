@@ -5,6 +5,9 @@
  */
 package Ecrans;
 
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Niakulu
@@ -16,6 +19,7 @@ public class AcceuilE extends javax.swing.JFrame {
      */
     public AcceuilE() {
         initComponents();
+        this.setVisible(true);
     }
 
     /**
@@ -36,8 +40,15 @@ public class AcceuilE extends javax.swing.JFrame {
         lbl_profil = new javax.swing.JLabel();
         lbl_conventions = new javax.swing.JLabel();
         lbl_accueil = new javax.swing.JLabel();
+        bt_Deco = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Unagi - Acceuil");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         pan_Menu.setBackground(new java.awt.Color(220, 220, 220));
         pan_Menu.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -156,29 +167,68 @@ public class AcceuilE extends javax.swing.JFrame {
                 .addContainerGap(317, Short.MAX_VALUE))
         );
 
+        bt_Deco.setBackground(new java.awt.Color(255, 51, 51));
+        bt_Deco.setForeground(new java.awt.Color(255, 255, 255));
+        bt_Deco.setText("Déconnexion");
+        bt_Deco.setToolTipText("");
+        bt_Deco.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_DecoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(pan_Menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 750, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 608, Short.MAX_VALUE)
+                .addComponent(bt_Deco, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(pan_Menu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(bt_Deco)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void lbl_conventionsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_conventionsMouseClicked
-   
+   //A gérer avec la bd car on ne doit pouvoir afficher que les conventions qui concerne l'étudiant
     }//GEN-LAST:event_lbl_conventionsMouseClicked
 
     private void lbl_accueilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_accueilMouseClicked
-       
+       this.setVisible(false);
+       AcceuilE acceuilE = new AcceuilE();
+       acceuilE.setVisible(true);
     }//GEN-LAST:event_lbl_accueilMouseClicked
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        int input = JOptionPane.showConfirmDialog(this, "Voulez vous quitter l'application ?", "", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
+        if (input == JOptionPane.OK_OPTION) {
+            System.out.println("Application Fermée");
+            this.dispose();
+            System.exit(0);
+        } else if (input == JOptionPane.CANCEL_OPTION) {
+            this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_formWindowClosing
+
+    private void bt_DecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_DecoActionPerformed
+        int input = JOptionPane.showConfirmDialog(this, "Voulez vous retourner à l'écran de connexion?", "", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
+        if (input == JOptionPane.OK_OPTION) {
+            this.setVisible(false);
+            Connexion connexion = new Connexion();
+            connexion.setVisible(true);
+        } else if (input == JOptionPane.CANCEL_OPTION) {
+            this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        }
+    }//GEN-LAST:event_bt_DecoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -216,6 +266,7 @@ public class AcceuilE extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bt_Deco;
     private javax.swing.JLabel lbl_Img;
     private javax.swing.JLabel lbl_NomUtilisateur;
     private javax.swing.JLabel lbl_accueil;

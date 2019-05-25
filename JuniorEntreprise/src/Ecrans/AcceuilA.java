@@ -5,6 +5,9 @@
  */
 package Ecrans;
 
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Niakulu
@@ -46,8 +49,15 @@ public class AcceuilA extends javax.swing.JFrame {
         cbb_conventions = new javax.swing.JComboBox<>();
         lbl_facturation = new javax.swing.JLabel();
         cbb_facturation = new javax.swing.JComboBox<>();
+        bt_Deco = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Unagi - Acceuil");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         pan_Menu.setBackground(new java.awt.Color(220, 220, 220));
         pan_Menu.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -124,8 +134,9 @@ public class AcceuilA extends javax.swing.JFrame {
             }
         });
 
-        cbb_missions.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "En Cours", "Cloturées", "En attente" }));
+        cbb_missions.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "En cours", "Cloturées", "En attente" }));
         cbb_missions.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        cbb_missions.setVisible(false);
         cbb_missions.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbb_missionsActionPerformed(evt);
@@ -143,8 +154,9 @@ public class AcceuilA extends javax.swing.JFrame {
             }
         });
 
-        cbb_entreprises.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Creation", "Liste des entreprises", "Paiement/Fiche Client" }));
+        cbb_entreprises.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Création", "Liste des entreprises" }));
         cbb_entreprises.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        cbb_entreprises.setVisible(false);
         cbb_entreprises.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbb_entreprisesActionPerformed(evt);
@@ -162,8 +174,9 @@ public class AcceuilA extends javax.swing.JFrame {
             }
         });
 
-        cbb_etudiants.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Creation", "Liste des étudiants" }));
+        cbb_etudiants.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Création", "Liste des étudiants" }));
         cbb_etudiants.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        cbb_etudiants.setVisible(false);
         cbb_etudiants.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbb_etudiantsActionPerformed(evt);
@@ -181,8 +194,9 @@ public class AcceuilA extends javax.swing.JFrame {
             }
         });
 
-        cbb_conventions.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Creation", "Brouillon", "Upload", "Liste des conventions" }));
+        cbb_conventions.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Création", "Brouillons", "Upload", "Liste des conventions" }));
         cbb_conventions.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        cbb_conventions.setVisible(false);
         cbb_conventions.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbb_conventionsActionPerformed(evt);
@@ -202,6 +216,7 @@ public class AcceuilA extends javax.swing.JFrame {
 
         cbb_facturation.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Création", "Brouillons", "Liste des factures" }));
         cbb_facturation.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        cbb_facturation.setVisible(false);
         cbb_facturation.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbb_facturationActionPerformed(evt);
@@ -216,36 +231,28 @@ public class AcceuilA extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(pan_NavLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pan_NavLayout.createSequentialGroup()
+                        .addGroup(pan_NavLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(lbl_conventions, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lbl_facturation, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(19, 19, 19)
                         .addGroup(pan_NavLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pan_NavLayout.createSequentialGroup()
-                                .addComponent(lbl_suivi_mission, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cbb_missions, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(pan_NavLayout.createSequentialGroup()
-                                .addGroup(pan_NavLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(lbl_conventions, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(lbl_facturation, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(19, 19, 19)
-                                .addGroup(pan_NavLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cbb_conventions, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cbb_facturation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(lbl_accueil, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pan_NavLayout.createSequentialGroup()
-                        .addComponent(lbl_profil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())
+                            .addComponent(cbb_conventions, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cbb_facturation, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(lbl_accueil, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(pan_NavLayout.createSequentialGroup()
                         .addGroup(pan_NavLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(lbl_etudiants, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(lbl_entreprise, javax.swing.GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE))
                         .addGap(19, 19, 19)
                         .addGroup(pan_NavLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pan_NavLayout.createSequentialGroup()
-                                .addComponent(cbb_etudiants, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(pan_NavLayout.createSequentialGroup()
-                                .addComponent(cbb_entreprises, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addContainerGap())))))
+                            .addComponent(cbb_entreprises, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cbb_etudiants, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(lbl_profil, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(pan_NavLayout.createSequentialGroup()
+                        .addComponent(lbl_suivi_mission, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cbb_missions, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         pan_NavLayout.setVerticalGroup(
             pan_NavLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -274,7 +281,7 @@ public class AcceuilA extends javax.swing.JFrame {
                 .addGroup(pan_NavLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_facturation)
                     .addComponent(cbb_facturation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(180, Short.MAX_VALUE))
+                .addContainerGap(139, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout pan_MenuLayout = new javax.swing.GroupLayout(pan_Menu);
@@ -294,9 +301,19 @@ public class AcceuilA extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(pan_Profil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(pan_Nav, javax.swing.GroupLayout.DEFAULT_SIZE, 457, Short.MAX_VALUE)
+                .addComponent(pan_Nav, javax.swing.GroupLayout.DEFAULT_SIZE, 416, Short.MAX_VALUE)
                 .addContainerGap())
         );
+
+        bt_Deco.setBackground(new java.awt.Color(255, 51, 51));
+        bt_Deco.setForeground(new java.awt.Color(255, 255, 255));
+        bt_Deco.setText("Déconnexion");
+        bt_Deco.setToolTipText("");
+        bt_Deco.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_DecoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -304,18 +321,23 @@ public class AcceuilA extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(pan_Menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 750, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 596, Short.MAX_VALUE)
+                .addComponent(bt_Deco, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(pan_Menu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(bt_Deco)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void lbl_facturationMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_facturationMouseClicked
-        // TODO add your handling code here:
+        
         if (!cbb_facturation.isVisible() || cbb_conventions.isVisible() || cbb_etudiants.isVisible()||cbb_entreprises.isVisible()||cbb_entreprises.isVisible()||cbb_missions.isVisible() ){
             cbb_conventions.setVisible(false);
             cbb_entreprises.setVisible(false);
@@ -333,7 +355,7 @@ public class AcceuilA extends javax.swing.JFrame {
     }//GEN-LAST:event_lbl_facturationMouseClicked
 
     private void lbl_conventionsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_conventionsMouseClicked
-        // TODO add your handling code here:
+        
         if (!cbb_conventions.isVisible()|| cbb_facturation.isVisible() || cbb_etudiants.isVisible()||cbb_entreprises.isVisible()||cbb_entreprises.isVisible()||cbb_missions.isVisible() ){
             cbb_conventions.setVisible(true);
             cbb_entreprises.setVisible(false);
@@ -351,7 +373,7 @@ public class AcceuilA extends javax.swing.JFrame {
     }//GEN-LAST:event_lbl_conventionsMouseClicked
 
     private void lbl_etudiantsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_etudiantsMouseClicked
-        // TODO add your handling code here:
+        
         if (!cbb_etudiants.isVisible()||cbb_conventions.isVisible()|| cbb_facturation.isVisible() ||cbb_entreprises.isVisible()||cbb_entreprises.isVisible()||cbb_missions.isVisible()){
             cbb_conventions.setVisible(false);
             cbb_entreprises.setVisible(false);
@@ -369,7 +391,7 @@ public class AcceuilA extends javax.swing.JFrame {
     }//GEN-LAST:event_lbl_etudiantsMouseClicked
 
     private void lbl_entrepriseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_entrepriseMouseClicked
-        // TODO add your handling code here:
+        
         if (!cbb_entreprises.isVisible()||cbb_etudiants.isVisible()||cbb_conventions.isVisible()|| cbb_facturation.isVisible() ||cbb_entreprises.isVisible()||cbb_missions.isVisible()){
             cbb_conventions.setVisible(false);
             cbb_entreprises.setVisible(true);
@@ -387,7 +409,7 @@ public class AcceuilA extends javax.swing.JFrame {
     }//GEN-LAST:event_lbl_entrepriseMouseClicked
 
     private void lbl_suivi_missionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_suivi_missionMouseClicked
-        // TODO add your handling code here:
+        
         if (!cbb_missions.isVisible()||cbb_entreprises.isVisible()||cbb_etudiants.isVisible()||cbb_conventions.isVisible()|| cbb_facturation.isVisible() ||cbb_entreprises.isVisible()){
             cbb_conventions.setVisible(false);
             cbb_entreprises.setVisible(false);
@@ -405,28 +427,122 @@ public class AcceuilA extends javax.swing.JFrame {
     }//GEN-LAST:event_lbl_suivi_missionMouseClicked
 
     private void cbb_missionsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbb_missionsActionPerformed
-        // TODO add your handling code here:
+        String choix = (String) cbb_missions.getSelectedItem();
+        if (choix.equals("En cours")){
+            this.setVisible(false);
+            SMission_EnCours encours = new SMission_EnCours();
+            encours.setVisible(true);
+        }
+        if (choix.equals( "Cloturées")){
+            this.setVisible(false);
+            SMission_Cloturees cloture= new SMission_Cloturees();
+            cloture.setVisible(true);
+        }
+        if (choix.equals("En attente")){
+            this.setVisible(false);
+            SMission_EnAttente attente= new SMission_EnAttente();
+            attente.setVisible(true);
+        }
     }//GEN-LAST:event_cbb_missionsActionPerformed
 
     private void cbb_entreprisesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbb_entreprisesActionPerformed
-        // TODO add your handling code here:
+        String choix = (String) cbb_entreprises.getSelectedItem();
+        if (choix.equals("Création")){
+            this.setVisible(false);
+            AjoutClient ajoutC = new AjoutClient();
+            ajoutC.setVisible(true);
+        }
+        if (choix.equals("Liste des entreprises")){
+            this.setVisible(false);
+            ListeClients listeC = new ListeClients();
+            listeC.setVisible(true);
+        }
     }//GEN-LAST:event_cbb_entreprisesActionPerformed
 
     private void cbb_etudiantsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbb_etudiantsActionPerformed
-        // TODO add your handling code here:
+        String choix = (String) cbb_etudiants.getSelectedItem();
+        if (choix.equals("Création")){
+            this.setVisible(false);
+            AjoutEtudiant ajoutE = new AjoutEtudiant();
+            ajoutE.setVisible(true);
+        }
+        if (choix.equals("Liste des étudiants")){
+            this.setVisible(false);
+            ListeEtudiants listeE = new ListeEtudiants();
+            listeE.setVisible(true);
+        }
     }//GEN-LAST:event_cbb_etudiantsActionPerformed
 
     private void cbb_conventionsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbb_conventionsActionPerformed
-        // TODO add your handling code here:
+        String choix = (String) cbb_conventions.getSelectedItem();
+        if (choix.equals("Création")){
+            this.setVisible(false);
+            AjoutConvention ajoutC = new AjoutConvention();
+            ajoutC.setVisible(true);
+        }
+        if (choix.equals("Brouillons")){
+            this.setVisible(false);
+            BrouillonsC brouillonC = new BrouillonsC();
+            brouillonC.setVisible(true);
+        }
+        if (choix.equals("Upload")){
+            this.setVisible(false);
+            Upload upload = new Upload();
+            upload.setVisible(true);
+        }
+        if (choix.equals("Liste des conventions")){
+            this.setVisible(false);
+            ListeConventionA listeC = new ListeConventionA();
+            listeC.setVisible(true);
+        }
     }//GEN-LAST:event_cbb_conventionsActionPerformed
 
     private void cbb_facturationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbb_facturationActionPerformed
-        // TODO add your handling code here:
+        String choix = (String) cbb_facturation.getSelectedItem();
+        if (choix.equals("Création")){
+            this.setVisible(false);
+            AjoutFacture ajoutF = new AjoutFacture();
+            ajoutF.setVisible(true);
+        }
+        if (choix.equals("Brouillons")){
+            this.setVisible(false);
+            BrouillonFacture brouillonF= new BrouillonFacture();
+            brouillonF.setVisible(true);
+        }
+        if (choix.equals("Liste des factures")){
+            this.setVisible(false);
+            ListeFactures listeF = new ListeFactures();
+            listeF.setVisible(true);
+        }
     }//GEN-LAST:event_cbb_facturationActionPerformed
 
     private void lbl_accueilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_accueilMouseClicked
-
+            this.setVisible(false);
+            AcceuilA acceuil = new AcceuilA();
+            acceuil.setVisible(true);
     }//GEN-LAST:event_lbl_accueilMouseClicked
+
+    private void bt_DecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_DecoActionPerformed
+        int input = JOptionPane.showConfirmDialog(this, "Voulez vous retourner à l'écran de connexion?", "", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
+        if (input == JOptionPane.OK_OPTION) {
+            this.setVisible(false);
+            Connexion connexion = new Connexion();
+            connexion.setVisible(true);
+        } else if (input == JOptionPane.CANCEL_OPTION) {
+            this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        }
+    }//GEN-LAST:event_bt_DecoActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+int input = JOptionPane.showConfirmDialog(this, "Voulez vous quitter l'application ?", "", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
+        if (input == JOptionPane.OK_OPTION) {
+            System.out.println("Application Fermée");
+            this.dispose();
+            System.exit(0);
+        } else if (input == JOptionPane.CANCEL_OPTION) {
+            this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments
@@ -464,6 +580,7 @@ public class AcceuilA extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bt_Deco;
     private javax.swing.JComboBox<String> cbb_conventions;
     private javax.swing.JComboBox<String> cbb_entreprises;
     private javax.swing.JComboBox<String> cbb_etudiants;

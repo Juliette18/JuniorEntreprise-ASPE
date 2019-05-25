@@ -5,11 +5,13 @@
  */
 package Ecrans;
 
+import Ecrans.AcceuilA;
+import Ecrans.AcceuilE;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.io.File;
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
@@ -23,11 +25,11 @@ public class Connexion extends javax.swing.JFrame {
      * Creates new form page2
      */
     public Connexion() {
-       
+
         initComponents();
         this.setVisible(true);
-       
-//        this.setIconImage("src/Images/");
+        
+
     
     }
 
@@ -51,7 +53,13 @@ public class Connexion extends javax.swing.JFrame {
         lb_Compte = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Unagi - Connexion");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         lbl_Img.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/snake2.png"))); // NOI18N
 
@@ -78,14 +86,6 @@ public class Connexion extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 295, Short.MAX_VALUE)
-                .addComponent(lb_Compte, javax.swing.GroupLayout.PREFERRED_SIZE, 434, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(295, 295, 295))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(lbl_Img)
-                .addGap(464, 464, 464))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -104,6 +104,15 @@ public class Connexion extends javax.swing.JFrame {
                         .addGap(446, 446, 446)
                         .addComponent(bt_Valider, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 295, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(lb_Compte, javax.swing.GroupLayout.PREFERRED_SIZE, 434, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(295, 295, 295))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(lbl_Img)
+                        .addGap(464, 464, 464))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -127,6 +136,8 @@ public class Connexion extends javax.swing.JFrame {
                 .addGap(34, 34, 34))
         );
 
+        getAccessibleContext().setAccessibleDescription("");
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -142,6 +153,8 @@ public class Connexion extends javax.swing.JFrame {
         //2- Vérif exitence du couple ID/MDp
         //3- Verif type utilisateur
         //Recupération du type d'utilisateur et modif de la var Uti
+        txt_id.setText("");
+        pass_Mdp.setText("");
         if (Uti.equals("Admin")){
             AcceuilA  acceuilA = new AcceuilA();
             this.setVisible(false);
@@ -152,6 +165,17 @@ public class Connexion extends javax.swing.JFrame {
         
          
     }//GEN-LAST:event_bt_ValiderActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+    int input = JOptionPane.showConfirmDialog(this, "Voulez vous quitter l'application ?", "", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
+        if (input == JOptionPane.OK_OPTION) {
+            System.out.println("Application Fermée");
+            this.dispose();
+            System.exit(0);
+        } else if (input == JOptionPane.CANCEL_OPTION) {
+            this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        }
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments

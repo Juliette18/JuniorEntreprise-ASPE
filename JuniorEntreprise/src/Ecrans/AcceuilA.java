@@ -50,6 +50,23 @@ public class AcceuilA extends javax.swing.JFrame {
         lbl_facturation = new javax.swing.JLabel();
         cbb_facturation = new javax.swing.JComboBox<>();
         bt_Deco = new javax.swing.JButton();
+        mainJPanel = new javax.swing.JPanel();
+        lb_bjr = new javax.swing.JLabel();
+        lb_username = new javax.swing.JLabel();
+        lb_conventionAttenteFacturation = new javax.swing.JLabel();
+        bt_convention = new javax.swing.JButton();
+        bt_facturation = new javax.swing.JButton();
+        lb_nbConventionAttenteFacturation = new javax.swing.JLabel();
+        suiviActiviteJPanel = new javax.swing.JPanel();
+        lb_missionsEnCours = new javax.swing.JLabel();
+        lb_nbMissionsEnCours = new javax.swing.JLabel();
+        lb_missionsTerminees = new javax.swing.JLabel();
+        lb_missionsEnAttente = new javax.swing.JLabel();
+        lb_nbMissionsTerminees = new javax.swing.JLabel();
+        lb_payementsEnAttente = new javax.swing.JLabel();
+        lb_nbMissionsEnAttente = new javax.swing.JLabel();
+        lb_nbPayementsEnAttente = new javax.swing.JLabel();
+        lb_suiviActivites = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Unagi - Acceuil");
@@ -76,7 +93,7 @@ public class AcceuilA extends javax.swing.JFrame {
         pan_ProfilLayout.setHorizontalGroup(
             pan_ProfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pan_ProfilLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(16, Short.MAX_VALUE)
                 .addComponent(lbl_Img)
                 .addGroup(pan_ProfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pan_ProfilLayout.createSequentialGroup()
@@ -281,7 +298,7 @@ public class AcceuilA extends javax.swing.JFrame {
                 .addGroup(pan_NavLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_facturation)
                     .addComponent(cbb_facturation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(139, Short.MAX_VALUE))
+                .addContainerGap(149, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout pan_MenuLayout = new javax.swing.GroupLayout(pan_Menu);
@@ -315,14 +332,175 @@ public class AcceuilA extends javax.swing.JFrame {
             }
         });
 
+        mainJPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        lb_bjr.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        lb_bjr.setText("Bonjour");
+
+        lb_username.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        lb_username.setText("username");
+
+        lb_conventionAttenteFacturation.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        lb_conventionAttenteFacturation.setText("Nombre de convention en attente de facturation : ");
+
+        bt_convention.setText("Convention");
+        bt_convention.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_conventionActionPerformed(evt);
+            }
+        });
+
+        bt_facturation.setText("Facturation");
+        bt_facturation.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_facturationActionPerformed(evt);
+            }
+        });
+
+        lb_nbConventionAttenteFacturation.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lb_nbConventionAttenteFacturation.setText("0");
+
+        suiviActiviteJPanel.setBackground(new java.awt.Color(255, 255, 255));
+        suiviActiviteJPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        lb_missionsEnCours.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        lb_missionsEnCours.setText("Missions en cours :");
+
+        lb_nbMissionsEnCours.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lb_nbMissionsEnCours.setText("0");
+
+        lb_missionsTerminees.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        lb_missionsTerminees.setText("Missions terminees : ");
+
+        lb_missionsEnAttente.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        lb_missionsEnAttente.setText("Missions en attente : ");
+
+        lb_nbMissionsTerminees.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lb_nbMissionsTerminees.setText("0");
+
+        lb_payementsEnAttente.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        lb_payementsEnAttente.setText("Payements en attente :");
+
+        lb_nbMissionsEnAttente.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lb_nbMissionsEnAttente.setText("0");
+
+        lb_nbPayementsEnAttente.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lb_nbPayementsEnAttente.setText("0");
+
+        javax.swing.GroupLayout suiviActiviteJPanelLayout = new javax.swing.GroupLayout(suiviActiviteJPanel);
+        suiviActiviteJPanel.setLayout(suiviActiviteJPanelLayout);
+        suiviActiviteJPanelLayout.setHorizontalGroup(
+            suiviActiviteJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(suiviActiviteJPanelLayout.createSequentialGroup()
+                .addGap(45, 45, 45)
+                .addGroup(suiviActiviteJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(suiviActiviteJPanelLayout.createSequentialGroup()
+                        .addGroup(suiviActiviteJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(suiviActiviteJPanelLayout.createSequentialGroup()
+                                .addGroup(suiviActiviteJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lb_missionsTerminees)
+                                    .addComponent(lb_missionsEnAttente))
+                                .addGap(28, 28, 28))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, suiviActiviteJPanelLayout.createSequentialGroup()
+                                .addComponent(lb_payementsEnAttente)
+                                .addGap(18, 18, 18)))
+                        .addGroup(suiviActiviteJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lb_nbMissionsEnAttente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lb_nbMissionsTerminees, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lb_nbPayementsEnAttente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(suiviActiviteJPanelLayout.createSequentialGroup()
+                        .addComponent(lb_missionsEnCours)
+                        .addGap(41, 41, 41)
+                        .addComponent(lb_nbMissionsEnCours, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 353, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        suiviActiviteJPanelLayout.setVerticalGroup(
+            suiviActiviteJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(suiviActiviteJPanelLayout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addGroup(suiviActiviteJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lb_missionsEnCours)
+                    .addComponent(lb_nbMissionsEnCours))
+                .addGap(42, 42, 42)
+                .addGroup(suiviActiviteJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lb_missionsTerminees)
+                    .addComponent(lb_nbMissionsTerminees))
+                .addGap(45, 45, 45)
+                .addGroup(suiviActiviteJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lb_missionsEnAttente)
+                    .addComponent(lb_nbMissionsEnAttente))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addGroup(suiviActiviteJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lb_payementsEnAttente)
+                    .addComponent(lb_nbPayementsEnAttente))
+                .addGap(34, 34, 34))
+        );
+
+        lb_suiviActivites.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lb_suiviActivites.setText("Suivi d'activites");
+
+        javax.swing.GroupLayout mainJPanelLayout = new javax.swing.GroupLayout(mainJPanel);
+        mainJPanel.setLayout(mainJPanelLayout);
+        mainJPanelLayout.setHorizontalGroup(
+            mainJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(mainJPanelLayout.createSequentialGroup()
+                .addGroup(mainJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(mainJPanelLayout.createSequentialGroup()
+                        .addGap(189, 189, 189)
+                        .addComponent(lb_bjr)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lb_username))
+                    .addGroup(mainJPanelLayout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addGroup(mainJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(suiviActiviteJPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(mainJPanelLayout.createSequentialGroup()
+                                .addComponent(lb_conventionAttenteFacturation)
+                                .addGap(18, 18, 18)
+                                .addComponent(lb_nbConventionAttenteFacturation, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(bt_convention)
+                                .addGap(27, 27, 27)
+                                .addComponent(bt_facturation)))))
+                .addContainerGap(19, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainJPanelLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(lb_suiviActivites)
+                .addGap(289, 289, 289))
+        );
+        mainJPanelLayout.setVerticalGroup(
+            mainJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(mainJPanelLayout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addGroup(mainJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lb_bjr)
+                    .addComponent(lb_username))
+                .addGap(67, 67, 67)
+                .addGroup(mainJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lb_conventionAttenteFacturation)
+                    .addComponent(lb_nbConventionAttenteFacturation)
+                    .addComponent(bt_convention)
+                    .addComponent(bt_facturation))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lb_suiviActivites)
+                .addGap(41, 41, 41)
+                .addComponent(suiviActiviteJPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(pan_Menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 596, Short.MAX_VALUE)
-                .addComponent(bt_Deco, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(bt_Deco, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(mainJPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -330,7 +508,8 @@ public class AcceuilA extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(bt_Deco)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(12, 12, 12)
+                .addComponent(mainJPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -544,6 +723,20 @@ int input = JOptionPane.showConfirmDialog(this, "Voulez vous quitter l'applicati
         }        // TODO add your handling code here:
     }//GEN-LAST:event_formWindowClosing
 
+    private void bt_conventionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_conventionActionPerformed
+        //ouvre page liste de convention
+            this.setVisible(false);
+            ListeConventionA convention = new ListeConventionA();
+            convention.setVisible(true);
+    }//GEN-LAST:event_bt_conventionActionPerformed
+
+    private void bt_facturationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_facturationActionPerformed
+        //ouvre page liste de facture
+            this.setVisible(false);
+            ListeFactures facture = new ListeFactures();
+            facture.setVisible(true);
+    }//GEN-LAST:event_bt_facturationActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -581,11 +774,26 @@ int input = JOptionPane.showConfirmDialog(this, "Voulez vous quitter l'applicati
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_Deco;
+    private javax.swing.JButton bt_convention;
+    private javax.swing.JButton bt_facturation;
     private javax.swing.JComboBox<String> cbb_conventions;
     private javax.swing.JComboBox<String> cbb_entreprises;
     private javax.swing.JComboBox<String> cbb_etudiants;
     private javax.swing.JComboBox<String> cbb_facturation;
     private javax.swing.JComboBox<String> cbb_missions;
+    private javax.swing.JLabel lb_bjr;
+    private javax.swing.JLabel lb_conventionAttenteFacturation;
+    private javax.swing.JLabel lb_missionsEnAttente;
+    private javax.swing.JLabel lb_missionsEnCours;
+    private javax.swing.JLabel lb_missionsTerminees;
+    private javax.swing.JLabel lb_nbConventionAttenteFacturation;
+    private javax.swing.JLabel lb_nbMissionsEnAttente;
+    private javax.swing.JLabel lb_nbMissionsEnCours;
+    private javax.swing.JLabel lb_nbMissionsTerminees;
+    private javax.swing.JLabel lb_nbPayementsEnAttente;
+    private javax.swing.JLabel lb_payementsEnAttente;
+    private javax.swing.JLabel lb_suiviActivites;
+    private javax.swing.JLabel lb_username;
     private javax.swing.JLabel lbl_Img;
     private javax.swing.JLabel lbl_NomUtilisateur;
     private javax.swing.JLabel lbl_accueil;
@@ -596,8 +804,10 @@ int input = JOptionPane.showConfirmDialog(this, "Voulez vous quitter l'applicati
     private javax.swing.JLabel lbl_prenomUtilisateur;
     private javax.swing.JLabel lbl_profil;
     private javax.swing.JLabel lbl_suivi_mission;
+    private javax.swing.JPanel mainJPanel;
     private javax.swing.JPanel pan_Menu;
     private javax.swing.JPanel pan_Nav;
     private javax.swing.JPanel pan_Profil;
+    private javax.swing.JPanel suiviActiviteJPanel;
     // End of variables declaration//GEN-END:variables
 }

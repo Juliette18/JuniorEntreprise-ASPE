@@ -5,8 +5,11 @@
  */
 package Ecrans;
 
+import java.util.regex.Pattern;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -20,6 +23,13 @@ public class ListeFactures extends javax.swing.JFrame {
     public ListeFactures() {
         initComponents();
         this.setVisible(true);
+        modelTableFacture = new DefaultTableModel(new String [] {"Numéro facture", "Année", "Client", "Etudiant", "Payée", "Numéro convention"}, 0);
+              
+        //ajoute le model a tabProduits
+        tableListeFacture.setModel(modelTableFacture);
+        
+        // l'utilisateur peut selectionner plusieurs lignes de la tables 
+        tableListeFacture.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);  
     }
 
     /**
@@ -50,6 +60,15 @@ public class ListeFactures extends javax.swing.JFrame {
         lbl_facturation = new javax.swing.JLabel();
         cbb_facturation = new javax.swing.JComboBox<>();
         bt_Deco = new javax.swing.JButton();
+        mainJPanel = new javax.swing.JPanel();
+        lb_listFactureTitre = new javax.swing.JLabel();
+        lb_rechercherPar = new javax.swing.JLabel();
+        jspTableListeFacture = new javax.swing.JScrollPane();
+        tableListeFacture = new javax.swing.JTable();
+        cbbRechercheFiltree = new javax.swing.JComboBox<>();
+        tf_recherche = new javax.swing.JTextField();
+        bt_recherche = new javax.swing.JButton();
+        bt_reinitialiserRecherche = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Unagi - Liste des factures");
@@ -77,7 +96,7 @@ public class ListeFactures extends javax.swing.JFrame {
         pan_ProfilLayout.setHorizontalGroup(
             pan_ProfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pan_ProfilLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(16, Short.MAX_VALUE)
                 .addComponent(lbl_Img)
                 .addGroup(pan_ProfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pan_ProfilLayout.createSequentialGroup()
@@ -282,7 +301,7 @@ public class ListeFactures extends javax.swing.JFrame {
                 .addGroup(pan_NavLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_facturation)
                     .addComponent(cbb_facturation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(139, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout pan_MenuLayout = new javax.swing.GroupLayout(pan_Menu);
@@ -311,14 +330,113 @@ public class ListeFactures extends javax.swing.JFrame {
         bt_Deco.setText("Déconnexion");
         bt_Deco.setToolTipText("");
 
+        mainJPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        lb_listFactureTitre.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lb_listFactureTitre.setText("Listes des factures");
+
+        lb_rechercherPar.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        lb_rechercherPar.setText("Rechercher par");
+
+        tableListeFacture.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Numero facture", "Annee", "Client", "Etudiant", "Payee", "Statut", "Numero Convention"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jspTableListeFacture.setViewportView(tableListeFacture);
+
+        cbbRechercheFiltree.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        cbbRechercheFiltree.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "numero facture", "numero convention", "client", "annee", "payee", "non payee" }));
+
+        tf_recherche.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_rechercheActionPerformed(evt);
+            }
+        });
+
+        bt_recherche.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        bt_recherche.setText("Rechercher");
+        bt_recherche.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_rechercheActionPerformed(evt);
+            }
+        });
+
+        bt_reinitialiserRecherche.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        bt_reinitialiserRecherche.setText("Reinitialiser recherche");
+        bt_reinitialiserRecherche.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_reinitialiserRechercheActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout mainJPanelLayout = new javax.swing.GroupLayout(mainJPanel);
+        mainJPanel.setLayout(mainJPanelLayout);
+        mainJPanelLayout.setHorizontalGroup(
+            mainJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainJPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lb_listFactureTitre)
+                .addGap(288, 288, 288))
+            .addGroup(mainJPanelLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addGroup(mainJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jspTableListeFacture, javax.swing.GroupLayout.PREFERRED_SIZE, 664, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(mainJPanelLayout.createSequentialGroup()
+                        .addGroup(mainJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(bt_recherche)
+                            .addComponent(lb_rechercherPar, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(mainJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(mainJPanelLayout.createSequentialGroup()
+                                .addComponent(cbbRechercheFiltree, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(30, 30, 30)
+                                .addComponent(tf_recherche, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(bt_reinitialiserRecherche))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        mainJPanelLayout.setVerticalGroup(
+            mainJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(mainJPanelLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(lb_listFactureTitre)
+                .addGap(18, 18, 18)
+                .addGroup(mainJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lb_rechercherPar)
+                    .addComponent(cbbRechercheFiltree, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tf_recherche, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(mainJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bt_recherche)
+                    .addComponent(bt_reinitialiserRecherche))
+                .addGap(18, 18, Short.MAX_VALUE)
+                .addComponent(jspTableListeFacture, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(pan_Menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 643, Short.MAX_VALUE)
-                .addComponent(bt_Deco))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 633, Short.MAX_VALUE)
+                        .addComponent(bt_Deco))
+                    .addComponent(mainJPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -326,7 +444,9 @@ public class ListeFactures extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(bt_Deco)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(mainJPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -529,6 +649,92 @@ public class ListeFactures extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_formWindowClosing
 
+    private void tf_rechercheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_rechercheActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tf_rechercheActionPerformed
+
+    private void bt_rechercheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_rechercheActionPerformed
+        // recherche
+        boolean checkAnnee = true;
+        if(cbbRechercheFiltree.getSelectedItem().equals("annee"))
+        {
+            checkAnnee = checkAnnee = Pattern.matches("[0-9]{4}", tf_recherche.getText());
+        }
+        boolean checkNumber = true;
+        if(cbbRechercheFiltree.getSelectedItem().equals("numero facture") || cbbRechercheFiltree.getSelectedItem().equals("numero convention"))
+        {
+            checkNumber = Pattern.matches("[0-9]+", tf_recherche.getText());
+        }
+        if(cbbRechercheFiltree.getSelectedItem().equals(""))
+        {
+            JOptionPane.showMessageDialog(this, "Vous devez entrer une recherche", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
+        else if(cbbRechercheFiltree.getSelectedItem().equals("annee") && !checkAnnee)
+        {
+            JOptionPane.showMessageDialog(this, "Vous devez entrer une année", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
+        else if(cbbRechercheFiltree.getSelectedItem().equals("numero facture") && !checkNumber)
+        {
+            JOptionPane.showMessageDialog(this, "Vous devez entrer un numero de facture", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
+        else if(cbbRechercheFiltree.getSelectedItem().equals("numero convention") && !checkNumber)
+        {
+            JOptionPane.showMessageDialog(this, "Vous devez entrer un numero de convention", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
+        else if(!tf_recherche.getText().equals(""))
+        {
+                //recherche filtrée par annee
+                if(cbbRechercheFiltree.getSelectedItem().equals("Annee") && checkAnnee)
+                {
+                    String annee = tf_recherche.getText();
+                    String maRequete = "SELECT * FROM tab where annee == " + annee;
+                    //code connection bdd
+                }
+                else if(cbbRechercheFiltree.getSelectedItem().equals("numero facture"))
+                {
+                    String num = tf_recherche.getText();
+                    String maRequete1 = "SELECT * FROM tab where nom_client == " + num;
+                    //code connection bdd
+                }
+                //recherche filtrée par annee
+                else if(cbbRechercheFiltree.getSelectedItem().equals("numero convention"))
+                {
+                    String numC = tf_recherche.getText();
+                    String maRequete2 = "SELECT * FROM tab where nom_etudiant == " + numC;
+                    //code connection bdd
+                } 
+                else if(cbbRechercheFiltree.getSelectedItem().equals("client"))
+                {
+                    String cm = tf_recherche.getText();
+                    String maRequete3 = "SELECT * FROM tab where nom_etudiant == " + cm;
+                    //code connection bdd
+                } 
+                else if(cbbRechercheFiltree.getSelectedItem().equals("payee"))
+                {
+                    String payed = tf_recherche.getText();
+                    String maRequete4 = "SELECT * FROM tab where nom_etudiant == " + payed;
+                    //code connection bdd
+                } 
+                else if(cbbRechercheFiltree.getSelectedItem().equals("non payee"))
+                {
+                    String notPayed = tf_recherche.getText();
+                    String maRequete5 = "SELECT * FROM tab where nom_etudiant == " + notPayed;
+                    //code connection bdd
+                } 
+        }
+    }//GEN-LAST:event_bt_rechercheActionPerformed
+
+    private void bt_reinitialiserRechercheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_reinitialiserRechercheActionPerformed
+        // reset the table and the search fields
+        tf_recherche.setText("");
+        int nbRow = modelTableFacture.getRowCount();
+               
+            for(int i=0; i<nbRow; i++)
+            {
+                modelTableFacture.removeRow(i);
+            }
+    }//GEN-LAST:event_bt_reinitialiserRechercheActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -566,11 +772,17 @@ public class ListeFactures extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_Deco;
+    private javax.swing.JButton bt_recherche;
+    private javax.swing.JButton bt_reinitialiserRecherche;
+    private javax.swing.JComboBox<String> cbbRechercheFiltree;
     private javax.swing.JComboBox<String> cbb_conventions;
     private javax.swing.JComboBox<String> cbb_entreprises;
     private javax.swing.JComboBox<String> cbb_etudiants;
     private javax.swing.JComboBox<String> cbb_facturation;
     private javax.swing.JComboBox<String> cbb_missions;
+    private javax.swing.JScrollPane jspTableListeFacture;
+    private javax.swing.JLabel lb_listFactureTitre;
+    private javax.swing.JLabel lb_rechercherPar;
     private javax.swing.JLabel lbl_Img;
     private javax.swing.JLabel lbl_NomUtilisateur;
     private javax.swing.JLabel lbl_accueil;
@@ -581,8 +793,12 @@ public class ListeFactures extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_prenomUtilisateur;
     private javax.swing.JLabel lbl_profil;
     private javax.swing.JLabel lbl_suivi_mission;
+    private javax.swing.JPanel mainJPanel;
     private javax.swing.JPanel pan_Menu;
     private javax.swing.JPanel pan_Nav;
     private javax.swing.JPanel pan_Profil;
+    private javax.swing.JTable tableListeFacture;
+    private javax.swing.JTextField tf_recherche;
     // End of variables declaration//GEN-END:variables
+    private DefaultTableModel modelTableFacture;
 }

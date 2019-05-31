@@ -5,8 +5,17 @@
  */
 package Ecrans;
 
+import java.beans.Statement;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.regex.Pattern;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -20,6 +29,13 @@ public class ListeConventionA extends javax.swing.JFrame {
     public ListeConventionA() {
         initComponents();
         this.setVisible(true);
+        modelTableConvention = new DefaultTableModel(new String [] {"Numéro", "Année", "Client", "Etudiant", "Description", "Statut", "Facturation"}, 0);
+              
+        //ajoute le model a tabProduits
+        tableListeConv.setModel(modelTableConvention);
+        
+        // l'utilisateur peut selectionner plusieurs lignes de la tables 
+        tableListeConv.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);  
     }
 
     /**
@@ -50,6 +66,17 @@ public class ListeConventionA extends javax.swing.JFrame {
         lbl_facturation = new javax.swing.JLabel();
         cbb_facturation = new javax.swing.JComboBox<>();
         bt_Deco = new javax.swing.JButton();
+        mainJPanel = new javax.swing.JPanel();
+        jsp_tableListConv = new javax.swing.JScrollPane();
+        tableListeConv = new javax.swing.JTable();
+        lb_listeConv = new javax.swing.JLabel();
+        cbbFiltrerPar = new javax.swing.JComboBox<>();
+        lb_filtrerPar = new javax.swing.JLabel();
+        lb_rechercherParNum = new javax.swing.JLabel();
+        tf_rechercherParNum = new javax.swing.JTextField();
+        tf_rechercheFiltrerPar = new javax.swing.JTextField();
+        bt_rechercher = new javax.swing.JButton();
+        bt_reinitialiserRecherche = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Unagi - Liste des conventions");
@@ -77,7 +104,7 @@ public class ListeConventionA extends javax.swing.JFrame {
         pan_ProfilLayout.setHorizontalGroup(
             pan_ProfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pan_ProfilLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(16, Short.MAX_VALUE)
                 .addComponent(lbl_Img)
                 .addGroup(pan_ProfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pan_ProfilLayout.createSequentialGroup()
@@ -282,7 +309,7 @@ public class ListeConventionA extends javax.swing.JFrame {
                 .addGroup(pan_NavLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_facturation)
                     .addComponent(cbb_facturation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(139, Short.MAX_VALUE))
+                .addContainerGap(149, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout pan_MenuLayout = new javax.swing.GroupLayout(pan_Menu);
@@ -311,14 +338,130 @@ public class ListeConventionA extends javax.swing.JFrame {
         bt_Deco.setText("Déconnexion");
         bt_Deco.setToolTipText("");
 
+        mainJPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        tableListeConv.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Numero", "Annee", "Client", "Etudiant", "Description", "Statut", "Facturation"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Long.class, java.lang.Long.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jsp_tableListConv.setViewportView(tableListeConv);
+
+        lb_listeConv.setBackground(new java.awt.Color(255, 255, 255));
+        lb_listeConv.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lb_listeConv.setText("Liste des conventions");
+
+        cbbFiltrerPar.setEditable(true);
+        cbbFiltrerPar.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        cbbFiltrerPar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Annee", "Clients", "Etudiants" }));
+
+        lb_filtrerPar.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        lb_filtrerPar.setText("ou filtrer par : ");
+
+        lb_rechercherParNum.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        lb_rechercherParNum.setText("Rechercher par numero :");
+
+        tf_rechercherParNum.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        tf_rechercherParNum.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_rechercherParNumActionPerformed(evt);
+            }
+        });
+
+        tf_rechercheFiltrerPar.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+
+        bt_rechercher.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        bt_rechercher.setText("Rechercher");
+        bt_rechercher.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_rechercherActionPerformed(evt);
+            }
+        });
+
+        bt_reinitialiserRecherche.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        bt_reinitialiserRecherche.setText("Reinitialiser recherche");
+        bt_reinitialiserRecherche.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_reinitialiserRechercheActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout mainJPanelLayout = new javax.swing.GroupLayout(mainJPanel);
+        mainJPanel.setLayout(mainJPanelLayout);
+        mainJPanelLayout.setHorizontalGroup(
+            mainJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(mainJPanelLayout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addGroup(mainJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jsp_tableListConv)
+                    .addGroup(mainJPanelLayout.createSequentialGroup()
+                        .addGroup(mainJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(mainJPanelLayout.createSequentialGroup()
+                                .addComponent(bt_rechercher)
+                                .addGap(27, 27, 27)
+                                .addComponent(bt_reinitialiserRecherche))
+                            .addGroup(mainJPanelLayout.createSequentialGroup()
+                                .addComponent(lb_rechercherParNum)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tf_rechercherParNum, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(lb_filtrerPar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cbbFiltrerPar, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(tf_rechercheFiltrerPar, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 60, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(mainJPanelLayout.createSequentialGroup()
+                .addGap(265, 265, 265)
+                .addComponent(lb_listeConv)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        mainJPanelLayout.setVerticalGroup(
+            mainJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainJPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lb_listeConv)
+                .addGap(21, 21, 21)
+                .addGroup(mainJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbbFiltrerPar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lb_rechercherParNum)
+                    .addComponent(tf_rechercherParNum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lb_filtrerPar)
+                    .addComponent(tf_rechercheFiltrerPar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(mainJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bt_rechercher)
+                    .addComponent(bt_reinitialiserRecherche))
+                .addGap(11, 11, 11)
+                .addComponent(jsp_tableListConv, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(pan_Menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 642, Short.MAX_VALUE)
-                .addComponent(bt_Deco))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(mainJPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(bt_Deco)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -326,7 +469,9 @@ public class ListeConventionA extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(bt_Deco)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(mainJPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -529,6 +674,112 @@ public class ListeConventionA extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_formWindowClosing
 
+    private void tf_rechercherParNumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_rechercherParNumActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tf_rechercherParNumActionPerformed
+
+    private void bt_rechercherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_rechercherActionPerformed
+        // recherche
+        boolean checkAnnee = true;
+        if(cbbFiltrerPar.getSelectedItem().equals("annee"))
+        {
+            checkAnnee = Pattern.matches("[0-9]{4}", tf_rechercheFiltrerPar.getText());
+        }
+        
+        boolean checkNumber = Pattern.matches("[0-9]+", tf_rechercheFiltrerPar.getText());
+        
+        if(tf_rechercherParNum.getText().equals("") && tf_rechercheFiltrerPar.getText().equals(""))
+        {
+            JOptionPane.showMessageDialog(this, "Vous devez entrer une recherche", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
+        else
+        {
+            //get info from BDD et display it in the table
+            //recherche par numero
+            if(!tf_rechercherParNum.getText().equals("") && checkNumber) 
+            {
+                String num = tf_rechercherParNum.getText();
+                String maRequete1 = "SELECT * FROM tab where numero == " + num;
+                //code connection bdd
+            }
+            else if(!checkNumber)
+            {
+                JOptionPane.showMessageDialog(this, "Vous devez entrer un numero valide", "Warning", JOptionPane.WARNING_MESSAGE);
+            }
+            //recherche filtrée 
+            else if(!tf_rechercheFiltrerPar.getText().equals(""))
+            {
+                //recherche filtrée par annee
+                if(cbbFiltrerPar.getSelectedItem().equals("Annee") && checkAnnee)
+                {
+                    String annee = tf_rechercheFiltrerPar.getText();
+                    String maRequete2 = "SELECT * FROM tab where annee == " + annee;
+                    //code connection bdd
+                    /*Statement st;
+                    Connection conn = null;
+                    try 
+                    {
+                        st = (Statement) conn.createStatement();
+                        ResultSet rs = st.executeQuery(maRequete2);
+                        while (rs.next()) 
+                        {
+                            long num = rs.getLong("numero");
+                            long yr = rs.getLong("annee");
+                            String client = rs.getString("nom_client");
+                            String etu = rs.getString("nom_etudiant");
+                            String desc = rs.getString("description");
+                            String statut = rs.getString("statut");
+                            String facturation = rs.getString("facturation");
+                            modelTableConvention.addRow(new Object[] {num, yr, client, etu, desc, statut, facturation});
+                            //System.out.println(a.getId() + " " + a.getLibelle() + " " + a.getCategorie());
+                        }
+                    } 
+                    catch (SQLException ex) { 
+                        Logger.getLogger(ListeConventionA.class.getName()).log(Level.SEVERE, null, ex);
+                    }                    finally 
+                    {// close result, statement and connection
+                        if(conn != null) try {
+                            conn.close(); 
+                    }   catch (SQLException ex) {
+                            Logger.getLogger(ListeConventionA.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }*/
+                }
+                else if(!checkNumber)
+                {
+                    JOptionPane.showMessageDialog(this, "Vous devez entrer une année valide", "Warning", JOptionPane.WARNING_MESSAGE);
+                }
+                //recherche filtrée par annee
+                if(cbbFiltrerPar.getSelectedItem().equals("Client"))
+                {
+                    String client = tf_rechercheFiltrerPar.getText();
+                    String maRequete3 = "SELECT * FROM tab where nom_client == " + client;
+                    //code connection bdd
+                }
+                //recherche filtrée par annee
+                if(cbbFiltrerPar.getSelectedItem().equals("Etudiant"))
+                {
+                    String etu = tf_rechercheFiltrerPar.getText();
+                    String maRequete4 = "SELECT * FROM tab where nom_etudiant == " + etu;
+                    //code connection bdd
+                }  
+            }
+        }
+             
+    }//GEN-LAST:event_bt_rechercherActionPerformed
+
+    private void bt_reinitialiserRechercheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_reinitialiserRechercheActionPerformed
+        // reset the table and the search fields
+        tf_rechercheFiltrerPar.setText("");
+        tf_rechercherParNum.setText("");
+        int nbRow = modelTableConvention.getRowCount();
+               
+            for(int i=0; i<nbRow; i++)
+            {
+                modelTableConvention.removeRow(i);
+            }
+    }//GEN-LAST:event_bt_reinitialiserRechercheActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -564,14 +815,21 @@ public class ListeConventionA extends javax.swing.JFrame {
             }
         });
     }
-
+    private DefaultTableModel modelTableConvention;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_Deco;
+    private javax.swing.JButton bt_rechercher;
+    private javax.swing.JButton bt_reinitialiserRecherche;
+    private javax.swing.JComboBox<String> cbbFiltrerPar;
     private javax.swing.JComboBox<String> cbb_conventions;
     private javax.swing.JComboBox<String> cbb_entreprises;
     private javax.swing.JComboBox<String> cbb_etudiants;
     private javax.swing.JComboBox<String> cbb_facturation;
     private javax.swing.JComboBox<String> cbb_missions;
+    private javax.swing.JScrollPane jsp_tableListConv;
+    private javax.swing.JLabel lb_filtrerPar;
+    private javax.swing.JLabel lb_listeConv;
+    private javax.swing.JLabel lb_rechercherParNum;
     private javax.swing.JLabel lbl_Img;
     private javax.swing.JLabel lbl_NomUtilisateur;
     private javax.swing.JLabel lbl_accueil;
@@ -582,8 +840,12 @@ public class ListeConventionA extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_prenomUtilisateur;
     private javax.swing.JLabel lbl_profil;
     private javax.swing.JLabel lbl_suivi_mission;
+    private javax.swing.JPanel mainJPanel;
     private javax.swing.JPanel pan_Menu;
     private javax.swing.JPanel pan_Nav;
     private javax.swing.JPanel pan_Profil;
+    private javax.swing.JTable tableListeConv;
+    private javax.swing.JTextField tf_rechercheFiltrerPar;
+    private javax.swing.JTextField tf_rechercherParNum;
     // End of variables declaration//GEN-END:variables
 }

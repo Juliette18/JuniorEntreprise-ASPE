@@ -45,8 +45,9 @@ public class AjoutConvention extends javax.swing.JFrame {
         this.setVisible(true);
         clients = new DefaultListModel();
         etudiants= new DefaultListModel();
-        jList1.setModel(clients);
-        jList2.setModel(etudiants);
+        remplirListeModels();
+        jlistClients.setModel(clients);
+        jlistEtudiants.setModel(etudiants);
         //remplir les listes avec les données de la bdd
     }
 
@@ -85,22 +86,22 @@ public class AjoutConvention extends javax.swing.JFrame {
         lb_choisirEtudiant = new javax.swing.JLabel();
         lb_CreerEtudiant = new javax.swing.JLabel();
         lb_descriptionMission = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        jspDescription = new javax.swing.JScrollPane();
+        ta_description = new javax.swing.JTextArea();
         bt_newClient = new javax.swing.JButton();
         bt_newEtudiant = new javax.swing.JButton();
         bt_enregistrerPDF = new javax.swing.JButton();
         bt_enregistrerBrouillion = new javax.swing.JButton();
         bt_annuler = new javax.swing.JButton();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(3, 0), new java.awt.Dimension(3, 0), new java.awt.Dimension(3, 32767));
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jList2 = new javax.swing.JList<>();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        jspListeClients = new javax.swing.JScrollPane();
+        jlistClients = new javax.swing.JList<>();
+        jspListeEtudiant = new javax.swing.JScrollPane();
+        jlistEtudiants = new javax.swing.JList<>();
+        tf_choixClient = new javax.swing.JTextField();
+        tf_choixEtudiant = new javax.swing.JTextField();
+        lb_choixClient = new javax.swing.JLabel();
+        lb_choixEtudiant = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Unagi - Création de convention");
@@ -128,7 +129,7 @@ public class AjoutConvention extends javax.swing.JFrame {
         pan_ProfilLayout.setHorizontalGroup(
             pan_ProfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pan_ProfilLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(16, Short.MAX_VALUE)
                 .addComponent(lbl_Img)
                 .addGroup(pan_ProfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pan_ProfilLayout.createSequentialGroup()
@@ -333,7 +334,7 @@ public class AjoutConvention extends javax.swing.JFrame {
                 .addGroup(pan_NavLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_facturation)
                     .addComponent(cbb_facturation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(139, Short.MAX_VALUE))
+                .addContainerGap(372, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout pan_MenuLayout = new javax.swing.GroupLayout(pan_Menu);
@@ -353,7 +354,7 @@ public class AjoutConvention extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(pan_Profil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(pan_Nav, javax.swing.GroupLayout.DEFAULT_SIZE, 416, Short.MAX_VALUE)
+                .addComponent(pan_Nav, javax.swing.GroupLayout.DEFAULT_SIZE, 639, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -370,25 +371,32 @@ public class AjoutConvention extends javax.swing.JFrame {
         AjoutConvention.setBackground(new java.awt.Color(255, 255, 255));
         AjoutConvention.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
+        lb_entrepriseCliente.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         lb_entrepriseCliente.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lb_entrepriseCliente.setText("Entreprise Cliente");
         lb_entrepriseCliente.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
 
+        lb_choisirClient.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         lb_choisirClient.setText("Choisissez un client");
 
+        lb_creerClient.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         lb_creerClient.setText("Creer un nouveau client");
 
+        lb_choisirEtudiant.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         lb_choisirEtudiant.setText("Choisissez un etudiant");
 
+        lb_CreerEtudiant.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         lb_CreerEtudiant.setText("Creer un etudiant");
 
+        lb_descriptionMission.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         lb_descriptionMission.setText("Description Mission :");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jTextArea1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        jScrollPane1.setViewportView(jTextArea1);
+        ta_description.setColumns(20);
+        ta_description.setRows(5);
+        ta_description.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        jspDescription.setViewportView(ta_description);
 
+        bt_newClient.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         bt_newClient.setText("Nouveau");
         bt_newClient.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -396,6 +404,7 @@ public class AjoutConvention extends javax.swing.JFrame {
             }
         });
 
+        bt_newEtudiant.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         bt_newEtudiant.setText("Nouveau");
         bt_newEtudiant.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -403,6 +412,7 @@ public class AjoutConvention extends javax.swing.JFrame {
             }
         });
 
+        bt_enregistrerPDF.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         bt_enregistrerPDF.setText("Enregistrer en PDF");
         bt_enregistrerPDF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -410,6 +420,7 @@ public class AjoutConvention extends javax.swing.JFrame {
             }
         });
 
+        bt_enregistrerBrouillion.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         bt_enregistrerBrouillion.setText("Enregistrer comme brouillon");
         bt_enregistrerBrouillion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -417,6 +428,7 @@ public class AjoutConvention extends javax.swing.JFrame {
             }
         });
 
+        bt_annuler.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         bt_annuler.setText("Annuler");
         bt_annuler.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -424,132 +436,136 @@ public class AjoutConvention extends javax.swing.JFrame {
             }
         });
 
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+        jlistClients.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        jlistClients.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jlistClients.setToolTipText("");
+        jspListeClients.setViewportView(jlistClients);
+
+        jlistEtudiants.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        jspListeEtudiant.setViewportView(jlistEtudiants);
+
+        tf_choixClient.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_choixClientActionPerformed(evt);
+            }
         });
-        jList1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jList1.setToolTipText("");
-        jScrollPane2.setViewportView(jList1);
 
-        jList2.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane3.setViewportView(jList2);
+        tf_choixEtudiant.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        tf_choixEtudiant.setToolTipText("");
 
-        jTextField2.setToolTipText("");
+        lb_choixClient.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        lb_choixClient.setText("Votre choix :");
 
-        jLabel1.setText("Votre choix :");
-
-        jLabel2.setText("Votre choix :");
+        lb_choixEtudiant.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        lb_choixEtudiant.setText("Votre choix :");
 
         javax.swing.GroupLayout AjoutConventionLayout = new javax.swing.GroupLayout(AjoutConvention);
         AjoutConvention.setLayout(AjoutConventionLayout);
         AjoutConventionLayout.setHorizontalGroup(
             AjoutConventionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(AjoutConventionLayout.createSequentialGroup()
+                .addGap(32, 32, 32)
                 .addGroup(AjoutConventionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(AjoutConventionLayout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addGroup(AjoutConventionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AjoutConventionLayout.createSequentialGroup()
-                                .addComponent(lb_entrepriseCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(174, 577, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AjoutConventionLayout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addGroup(AjoutConventionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(AjoutConventionLayout.createSequentialGroup()
+                                .addComponent(lb_creerClient)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(AjoutConventionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(AjoutConventionLayout.createSequentialGroup()
+                                        .addComponent(jspListeClients, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(lb_choixClient)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(tf_choixClient, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(bt_newClient))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(AjoutConventionLayout.createSequentialGroup()
                                 .addComponent(bt_enregistrerPDF)
-                                .addGap(147, 147, 147)
+                                .addGap(121, 121, 121)
                                 .addComponent(bt_enregistrerBrouillion)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(bt_annuler)
-                                .addGap(11, 11, 11))
-                            .addGroup(AjoutConventionLayout.createSequentialGroup()
-                                .addGap(41, 41, 41)
-                                .addGroup(AjoutConventionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(AjoutConventionLayout.createSequentialGroup()
-                                        .addGroup(AjoutConventionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(AjoutConventionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                .addComponent(lb_descriptionMission, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(lb_choisirEtudiant, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                            .addComponent(lb_CreerEtudiant))
-                                        .addGroup(AjoutConventionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(AjoutConventionLayout.createSequentialGroup()
-                                                .addGap(180, 180, 180)
-                                                .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(AjoutConventionLayout.createSequentialGroup()
-                                                .addGap(18, 18, 18)
-                                                .addGroup(AjoutConventionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(bt_newEtudiant)
-                                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabel2)
-                                        .addGap(2, 2, 2))
-                                    .addGroup(AjoutConventionLayout.createSequentialGroup()
-                                        .addComponent(lb_creerClient)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(bt_newClient))
-                                    .addGroup(AjoutConventionLayout.createSequentialGroup()
-                                        .addComponent(lb_choisirClient)
-                                        .addGap(30, 30, 30)
-                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jLabel1)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(AjoutConventionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(85, 85, 85))))
+                                .addGap(42, 42, 42))))
                     .addGroup(AjoutConventionLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1)))
-                .addContainerGap())
+                        .addGroup(AjoutConventionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(AjoutConventionLayout.createSequentialGroup()
+                                .addGap(505, 505, 505)
+                                .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(AjoutConventionLayout.createSequentialGroup()
+                                .addComponent(lb_CreerEtudiant)
+                                .addGap(48, 48, 48)
+                                .addGroup(AjoutConventionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(bt_newEtudiant)
+                                    .addGroup(AjoutConventionLayout.createSequentialGroup()
+                                        .addComponent(jspListeEtudiant, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(lb_choixEtudiant)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(tf_choixEtudiant, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(lb_choisirEtudiant)
+                            .addGroup(AjoutConventionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(lb_choisirClient)
+                                .addComponent(lb_entrepriseCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap())
+                    .addGroup(AjoutConventionLayout.createSequentialGroup()
+                        .addGroup(AjoutConventionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jspDescription, javax.swing.GroupLayout.PREFERRED_SIZE, 674, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lb_descriptionMission, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 31, Short.MAX_VALUE))))
         );
         AjoutConventionLayout.setVerticalGroup(
             AjoutConventionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(AjoutConventionLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lb_entrepriseCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(AjoutConventionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(AjoutConventionLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jspListeClients, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(AjoutConventionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AjoutConventionLayout.createSequentialGroup()
+                            .addGap(20, 20, 20)
+                            .addGroup(AjoutConventionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lb_choixClient)
+                                .addComponent(tf_choixClient, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(AjoutConventionLayout.createSequentialGroup()
+                            .addGap(18, 18, 18)
+                            .addComponent(lb_choisirClient))))
                 .addGap(18, 18, 18)
                 .addGroup(AjoutConventionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(AjoutConventionLayout.createSequentialGroup()
-                        .addGroup(AjoutConventionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lb_choisirClient)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addGap(18, 18, 18)
+                        .addGroup(AjoutConventionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(bt_newClient)
+                            .addComponent(lb_creerClient))
                         .addGroup(AjoutConventionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(AjoutConventionLayout.createSequentialGroup()
-                                .addGroup(AjoutConventionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(bt_newClient)
-                                    .addComponent(lb_creerClient))
                                 .addGap(46, 46, 46)
-                                .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(AjoutConventionLayout.createSequentialGroup()
+                                .addGap(57, 57, 57)
                                 .addComponent(lb_choisirEtudiant))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AjoutConventionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel2))))
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(AjoutConventionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(bt_newEtudiant)
-                    .addComponent(lb_CreerEtudiant))
-                .addGroup(AjoutConventionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(AjoutConventionLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(lb_descriptionMission, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AjoutConventionLayout.createSequentialGroup()
-                        .addGap(230, 230, 230)
-                        .addGroup(AjoutConventionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(bt_enregistrerPDF)
-                            .addComponent(bt_enregistrerBrouillion)
-                            .addComponent(bt_annuler))))
-                .addContainerGap())
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AjoutConventionLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jspListeEtudiant, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(AjoutConventionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(tf_choixEtudiant, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lb_choixEtudiant)))
+                .addGap(28, 28, 28)
+                .addGroup(AjoutConventionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lb_CreerEtudiant)
+                    .addComponent(bt_newEtudiant))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lb_descriptionMission, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jspDescription, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(17, 17, 17)
+                .addGroup(AjoutConventionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bt_enregistrerPDF)
+                    .addComponent(bt_enregistrerBrouillion)
+                    .addComponent(bt_annuler))
+                .addGap(264, 264, 264))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -558,24 +574,23 @@ public class AjoutConvention extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(pan_Menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(bt_Deco, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(73, 73, 73)
-                        .addComponent(AjoutConvention, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 4, Short.MAX_VALUE))))
+                    .addComponent(AjoutConvention, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(bt_Deco, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(pan_Menu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(6, 6, 6)
                 .addComponent(bt_Deco)
-                .addGap(35, 35, 35)
-                .addComponent(AjoutConvention, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(AjoutConvention, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -793,7 +808,7 @@ public class AjoutConvention extends javax.swing.JFrame {
         // retourne sur la page d'accueil
         int input = JOptionPane.showConfirmDialog(this, "Voulez vous annuler l'ésdition de la convention? La modifications apportées ne seront pas enregistrées?","Annuler", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
         if (input == JOptionPane.OK_OPTION) {
-            jTextArea1.setText("");
+            ta_description.setText("");
 
         } else if (input == JOptionPane.CANCEL_OPTION) {
             this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
@@ -825,11 +840,11 @@ public class AjoutConvention extends javax.swing.JFrame {
 "Aliquam et ante ligula. Ut nec dolor urna. Cras dictum ut purus fermentum maximus. Pellentesque mattis ut purus quis dignissim. Donec et auctor mi. Pellentesque ullamcorper at sapien vitae fringilla. Vestibulum ut ante convallis magna tempus luctus mollis at odio. Morbi ac placerat nibh, sit amet aliquet elit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Morbi justo magna, blandit at euismod quis, condimentum eget ligula."));
 
             doc.newPage();
-            String client = (String) jList1.getSelectedValue();
-            String etudiant = (String) jList2.getSelectedValue();
+            String client = (String) jlistClients.getSelectedValue();
+            String etudiant = (String) jlistEtudiants.getSelectedValue();
             doc.add( new Paragraph("Le client :"+client));
             doc.add( new Paragraph("L'étudiant :"+etudiant));
-            String description = jTextArea1.getText();
+            String description = ta_description.getText();
             doc.add( new Paragraph("Description de la mission :\n"+description));
             doc.close();
             Desktop.getDesktop().open(fichier);
@@ -846,9 +861,7 @@ public class AjoutConvention extends javax.swing.JFrame {
     private void bt_newClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_newClientActionPerformed
         this.setVisible(false);
         AjoutClient ajoutC = new AjoutClient();
-        ajoutC.setVisible(true);
-        
-        
+        ajoutC.setVisible(true);        
     }//GEN-LAST:event_bt_newClientActionPerformed
 
     private void bt_newEtudiantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_newEtudiantActionPerformed
@@ -856,6 +869,16 @@ public class AjoutConvention extends javax.swing.JFrame {
         AjoutEtudiant ajoutE = new AjoutEtudiant();
         ajoutE.setVisible(true);
     }//GEN-LAST:event_bt_newEtudiantActionPerformed
+    
+    public void remplirListeModels()
+    {
+        /*clients.addElement();
+        etudiants.addElement();*/
+    }
+    
+    private void tf_choixClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_choixClientActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tf_choixClientActionPerformed
 
     /**
      * @param args the command line arguments
@@ -906,19 +929,16 @@ public class AjoutConvention extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbb_facturation;
     private javax.swing.JComboBox<String> cbb_missions;
     private javax.swing.Box.Filler filler1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JList<String> jList1;
-    private javax.swing.JList<String> jList2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JList<String> jlistClients;
+    private javax.swing.JList<String> jlistEtudiants;
+    private javax.swing.JScrollPane jspDescription;
+    private javax.swing.JScrollPane jspListeClients;
+    private javax.swing.JScrollPane jspListeEtudiant;
     private javax.swing.JLabel lb_CreerEtudiant;
     private javax.swing.JLabel lb_choisirClient;
     private javax.swing.JLabel lb_choisirEtudiant;
+    private javax.swing.JLabel lb_choixClient;
+    private javax.swing.JLabel lb_choixEtudiant;
     private javax.swing.JLabel lb_creerClient;
     private javax.swing.JLabel lb_descriptionMission;
     private javax.swing.JLabel lb_entrepriseCliente;
@@ -935,6 +955,9 @@ public class AjoutConvention extends javax.swing.JFrame {
     private javax.swing.JPanel pan_Menu;
     private javax.swing.JPanel pan_Nav;
     private javax.swing.JPanel pan_Profil;
+    private javax.swing.JTextArea ta_description;
+    private javax.swing.JTextField tf_choixClient;
+    private javax.swing.JTextField tf_choixEtudiant;
     // End of variables declaration//GEN-END:variables
 
         

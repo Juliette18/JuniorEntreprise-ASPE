@@ -5,8 +5,30 @@
  */
 package Ecrans;
 
+import com.lowagie.text.Document;
+import com.lowagie.text.DocumentException;
+import com.lowagie.text.Paragraph;
+import com.lowagie.text.pdf.PdfContentByte;
+import com.lowagie.text.pdf.PdfTemplate;
+import com.lowagie.text.pdf.PdfWriter;
+import java.awt.Desktop;
+import java.awt.FileDialog;
+import java.awt.Graphics2D;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import java.io.FileOutputStream;
 
 /**
  *
@@ -50,6 +72,17 @@ public class AjoutFacture extends javax.swing.JFrame {
         lbl_facturation = new javax.swing.JLabel();
         cbb_facturation = new javax.swing.JComboBox<>();
         bt_Deco = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        lib_numF = new javax.swing.JLabel();
+        lib_numC = new javax.swing.JLabel();
+        bt_enregistrerPDF = new javax.swing.JButton();
+        bt_annuler = new javax.swing.JButton();
+        jspDescription = new javax.swing.JScrollPane();
+        ta_mention = new javax.swing.JTextArea();
+        lb_descriptionMission = new javax.swing.JLabel();
+        bt_enregistrerBrouillion = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Unagi - Création de facture");
@@ -315,14 +348,120 @@ public class AjoutFacture extends javax.swing.JFrame {
             }
         });
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel1.setText("Numéro de facture");
+
+        jLabel2.setText("Numéro de convention");
+
+        bt_enregistrerPDF.setBackground(new java.awt.Color(0, 153, 0));
+        bt_enregistrerPDF.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        bt_enregistrerPDF.setForeground(new java.awt.Color(255, 255, 255));
+        bt_enregistrerPDF.setText("Enregistrer en PDF");
+        bt_enregistrerPDF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_enregistrerPDFActionPerformed(evt);
+            }
+        });
+
+        bt_annuler.setBackground(new java.awt.Color(255, 51, 51));
+        bt_annuler.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        bt_annuler.setForeground(new java.awt.Color(255, 255, 255));
+        bt_annuler.setText("Annuler");
+        bt_annuler.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_annulerActionPerformed(evt);
+            }
+        });
+
+        ta_mention.setColumns(20);
+        ta_mention.setRows(5);
+        ta_mention.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        jspDescription.setViewportView(ta_mention);
+
+        lb_descriptionMission.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        lb_descriptionMission.setText("Mentions spéciales:");
+
+        bt_enregistrerBrouillion.setBackground(new java.awt.Color(255, 153, 0));
+        bt_enregistrerBrouillion.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        bt_enregistrerBrouillion.setForeground(new java.awt.Color(255, 255, 255));
+        bt_enregistrerBrouillion.setText("Enregistrer comme brouillon");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(lib_numF, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(lib_numC, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(249, 249, 249)
+                        .addComponent(bt_enregistrerBrouillion))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lb_descriptionMission, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(250, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(8, 8, 8)
+                            .addComponent(bt_enregistrerPDF)
+                            .addGap(437, 437, 437)
+                            .addComponent(bt_annuler))
+                        .addComponent(jspDescription, javax.swing.GroupLayout.PREFERRED_SIZE, 674, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addContainerGap()))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(lib_numF, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(lib_numC))
+                .addGap(40, 40, 40)
+                .addComponent(lb_descriptionMission, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(195, 195, 195)
+                .addComponent(bt_enregistrerBrouillion)
+                .addGap(103, 103, 103))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(136, 136, 136)
+                    .addComponent(jspDescription, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(17, 17, 17)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(bt_enregistrerPDF)
+                        .addComponent(bt_annuler))
+                    .addContainerGap(104, Short.MAX_VALUE)))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(pan_Menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 596, Short.MAX_VALUE)
-                .addComponent(bt_Deco, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(bt_Deco, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(66, 66, 66))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -330,6 +469,8 @@ public class AjoutFacture extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(bt_Deco)
+                .addGap(26, 26, 26)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -544,6 +685,57 @@ public class AjoutFacture extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_bt_DecoActionPerformed
 
+    private void bt_enregistrerPDFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_enregistrerPDFActionPerformed
+        try {
+            FileDialog fd = new FileDialog(this, "Choisissez un fichier", FileDialog.LOAD);
+            fd.setDirectory("C:\\");
+                fd.setFile("Unagi_Convention.pdf");
+                fd.setVisible(true);
+                String filename = fd.getFile();
+                File fichier = new File(fd.getDirectory() + filename);
+                Document doc = new Document();
+                PdfWriter pdf = PdfWriter.getInstance(doc, new FileOutputStream(fichier));
+                doc.open();
+                doc.add(new Paragraph("Convention Unagi\n" +
+                    "\n" +
+                    "________________________________________\n" +
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras turpis ex, volutpat vel quam at, "
+                        + "volutpat varius dui. Maecenas facilisis mollis dolor, ac lacinia diam porttitor ac. "
+                        + "Maecenas a odio cursus, consequat neque sed, pharetra velit. Duis eu justo justo. "
+                        + "Duis magna ligula, tempor ac fermentum maximus, cursus nec mauris. Curabitur quis "
+                        + "ornare urna. Suspendisse ullamcorper porttitor ex pretium ornare. Integer tristique"
+                        + " sapien est, in bibendum eros semper ut. Duis sed justo aliquam, aliquet elit sed, "
+                        + "posuere odio. Praesent vel bibendum erat, eu tempus tortor. Orci varius natoque penatibus "
+                        + "et magnis dis parturient montes, nascetur ridiculus mus. Etiam gravida vitae nibh in sagittis. "
+                        + "Donec consequat hendrerit imperdiet. "                   
+                        + "Duis a purus sit amet quam placerat rhoncus. Aenean tempor ut velit tempus ultricies.\n"));       
+            doc.add( new Paragraph("Numéro de facture :"+lib_numF.getText()));
+            doc.add( new Paragraph("Numéro de convention :"+lib_numC.getText()));
+            String description = ta_mention.getText();
+            doc.add( new Paragraph("Mentions spéciales :\n"+description));
+            doc.close();
+            Desktop.getDesktop().open(fichier);
+
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(AjoutConvention.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (DocumentException ex) {
+            Logger.getLogger(AjoutConvention.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(AjoutConvention.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_bt_enregistrerPDFActionPerformed
+
+    private void bt_annulerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_annulerActionPerformed
+        // retourne sur la page d'accueil
+        int input = JOptionPane.showConfirmDialog(this, "Voulez vous annuler l'édition de la facturation?  LES modifications apportées ne seront pas enregistrées?","Annuler", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
+        if (input == JOptionPane.OK_OPTION) {
+            ta_mention.setText("");
+
+        } else if (input == JOptionPane.CANCEL_OPTION) {
+            this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        }
+    }//GEN-LAST:event_bt_annulerActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -584,11 +776,19 @@ public class AjoutFacture extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_Deco;
+    private javax.swing.JButton bt_annuler;
+    private javax.swing.JButton bt_enregistrerBrouillion;
+    private javax.swing.JButton bt_enregistrerPDF;
     private javax.swing.JComboBox<String> cbb_conventions;
     private javax.swing.JComboBox<String> cbb_entreprises;
     private javax.swing.JComboBox<String> cbb_etudiants;
     private javax.swing.JComboBox<String> cbb_facturation;
     private javax.swing.JComboBox<String> cbb_missions;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jspDescription;
+    private javax.swing.JLabel lb_descriptionMission;
     private javax.swing.JLabel lbl_Img;
     private javax.swing.JLabel lbl_NomUtilisateur;
     private javax.swing.JLabel lbl_accueil;
@@ -599,8 +799,11 @@ public class AjoutFacture extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_prenomUtilisateur;
     private javax.swing.JLabel lbl_profil;
     private javax.swing.JLabel lbl_suivi_mission;
+    private javax.swing.JLabel lib_numC;
+    private javax.swing.JLabel lib_numF;
     private javax.swing.JPanel pan_Menu;
     private javax.swing.JPanel pan_Nav;
     private javax.swing.JPanel pan_Profil;
+    private javax.swing.JTextArea ta_mention;
     // End of variables declaration//GEN-END:variables
 }

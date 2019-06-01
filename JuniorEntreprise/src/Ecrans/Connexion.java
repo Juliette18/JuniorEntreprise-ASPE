@@ -14,12 +14,21 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 /**
  *
  * @author p1809164
  */
 public class Connexion extends javax.swing.JFrame {
+    
+    private static String id;
+    private static String pw;
+    private boolean admin;
 
     /**
      * Creates new form page2
@@ -143,8 +152,43 @@ public class Connexion extends javax.swing.JFrame {
 
     private void bt_ValiderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_ValiderActionPerformed
         String I = txt_id.getText(); 
-        String M = String.valueOf(pass_Mdp.getPassword());
-        String Uti ="Admin"; //A mettre sur "" qaund le lien à la BD sera fait, sur Admin pour les tests
+        String M = String.valueOf(pass_Mdp.getPassword());        
+        String Uti = "" ; //A mettre sur "" qaund le lien à la BD sera fait, sur Admin pour les tests
+        PreparedStatement ps;
+        ResultSet rs;
+        final String requete = "select * from user";
+                //"select emp from user where username = ? and password = ?;";
+        
+        try {
+            ps = ConnexionBD.getConnection().prepareStatement(requete);
+            /*ps.setString(1,I);
+            ps.setString(2,M);
+            ps.setBoolean(3,admin);*/
+            rs = ps.executeQuery(); 
+            
+            while (rs.next()){
+                if ((rs.getString("username").equals(I))&&rs.getString("password").equals(M)){
+                    if (rs.getBoolean("emp")==true){
+                        AcceuilA  acceuilA = new AcceuilA();
+                        this.setVisible(false);
+                        break;
+                    }
+                    else {
+                        AcceuilE  acceuilE = new AcceuilE();
+                        this.setVisible(false);
+                        break;
+                    }
+                
+                }
+                
+                }
+            JOptionPane.showMessageDialog(this, "Identifiant ou mot de passe incorrect","Erreur",JOptionPane.INFORMATION_MESSAGE);
+           
+            
+        }
+        catch (Exception e){
+            System.out.println(e);
+        }
         if (M.equals("")||I.equals("")){ 
             JOptionPane.showMessageDialog(this,"Un ou plusieurs champs sont vides", "Erreur de saisie", JOptionPane.INFORMATION_MESSAGE);
         }
@@ -153,15 +197,8 @@ public class Connexion extends javax.swing.JFrame {
         //2- Vérif exitence du couple ID/MDp
         //3- Verif type utilisateur
         //Recupération du type d'utilisateur et modif de la var Uti
-        txt_id.setText("");
-        pass_Mdp.setText("");
-        if (Uti.equals("Admin")){
-            AcceuilA  acceuilA = new AcceuilA();
-            this.setVisible(false);
-        }else{
-            AcceuilE  acceuilE = new AcceuilE();
-            this.setVisible(false);
-        }
+
+        
         
          
     }//GEN-LAST:event_bt_ValiderActionPerformed
@@ -180,7 +217,7 @@ public class Connexion extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+  public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -210,12 +247,16 @@ public class Connexion extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
+        
+        
+       
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Connexion().setVisible(true);
             }
+            
         });
     }
 

@@ -7,6 +7,8 @@ package Ecrans;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import java.awt.GraphicsEnvironment;
+import java.awt.Rectangle;
 
 /**
  *
@@ -19,6 +21,9 @@ public class AfficheConv extends javax.swing.JFrame {
      */
     public AfficheConv() {
         initComponents();
+        GraphicsEnvironment genv = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        Rectangle bounds = genv.getMaximumWindowBounds();
+        this.setBounds(bounds);
     }
 
     /**

@@ -4,7 +4,8 @@
  * and open the template in the editor.
  */
 package Ecrans;
-
+import java.awt.GraphicsEnvironment;
+import java.awt.Rectangle;
 import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.Paragraph;
@@ -43,6 +44,9 @@ public class AjoutConvention extends javax.swing.JFrame {
     public AjoutConvention() {
         initComponents();
         this.setVisible(true);
+        GraphicsEnvironment genv = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        Rectangle bounds = genv.getMaximumWindowBounds();
+        this.setBounds(bounds);
         clients = new DefaultListModel();
         etudiants= new DefaultListModel();
         remplirListeModels();

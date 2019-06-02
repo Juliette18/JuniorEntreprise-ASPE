@@ -5,6 +5,8 @@
  */
 package Ecrans;
 
+import java.awt.GraphicsEnvironment;
+import java.awt.Rectangle;
 import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.Paragraph;
@@ -42,6 +44,9 @@ public class AjoutFacture extends javax.swing.JFrame {
     public AjoutFacture() {
         initComponents();
         this.setVisible(true);
+        GraphicsEnvironment genv = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        Rectangle bounds = genv.getMaximumWindowBounds();
+        this.setBounds(bounds);
     }
 
     /**

@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.util.regex.Pattern;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import java.awt.GraphicsEnvironment;
+import java.awt.Rectangle;
 
 /**
  * @author Niakulu
@@ -17,6 +19,9 @@ public class AjoutClient extends javax.swing.JFrame {
     public AjoutClient() {
         initComponents();
         this.setVisible(true);
+        GraphicsEnvironment genv = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        Rectangle bounds = genv.getMaximumWindowBounds();
+        this.setBounds(bounds);
     }
 
     /**

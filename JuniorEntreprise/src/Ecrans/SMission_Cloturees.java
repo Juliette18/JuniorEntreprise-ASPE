@@ -7,7 +7,8 @@ package Ecrans;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-
+import java.awt.GraphicsEnvironment;
+import java.awt.Rectangle;
 /**
  *
  * @author Niakulu
@@ -19,6 +20,9 @@ public class SMission_Cloturees extends javax.swing.JFrame {
      */
     public SMission_Cloturees() {
         initComponents();
+        GraphicsEnvironment genv = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        Rectangle bounds = genv.getMaximumWindowBounds();
+        this.setBounds(bounds);
     }
 
     /**

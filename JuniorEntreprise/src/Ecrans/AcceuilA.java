@@ -7,6 +7,8 @@ package Ecrans;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import java.awt.GraphicsEnvironment;
+import java.awt.Rectangle;
 
 /**
  *
@@ -20,6 +22,9 @@ public class AcceuilA extends javax.swing.JFrame {
     public AcceuilA() {
         initComponents();
         this.setVisible(true);
+        GraphicsEnvironment genv = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        Rectangle bounds = genv.getMaximumWindowBounds();
+        this.setBounds(bounds);
     }
 
     /**

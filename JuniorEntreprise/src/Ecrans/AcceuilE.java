@@ -8,6 +8,8 @@ package Ecrans;
 import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import java.awt.GraphicsEnvironment;
+import java.awt.Rectangle;
 
 /**
  *
@@ -20,6 +22,9 @@ public class AcceuilE extends javax.swing.JFrame {
      */
     public AcceuilE() {
         initComponents();
+        GraphicsEnvironment genv = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        Rectangle bounds = genv.getMaximumWindowBounds();
+        this.setBounds(bounds);
         this.setVisible(true);
         listeModelListeConventionsPassee = new DefaultListModel<String>();
         remplirListModel();

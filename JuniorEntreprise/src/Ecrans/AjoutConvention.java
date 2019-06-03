@@ -4,7 +4,8 @@
  * and open the template in the editor.
  */
 package Ecrans;
-
+import java.awt.GraphicsEnvironment;
+import java.awt.Rectangle;
 import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.Paragraph;
@@ -43,6 +44,9 @@ public class AjoutConvention extends javax.swing.JFrame {
     public AjoutConvention() {
         initComponents();
         this.setVisible(true);
+        GraphicsEnvironment genv = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        Rectangle bounds = genv.getMaximumWindowBounds();
+        this.setBounds(bounds);
         clients = new DefaultListModel();
         etudiants= new DefaultListModel();
         remplirListeModels();
@@ -344,7 +348,7 @@ public class AjoutConvention extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pan_MenuLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pan_MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(pan_Nav, javax.swing.GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE)
+                    .addComponent(pan_Nav, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
                     .addComponent(pan_Profil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(13, 13, 13))
         );
@@ -412,7 +416,9 @@ public class AjoutConvention extends javax.swing.JFrame {
             }
         });
 
+        bt_enregistrerPDF.setBackground(new java.awt.Color(0, 153, 0));
         bt_enregistrerPDF.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        bt_enregistrerPDF.setForeground(new java.awt.Color(255, 255, 255));
         bt_enregistrerPDF.setText("Enregistrer en PDF");
         bt_enregistrerPDF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -420,7 +426,9 @@ public class AjoutConvention extends javax.swing.JFrame {
             }
         });
 
+        bt_enregistrerBrouillion.setBackground(new java.awt.Color(255, 153, 0));
         bt_enregistrerBrouillion.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        bt_enregistrerBrouillion.setForeground(new java.awt.Color(255, 255, 255));
         bt_enregistrerBrouillion.setText("Enregistrer comme brouillon");
         bt_enregistrerBrouillion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -428,7 +436,9 @@ public class AjoutConvention extends javax.swing.JFrame {
             }
         });
 
+        bt_annuler.setBackground(new java.awt.Color(255, 51, 51));
         bt_annuler.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        bt_annuler.setForeground(new java.awt.Color(255, 255, 255));
         bt_annuler.setText("Annuler");
         bt_annuler.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -483,9 +493,9 @@ public class AjoutConvention extends javax.swing.JFrame {
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(AjoutConventionLayout.createSequentialGroup()
                                 .addComponent(bt_enregistrerPDF)
-                                .addGap(121, 121, 121)
-                                .addComponent(bt_enregistrerBrouillion)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(bt_enregistrerBrouillion)
+                                .addGap(119, 119, 119)
                                 .addComponent(bt_annuler)
                                 .addGap(42, 42, 42))))
                     .addGroup(AjoutConventionLayout.createSequentialGroup()
@@ -806,7 +816,7 @@ public class AjoutConvention extends javax.swing.JFrame {
 
     private void bt_annulerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_annulerActionPerformed
         // retourne sur la page d'accueil
-        int input = JOptionPane.showConfirmDialog(this, "Voulez vous annuler l'ésdition de la convention? La modifications apportées ne seront pas enregistrées?","Annuler", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
+        int input = JOptionPane.showConfirmDialog(this, "Voulez vous annuler l'édition de la convention? LES modifications apportées ne seront pas enregistrées?","Annuler", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
         if (input == JOptionPane.OK_OPTION) {
             ta_description.setText("");
 

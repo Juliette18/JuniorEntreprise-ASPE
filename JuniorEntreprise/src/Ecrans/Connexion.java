@@ -19,6 +19,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.awt.GraphicsEnvironment;
+import java.awt.Rectangle;
 
 /**
  *
@@ -37,9 +39,9 @@ public class Connexion extends javax.swing.JFrame {
 
         initComponents();
         this.setVisible(true);
-        
-
-    
+        GraphicsEnvironment genv = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        Rectangle bounds = genv.getMaximumWindowBounds();
+        this.setBounds(bounds);
     }
 
 

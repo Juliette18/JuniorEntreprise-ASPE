@@ -1,6 +1,7 @@
 
 package Ecrans;
 
+import java.sql.PreparedStatement;
 import java.util.regex.Pattern;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -754,6 +755,23 @@ public class AjoutClient extends javax.swing.JFrame {
         }else {
             int input = JOptionPane.showConfirmDialog(this, "Ajouter à la base de données?", "", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
             if (input == JOptionPane.OK_OPTION) {
+                
+                
+                PreparedStatement ps;
+                final String requete = "insert into entreprise (nomentreprise,adresse,tel,email) values (?,?,?,?)";
+                try {
+                    ps= ConnexionBD.getConnection().prepareStatement(requete);
+                    ps.setString(2,E);
+                    ps.setString(8,A);
+                    ps.setString(6,N);
+                    ps.setString(7,M);
+                    
+                    ps.execute();
+                                        
+                }
+                catch (Exception e){
+                    System.out.println(e);
+                }
                 System.out.println("Application Fermée");
                 this.dispose();
                 System.exit(0);

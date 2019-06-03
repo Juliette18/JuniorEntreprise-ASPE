@@ -22,6 +22,7 @@ import java.sql.Statement;
 import java.awt.GraphicsEnvironment;
 import java.awt.Rectangle;
 
+
 /**
  *
  * @author p1809164
@@ -154,14 +155,16 @@ public class Connexion extends javax.swing.JFrame {
 
     private void bt_ValiderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_ValiderActionPerformed
         String I = txt_id.getText(); 
-        String M = String.valueOf(pass_Mdp.getPassword());        
+        String M = String.valueOf(pass_Mdp.getPassword());
+        boolean out= false;
         String Uti = "" ; //A mettre sur "" qaund le lien à la BD sera fait, sur Admin pour les tests
         PreparedStatement ps;
-        ResultSet rs;
+        ResultSet rs;        
         final String requete = "select * from user";
                 //"select emp from user where username = ? and password = ?;";
         
         try {
+            
             ps = ConnexionBD.getConnection().prepareStatement(requete);
             /*ps.setString(1,I);
             ps.setString(2,M);
@@ -170,22 +173,26 @@ public class Connexion extends javax.swing.JFrame {
             
             while (rs.next()){
                 if ((rs.getString("username").equals(I))&&rs.getString("password").equals(M)){
+                    System.out.println(rs.getString("username"));
                     if (rs.getBoolean("emp")==true){
                         AcceuilA  acceuilA = new AcceuilA();
                         this.setVisible(false);
+                        out = true;
                         break;
                     }
                     else {
                         AcceuilE  acceuilE = new AcceuilE();
                         this.setVisible(false);
+                        out = true;
                         break;
                     }
                 
                 }
                 
                 }
+            if (out == false){
             JOptionPane.showMessageDialog(this, "Identifiant ou mot de passe incorrect","Erreur",JOptionPane.INFORMATION_MESSAGE);
-           
+            }
             
         }
         catch (Exception e){

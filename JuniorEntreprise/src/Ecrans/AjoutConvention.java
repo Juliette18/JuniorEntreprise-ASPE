@@ -44,9 +44,7 @@ public class AjoutConvention extends javax.swing.JFrame {
     public AjoutConvention() {
         initComponents();
         this.setVisible(true);
-        GraphicsEnvironment genv = GraphicsEnvironment.getLocalGraphicsEnvironment();
-        Rectangle bounds = genv.getMaximumWindowBounds();
-        this.setBounds(bounds);
+        
         clients = new DefaultListModel();
         etudiants= new DefaultListModel();
         remplirListeModels();

@@ -21,9 +21,7 @@ public class AfficheFact extends javax.swing.JFrame {
      */
     public AfficheFact() {
         initComponents();
-        GraphicsEnvironment genv = GraphicsEnvironment.getLocalGraphicsEnvironment();
-        Rectangle bounds = genv.getMaximumWindowBounds();
-        this.setBounds(bounds);
+      
     }
 
     /**

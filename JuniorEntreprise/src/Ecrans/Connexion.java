@@ -19,29 +19,33 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.awt.GraphicsEnvironment;
+import java.awt.Rectangle;
+import java.awt.Toolkit;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author p1809164
  */
 public class Connexion extends javax.swing.JFrame {
-    
+
     private static String id;
     private static String pw;
     private boolean admin;
 
+
     /**
      * Creates new form page2
      */
-    public Connexion() {
-
+    public Connexion() {      
         initComponents();
         this.setVisible(true);
-        
 
-    
     }
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -151,46 +155,50 @@ public class Connexion extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bt_ValiderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_ValiderActionPerformed
-        String I = txt_id.getText(); 
-        String M = String.valueOf(pass_Mdp.getPassword());        
-        String Uti = "" ; //A mettre sur "" qaund le lien à la BD sera fait, sur Admin pour les tests
+        String I = txt_id.getText();
+        String M = String.valueOf(pass_Mdp.getPassword());
+        boolean out = false;
+        String Uti = ""; //A mettre sur "" qaund le lien à la BD sera fait, sur Admin pour les tests
         PreparedStatement ps;
         ResultSet rs;
         final String requete = "select * from user";
-                //"select emp from user where username = ? and password = ?;";
-        
+        //"select emp from user where username = ? and password = ?;";
+
         try {
+
             ps = ConnexionBD.getConnection().prepareStatement(requete);
             /*ps.setString(1,I);
             ps.setString(2,M);
             ps.setBoolean(3,admin);*/
-            rs = ps.executeQuery(); 
-            
-            while (rs.next()){
-                if ((rs.getString("username").equals(I))&&rs.getString("password").equals(M)){
-                    if (rs.getBoolean("emp")==true){
-                        AcceuilA  acceuilA = new AcceuilA();
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                if ((rs.getString("username").equals(I)) && rs.getString("password").equals(M)) {
+                    System.out.println(rs.getString("username"));
+                    if (rs.getBoolean("emp") == true) {
+                        AcceuilA acceuilA = new AcceuilA();
                         this.setVisible(false);
+                        out = true;
+                        break;
+                    } else {
+                        AcceuilE acceuilE = new AcceuilE();
+                        this.setVisible(false);
+                        out = true;
                         break;
                     }
-                    else {
-                        AcceuilE  acceuilE = new AcceuilE();
-                        this.setVisible(false);
-                        break;
-                    }
-                
+
                 }
-                
-                }
-            JOptionPane.showMessageDialog(this, "Identifiant ou mot de passe incorrect","Erreur",JOptionPane.INFORMATION_MESSAGE);
-           
-            
-        }
-        catch (Exception e){
+
+            }
+            if (out == false) {
+                JOptionPane.showMessageDialog(this, "Identifiant ou mot de passe incorrect", "Erreur", JOptionPane.INFORMATION_MESSAGE);
+            }
+
+        } catch (Exception e) {
             System.out.println(e);
         }
-        if (M.equals("")||I.equals("")){ 
-            JOptionPane.showMessageDialog(this,"Un ou plusieurs champs sont vides", "Erreur de saisie", JOptionPane.INFORMATION_MESSAGE);
+        if (M.equals("") || I.equals("")) {
+            JOptionPane.showMessageDialog(this, "Un ou plusieurs champs sont vides", "Erreur de saisie", JOptionPane.INFORMATION_MESSAGE);
         }
         //TODO check dans Database
         //1- Vérif existance due l'identifiant
@@ -198,13 +206,11 @@ public class Connexion extends javax.swing.JFrame {
         //3- Verif type utilisateur
         //Recupération du type d'utilisateur et modif de la var Uti
 
-        
-        
-         
+
     }//GEN-LAST:event_bt_ValiderActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-    int input = JOptionPane.showConfirmDialog(this, "Voulez vous quitter l'application ?", "", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
+        int input = JOptionPane.showConfirmDialog(this, "Voulez vous quitter l'application ?", "", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
         if (input == JOptionPane.OK_OPTION) {
             System.out.println("Application Fermée");
             this.dispose();
@@ -217,7 +223,7 @@ public class Connexion extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-  public static void main(String args[]) {
+    public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -247,16 +253,13 @@ public class Connexion extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
-        
-        
-       
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Connexion().setVisible(true);
             }
-            
+
         });
     }
 
@@ -270,6 +273,5 @@ public class Connexion extends javax.swing.JFrame {
     private javax.swing.JPasswordField pass_Mdp;
     private javax.swing.JTextField txt_id;
     // End of variables declaration//GEN-END:variables
-
 
 }

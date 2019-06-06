@@ -7,6 +7,8 @@ package Ecrans;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import java.awt.GraphicsEnvironment;
+import java.awt.Rectangle;
 
 /**
  *
@@ -19,6 +21,7 @@ public class AfficheConv extends javax.swing.JFrame {
      */
     public AfficheConv() {
         initComponents();
+        
     }
 
     /**
@@ -49,6 +52,15 @@ public class AfficheConv extends javax.swing.JFrame {
         lbl_facturation = new javax.swing.JLabel();
         cbb_facturation = new javax.swing.JComboBox<>();
         bt_Deco = new javax.swing.JButton();
+        mainJPanel = new javax.swing.JPanel();
+        lb_titreConv = new javax.swing.JLabel();
+        lb_titreNumConv = new javax.swing.JLabel();
+        lb_etudiant = new javax.swing.JLabel();
+        lb_client = new javax.swing.JLabel();
+        lb_description = new javax.swing.JLabel();
+        lb_NomEtuFromBdd = new javax.swing.JLabel();
+        lb_ClientFromBdd = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Unagi - Consultation de convention");
@@ -75,7 +87,7 @@ public class AfficheConv extends javax.swing.JFrame {
         pan_ProfilLayout.setHorizontalGroup(
             pan_ProfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pan_ProfilLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(16, Short.MAX_VALUE)
                 .addComponent(lbl_Img)
                 .addGroup(pan_ProfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pan_ProfilLayout.createSequentialGroup()
@@ -280,7 +292,7 @@ public class AfficheConv extends javax.swing.JFrame {
                 .addGroup(pan_NavLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_facturation)
                     .addComponent(cbb_facturation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(139, Short.MAX_VALUE))
+                .addContainerGap(149, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout pan_MenuLayout = new javax.swing.GroupLayout(pan_Menu);
@@ -314,14 +326,88 @@ public class AfficheConv extends javax.swing.JFrame {
             }
         });
 
+        mainJPanel.setBackground(new java.awt.Color(255, 255, 255));
+        mainJPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        lb_titreConv.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lb_titreConv.setText("Convention numéro ");
+
+        lb_titreNumConv.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lb_titreNumConv.setText("Numéro Convention");
+
+        lb_etudiant.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lb_etudiant.setText("Etudiant : ");
+
+        lb_client.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lb_client.setText("Client : ");
+
+        lb_description.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lb_description.setText("Description Mission : ");
+
+        lb_NomEtuFromBdd.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        lb_NomEtuFromBdd.setText("NomEtu");
+
+        lb_ClientFromBdd.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        lb_ClientFromBdd.setText("NomClient");
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        jLabel6.setText("Description");
+
+        javax.swing.GroupLayout mainJPanelLayout = new javax.swing.GroupLayout(mainJPanel);
+        mainJPanel.setLayout(mainJPanelLayout);
+        mainJPanelLayout.setHorizontalGroup(
+            mainJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(mainJPanelLayout.createSequentialGroup()
+                .addGap(151, 151, 151)
+                .addGroup(mainJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lb_titreConv)
+                    .addComponent(lb_etudiant)
+                    .addComponent(lb_client)
+                    .addComponent(lb_description))
+                .addGap(26, 26, 26)
+                .addGroup(mainJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lb_ClientFromBdd)
+                    .addComponent(lb_NomEtuFromBdd)
+                    .addComponent(lb_titreNumConv, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        mainJPanelLayout.setVerticalGroup(
+            mainJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(mainJPanelLayout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addGroup(mainJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lb_titreConv)
+                    .addComponent(lb_titreNumConv))
+                .addGap(47, 47, 47)
+                .addGroup(mainJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lb_etudiant)
+                    .addComponent(lb_NomEtuFromBdd))
+                .addGap(40, 40, 40)
+                .addGroup(mainJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lb_client)
+                    .addComponent(lb_ClientFromBdd))
+                .addGap(43, 43, 43)
+                .addGroup(mainJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lb_description))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(pan_Menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 596, Short.MAX_VALUE)
-                .addComponent(bt_Deco, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 578, Short.MAX_VALUE)
+                        .addComponent(bt_Deco, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(mainJPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -329,7 +415,9 @@ public class AfficheConv extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(bt_Deco)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(mainJPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -586,6 +674,14 @@ int input = JOptionPane.showConfirmDialog(this, "Voulez vous quitter l'applicati
     private javax.swing.JComboBox<String> cbb_etudiants;
     private javax.swing.JComboBox<String> cbb_facturation;
     private javax.swing.JComboBox<String> cbb_missions;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel lb_ClientFromBdd;
+    private javax.swing.JLabel lb_NomEtuFromBdd;
+    private javax.swing.JLabel lb_client;
+    private javax.swing.JLabel lb_description;
+    private javax.swing.JLabel lb_etudiant;
+    private javax.swing.JLabel lb_titreConv;
+    private javax.swing.JLabel lb_titreNumConv;
     private javax.swing.JLabel lbl_Img;
     private javax.swing.JLabel lbl_NomUtilisateur;
     private javax.swing.JLabel lbl_accueil;
@@ -596,6 +692,7 @@ int input = JOptionPane.showConfirmDialog(this, "Voulez vous quitter l'applicati
     private javax.swing.JLabel lbl_prenomUtilisateur;
     private javax.swing.JLabel lbl_profil;
     private javax.swing.JLabel lbl_suivi_mission;
+    private javax.swing.JPanel mainJPanel;
     private javax.swing.JPanel pan_Menu;
     private javax.swing.JPanel pan_Nav;
     private javax.swing.JPanel pan_Profil;

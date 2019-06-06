@@ -4,7 +4,8 @@
  * and open the template in the editor.
  */
 package Ecrans;
-
+import java.awt.GraphicsEnvironment;
+import java.awt.Rectangle;
 import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
 import com.lowagie.text.Paragraph;
@@ -43,6 +44,7 @@ public class AjoutConvention extends javax.swing.JFrame {
     public AjoutConvention() {
         initComponents();
         this.setVisible(true);
+        
         clients = new DefaultListModel();
         etudiants= new DefaultListModel();
         remplirListeModels();
@@ -91,7 +93,6 @@ public class AjoutConvention extends javax.swing.JFrame {
         bt_newClient = new javax.swing.JButton();
         bt_newEtudiant = new javax.swing.JButton();
         bt_enregistrerPDF = new javax.swing.JButton();
-        bt_enregistrerBrouillion = new javax.swing.JButton();
         bt_annuler = new javax.swing.JButton();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(3, 0), new java.awt.Dimension(3, 0), new java.awt.Dimension(3, 32767));
         jspListeClients = new javax.swing.JScrollPane();
@@ -422,16 +423,6 @@ public class AjoutConvention extends javax.swing.JFrame {
             }
         });
 
-        bt_enregistrerBrouillion.setBackground(new java.awt.Color(255, 153, 0));
-        bt_enregistrerBrouillion.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        bt_enregistrerBrouillion.setForeground(new java.awt.Color(255, 255, 255));
-        bt_enregistrerBrouillion.setText("Enregistrer comme brouillon");
-        bt_enregistrerBrouillion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bt_enregistrerBrouillionActionPerformed(evt);
-            }
-        });
-
         bt_annuler.setBackground(new java.awt.Color(255, 51, 51));
         bt_annuler.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         bt_annuler.setForeground(new java.awt.Color(255, 255, 255));
@@ -490,8 +481,6 @@ public class AjoutConvention extends javax.swing.JFrame {
                             .addGroup(AjoutConventionLayout.createSequentialGroup()
                                 .addComponent(bt_enregistrerPDF)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(bt_enregistrerBrouillion)
-                                .addGap(119, 119, 119)
                                 .addComponent(bt_annuler)
                                 .addGap(42, 42, 42))))
                     .addGroup(AjoutConventionLayout.createSequentialGroup()
@@ -524,7 +513,7 @@ public class AjoutConvention extends javax.swing.JFrame {
         AjoutConventionLayout.setVerticalGroup(
             AjoutConventionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(AjoutConventionLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(20, Short.MAX_VALUE)
                 .addComponent(lb_entrepriseCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(AjoutConventionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(AjoutConventionLayout.createSequentialGroup()
@@ -569,7 +558,6 @@ public class AjoutConvention extends javax.swing.JFrame {
                 .addGap(17, 17, 17)
                 .addGroup(AjoutConventionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bt_enregistrerPDF)
-                    .addComponent(bt_enregistrerBrouillion)
                     .addComponent(bt_annuler))
                 .addGap(264, 264, 264))
         );
@@ -821,10 +809,6 @@ public class AjoutConvention extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_bt_annulerActionPerformed
 
-    private void bt_enregistrerBrouillionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_enregistrerBrouillionActionPerformed
-        // enregistre les donnee entrees dans la formulaire dans la bdd
-    }//GEN-LAST:event_bt_enregistrerBrouillionActionPerformed
-
     private void bt_enregistrerPDFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_enregistrerPDFActionPerformed
         try {
             FileDialog fd = new FileDialog(this, "Choisissez un fichier", FileDialog.LOAD);
@@ -925,7 +909,6 @@ public class AjoutConvention extends javax.swing.JFrame {
     private javax.swing.JPanel AjoutConvention;
     private javax.swing.JButton bt_Deco;
     private javax.swing.JButton bt_annuler;
-    private javax.swing.JButton bt_enregistrerBrouillion;
     private javax.swing.JButton bt_enregistrerPDF;
     private javax.swing.JButton bt_newClient;
     private javax.swing.JButton bt_newEtudiant;

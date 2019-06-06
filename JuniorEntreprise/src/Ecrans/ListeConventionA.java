@@ -5,6 +5,8 @@
  */
 package Ecrans;
 
+import java.awt.GraphicsEnvironment;
+import java.awt.Rectangle;
 import java.beans.Statement;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -29,6 +31,7 @@ public class ListeConventionA extends javax.swing.JFrame {
     public ListeConventionA() {
         initComponents();
         this.setVisible(true);
+      
         modelTableConvention = new DefaultTableModel(new String [] {"Numéro", "Année", "Client", "Etudiant", "Description", "Statut", "Facturation"}, 0);
               
         //ajoute le model a tabProduits

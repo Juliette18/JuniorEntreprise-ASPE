@@ -5,6 +5,8 @@
  */
 package Ecrans;
 
+import java.awt.GraphicsEnvironment;
+import java.awt.Rectangle;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -20,6 +22,7 @@ public class BrouillonsC extends javax.swing.JFrame {
     public BrouillonsC() {
         initComponents();
         this.setVisible(true);
+      
     }
 
     /**

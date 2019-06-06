@@ -5,6 +5,8 @@
  */
 package Ecrans;
 
+import java.awt.GraphicsEnvironment;
+import java.awt.Rectangle;
 import java.util.regex.Pattern;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -21,6 +23,7 @@ public class AjoutEtudiant extends javax.swing.JFrame {
     public AjoutEtudiant() {
         initComponents();
         this.setVisible(true);
+    
     }
 
     /**

@@ -5,6 +5,8 @@
  */
 package Ecrans;
 
+import java.awt.GraphicsEnvironment;
+import java.awt.Rectangle;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -20,6 +22,7 @@ public class ListeClients extends javax.swing.JFrame {
     public ListeClients() {
         initComponents();
         this.setVisible(true);
+ 
     }
 
     /**

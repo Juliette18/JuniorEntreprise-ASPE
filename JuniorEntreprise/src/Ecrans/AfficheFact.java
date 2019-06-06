@@ -7,6 +7,8 @@ package Ecrans;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import java.awt.GraphicsEnvironment;
+import java.awt.Rectangle;
 
 /**
  *
@@ -19,6 +21,7 @@ public class AfficheFact extends javax.swing.JFrame {
      */
     public AfficheFact() {
         initComponents();
+      
     }
 
     /**
@@ -49,6 +52,17 @@ public class AfficheFact extends javax.swing.JFrame {
         lbl_facturation = new javax.swing.JLabel();
         cbb_facturation = new javax.swing.JComboBox<>();
         bt_Deco = new javax.swing.JButton();
+        mainJPanel = new javax.swing.JPanel();
+        lb_titreFacture = new javax.swing.JLabel();
+        lb_montant = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        lb_client = new javax.swing.JLabel();
+        lb_paye = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        lb_montantFromBdd = new javax.swing.JLabel();
+        lb_dateFromBdd = new javax.swing.JLabel();
+        lb_clientFromBdd = new javax.swing.JLabel();
+        lb_payeeFromBdd = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -74,7 +88,7 @@ public class AfficheFact extends javax.swing.JFrame {
         pan_ProfilLayout.setHorizontalGroup(
             pan_ProfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pan_ProfilLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(16, Short.MAX_VALUE)
                 .addComponent(lbl_Img)
                 .addGroup(pan_ProfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pan_ProfilLayout.createSequentialGroup()
@@ -279,7 +293,7 @@ public class AfficheFact extends javax.swing.JFrame {
                 .addGroup(pan_NavLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_facturation)
                     .addComponent(cbb_facturation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(139, Short.MAX_VALUE))
+                .addContainerGap(149, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout pan_MenuLayout = new javax.swing.GroupLayout(pan_Menu);
@@ -313,14 +327,97 @@ public class AfficheFact extends javax.swing.JFrame {
             }
         });
 
+        lb_titreFacture.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lb_titreFacture.setText("Facture numéro :");
+
+        lb_montant.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lb_montant.setText("Montant : ");
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        jLabel3.setText("Date : ");
+
+        lb_client.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lb_client.setText("Client :");
+
+        lb_paye.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lb_paye.setText("Payée :");
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel1.setText("NumFacture");
+
+        lb_montantFromBdd.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        lb_montantFromBdd.setText("jLabel4");
+
+        lb_dateFromBdd.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        lb_dateFromBdd.setText("jLabel5");
+
+        lb_clientFromBdd.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        lb_clientFromBdd.setText("jLabel6");
+
+        lb_payeeFromBdd.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        lb_payeeFromBdd.setText("jLabel7");
+
+        javax.swing.GroupLayout mainJPanelLayout = new javax.swing.GroupLayout(mainJPanel);
+        mainJPanel.setLayout(mainJPanelLayout);
+        mainJPanelLayout.setHorizontalGroup(
+            mainJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(mainJPanelLayout.createSequentialGroup()
+                .addGap(186, 186, 186)
+                .addGroup(mainJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lb_titreFacture)
+                    .addComponent(lb_montant)
+                    .addComponent(lb_client)
+                    .addComponent(lb_paye)
+                    .addComponent(jLabel3))
+                .addGap(18, 18, 18)
+                .addGroup(mainJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lb_payeeFromBdd)
+                    .addComponent(lb_dateFromBdd)
+                    .addComponent(lb_montantFromBdd)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lb_clientFromBdd))
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        mainJPanelLayout.setVerticalGroup(
+            mainJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(mainJPanelLayout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addGroup(mainJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lb_titreFacture)
+                    .addComponent(jLabel1))
+                .addGap(48, 48, 48)
+                .addGroup(mainJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lb_montant)
+                    .addComponent(lb_montantFromBdd))
+                .addGap(46, 46, 46)
+                .addGroup(mainJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(lb_dateFromBdd))
+                .addGap(46, 46, 46)
+                .addGroup(mainJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lb_client)
+                    .addComponent(lb_clientFromBdd))
+                .addGap(44, 44, 44)
+                .addGroup(mainJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lb_paye)
+                    .addComponent(lb_payeeFromBdd))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(pan_Menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 596, Short.MAX_VALUE)
-                .addComponent(bt_Deco, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 586, Short.MAX_VALUE)
+                        .addComponent(bt_Deco, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(mainJPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -328,7 +425,9 @@ public class AfficheFact extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(bt_Deco)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(16, 16, 16)
+                .addComponent(mainJPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -584,6 +683,16 @@ public class AfficheFact extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbb_etudiants;
     private javax.swing.JComboBox<String> cbb_facturation;
     private javax.swing.JComboBox<String> cbb_missions;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel lb_client;
+    private javax.swing.JLabel lb_clientFromBdd;
+    private javax.swing.JLabel lb_dateFromBdd;
+    private javax.swing.JLabel lb_montant;
+    private javax.swing.JLabel lb_montantFromBdd;
+    private javax.swing.JLabel lb_paye;
+    private javax.swing.JLabel lb_payeeFromBdd;
+    private javax.swing.JLabel lb_titreFacture;
     private javax.swing.JLabel lbl_Img;
     private javax.swing.JLabel lbl_NomUtilisateur;
     private javax.swing.JLabel lbl_accueil;
@@ -594,6 +703,7 @@ public class AfficheFact extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_prenomUtilisateur;
     private javax.swing.JLabel lbl_profil;
     private javax.swing.JLabel lbl_suivi_mission;
+    private javax.swing.JPanel mainJPanel;
     private javax.swing.JPanel pan_Menu;
     private javax.swing.JPanel pan_Nav;
     private javax.swing.JPanel pan_Profil;

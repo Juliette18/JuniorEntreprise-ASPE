@@ -7,6 +7,8 @@ package Ecrans;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import java.awt.GraphicsEnvironment;
+import java.awt.Rectangle;
 
 /**
  *
@@ -20,6 +22,7 @@ public class ListeEtudiants extends javax.swing.JFrame {
     public ListeEtudiants() {
         initComponents();
         this.setVisible(true);
+  
     }
 
     /**

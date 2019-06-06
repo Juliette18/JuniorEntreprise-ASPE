@@ -19,9 +19,7 @@ public class AjoutClient extends javax.swing.JFrame {
     public AjoutClient() {
         initComponents();
         this.setVisible(true);
-        GraphicsEnvironment genv = GraphicsEnvironment.getLocalGraphicsEnvironment();
-        Rectangle bounds = genv.getMaximumWindowBounds();
-        this.setBounds(bounds);
+     
     }
 
     /**

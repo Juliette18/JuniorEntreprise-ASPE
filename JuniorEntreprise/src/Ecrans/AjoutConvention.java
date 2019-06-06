@@ -882,6 +882,7 @@ public class AjoutConvention extends javax.swing.JFrame {
     
     public void remplirListeModels()
     {
+        
         /*clients.addElement();
         etudiants.addElement();*/
     }

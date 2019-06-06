@@ -763,11 +763,15 @@ public class AjoutClient extends javax.swing.JFrame {
                 
                 
                 PreparedStatement ps;
-                final String requete = "insert into entreprise (nomentreprise,adresse,tel,email) values (?,?,?,?)";
+                
+                final String requete = "insert into entreprise  values (?,?,?,?,?,?)";
                 try {
                     ps= ConnexionBD.getConnection().prepareStatement(requete);
+                    int n = ps.executeUpdate();
                     ps.setString(2,E);
-                    ps.setString(8,A);
+                    ps.setString(7,A);
+                    ps.setString(8,CP);
+                    ps.setString(9,V);
                     ps.setString(6,N);
                     ps.setString(7,M);
                     

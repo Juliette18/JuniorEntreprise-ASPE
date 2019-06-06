@@ -351,11 +351,11 @@ public class ListeFactures extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Numero facture", "Annee", "Client", "Etudiant", "Payee", "Statut", "Numero Convention"
+                "Numero facture", "Annee", "Client", "Payee", "Montant"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Boolean.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -365,7 +365,7 @@ public class ListeFactures extends javax.swing.JFrame {
         jspTableListeFacture.setViewportView(tableListeFacture);
 
         cbbRechercheFiltree.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        cbbRechercheFiltree.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "numero facture", "numero convention", "client", "annee", "payee", "non payee" }));
+        cbbRechercheFiltree.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "numero facture", "client", "annee", "payee", "non payee" }));
 
         tf_recherche.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

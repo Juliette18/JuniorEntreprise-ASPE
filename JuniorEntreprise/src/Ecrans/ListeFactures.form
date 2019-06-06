@@ -589,14 +589,12 @@
             <Component class="javax.swing.JTable" name="tableListeFacture">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="7" rowCount="0">
-                    <Column editable="true" title="Numero facture" type="java.lang.Integer"/>
-                    <Column editable="true" title="Annee" type="java.lang.Integer"/>
+                  <Table columnCount="5" rowCount="0">
+                    <Column editable="true" title="Numero facture" type="java.lang.String"/>
+                    <Column editable="true" title="Annee" type="java.lang.String"/>
                     <Column editable="true" title="Client" type="java.lang.String"/>
-                    <Column editable="true" title="Etudiant" type="java.lang.String"/>
                     <Column editable="true" title="Payee" type="java.lang.Boolean"/>
-                    <Column editable="true" title="Statut" type="java.lang.Object"/>
-                    <Column editable="true" title="Numero Convention" type="java.lang.Object"/>
+                    <Column editable="true" title="Montant" type="java.lang.String"/>
                   </Table>
                 </Property>
               </Properties>
@@ -609,13 +607,12 @@
               <Font name="Tahoma" size="13" style="0"/>
             </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="6">
+              <StringArray count="5">
                 <StringItem index="0" value="numero facture"/>
-                <StringItem index="1" value="numero convention"/>
-                <StringItem index="2" value="client"/>
-                <StringItem index="3" value="annee"/>
-                <StringItem index="4" value="payee"/>
-                <StringItem index="5" value="non payee"/>
+                <StringItem index="1" value="client"/>
+                <StringItem index="2" value="annee"/>
+                <StringItem index="3" value="payee"/>
+                <StringItem index="4" value="non payee"/>
               </StringArray>
             </Property>
           </Properties>

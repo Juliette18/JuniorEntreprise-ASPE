@@ -173,13 +173,13 @@ public class Connexion extends javax.swing.JFrame {
                 if ((rs.getString("username").equals(I))&&rs.getString("password").equals(M)){
                     System.out.println(rs.getString("username"));
                     if (rs.getBoolean("emp")==true){
-                        AcceuilA  acceuilA = new AcceuilA();
+                        AcceuilA  acceuilA = new AcceuilA(rs.getString("username"));
                         this.setVisible(false);
                         out = true;
                         break;
                     }
                     else {
-                        AcceuilE  acceuilE = new AcceuilE();
+                        AcceuilE  acceuilE = new AcceuilE(rs.getString("username"));
                         this.setVisible(false);
                         out = true;
                         break;

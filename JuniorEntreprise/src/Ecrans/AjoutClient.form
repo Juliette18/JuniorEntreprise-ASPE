@@ -111,7 +111,7 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="23" max="32767" attributes="0"/>
                       <Component id="lbl_Img5" min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
@@ -515,9 +515,9 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="pan_Entreprise3" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Component id="pan_Contact3" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="pan_Contact3" max="32767" attributes="0"/>
+                              <Component id="pan_Entreprise3" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
@@ -534,11 +534,11 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                   <Component id="pan_Entreprise3" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="pan_Contact3" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="bt_Ajouter" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="45" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -556,7 +556,7 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
+                  <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="lb_Nom3" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -564,9 +564,14 @@
                           <Component id="lb_Adresse3" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="lb_NumTelE3" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="lb_Mail3" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lb_Siret" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="txt_Siret" min="-2" pref="122" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
                           <Component id="txt_Nom3" alignment="0" max="32767" attributes="0"/>
                           <Component id="txt_Adresse3" alignment="0" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
@@ -574,14 +579,14 @@
                                   <Component id="txt_NumTelE3" alignment="0" max="32767" attributes="0"/>
                                   <Component id="txt_CP3" alignment="0" min="-2" pref="122" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="28" max="32767" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                               <Component id="lb_Ville3" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="txt_Ville3" min="-2" pref="122" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="txt_MailE3" min="-2" pref="122" max="-2" attributes="0"/>
-                              <EmptySpace pref="164" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -619,6 +624,10 @@
                           <Component id="txt_MailE3" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="lb_Siret" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="txt_Siret" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -669,6 +678,14 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txt_MailE3">
+            </Component>
+            <Component class="javax.swing.JLabel" name="lb_Siret">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Niumero Siret"/>
+                <Property name="toolTipText" type="java.lang.String" value=""/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txt_Siret">
             </Component>
           </SubComponents>
         </Container>

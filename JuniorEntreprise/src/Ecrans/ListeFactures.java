@@ -25,9 +25,7 @@ public class ListeFactures extends javax.swing.JFrame {
     public ListeFactures() {
         initComponents();
         this.setVisible(true);
-        GraphicsEnvironment genv = GraphicsEnvironment.getLocalGraphicsEnvironment();
-        Rectangle bounds = genv.getMaximumWindowBounds();
-        this.setBounds(bounds);
+    
         modelTableFacture = new DefaultTableModel(new String [] {"Numéro facture", "Année", "Client", "Etudiant", "Payée", "Numéro convention"}, 0);
               
         //ajoute le model a tabProduits

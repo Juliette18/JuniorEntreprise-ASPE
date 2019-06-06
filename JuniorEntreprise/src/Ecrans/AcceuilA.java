@@ -22,9 +22,7 @@ public class AcceuilA extends javax.swing.JFrame {
     public AcceuilA() {
         initComponents();
         this.setVisible(true);
-        GraphicsEnvironment genv = GraphicsEnvironment.getLocalGraphicsEnvironment();
-        Rectangle bounds = genv.getMaximumWindowBounds();
-        this.setBounds(bounds);
+
     }
 
     /**

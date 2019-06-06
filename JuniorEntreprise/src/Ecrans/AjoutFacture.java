@@ -44,9 +44,6 @@ public class AjoutFacture extends javax.swing.JFrame {
     public AjoutFacture() {
         initComponents();
         this.setVisible(true);
-        GraphicsEnvironment genv = GraphicsEnvironment.getLocalGraphicsEnvironment();
-        Rectangle bounds = genv.getMaximumWindowBounds();
-        this.setBounds(bounds);
     }
 
     /**
@@ -87,7 +84,6 @@ public class AjoutFacture extends javax.swing.JFrame {
         jspDescription = new javax.swing.JScrollPane();
         ta_mention = new javax.swing.JTextArea();
         lb_descriptionMission = new javax.swing.JLabel();
-        bt_enregistrerBrouillion = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Unagi - Création de facture");
@@ -387,11 +383,6 @@ public class AjoutFacture extends javax.swing.JFrame {
         lb_descriptionMission.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         lb_descriptionMission.setText("Mentions spéciales:");
 
-        bt_enregistrerBrouillion.setBackground(new java.awt.Color(255, 153, 0));
-        bt_enregistrerBrouillion.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        bt_enregistrerBrouillion.setForeground(new java.awt.Color(255, 255, 255));
-        bt_enregistrerBrouillion.setText("Enregistrer comme brouillon");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -410,12 +401,9 @@ public class AjoutFacture extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(lib_numC, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(249, 249, 249)
-                        .addComponent(bt_enregistrerBrouillion))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(lb_descriptionMission, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(250, Short.MAX_VALUE))
+                .addContainerGap(363, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -441,9 +429,7 @@ public class AjoutFacture extends javax.swing.JFrame {
                     .addComponent(lib_numC))
                 .addGap(40, 40, 40)
                 .addComponent(lb_descriptionMission, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(195, 195, 195)
-                .addComponent(bt_enregistrerBrouillion)
-                .addGap(103, 103, 103))
+                .addGap(323, 323, 323))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(136, 136, 136)
@@ -782,7 +768,6 @@ public class AjoutFacture extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_Deco;
     private javax.swing.JButton bt_annuler;
-    private javax.swing.JButton bt_enregistrerBrouillion;
     private javax.swing.JButton bt_enregistrerPDF;
     private javax.swing.JComboBox<String> cbb_conventions;
     private javax.swing.JComboBox<String> cbb_entreprises;

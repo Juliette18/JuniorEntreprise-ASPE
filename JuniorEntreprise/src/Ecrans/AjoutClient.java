@@ -19,9 +19,7 @@ public class AjoutClient extends javax.swing.JFrame {
     public AjoutClient() {
         initComponents();
         this.setVisible(true);
-        GraphicsEnvironment genv = GraphicsEnvironment.getLocalGraphicsEnvironment();
-        Rectangle bounds = genv.getMaximumWindowBounds();
-        this.setBounds(bounds);
+     
     }
 
     /**
@@ -66,6 +64,8 @@ public class AjoutClient extends javax.swing.JFrame {
         txt_NumTelE3 = new javax.swing.JTextField();
         lb_Mail3 = new javax.swing.JLabel();
         txt_MailE3 = new javax.swing.JTextField();
+        lb_Siret = new javax.swing.JLabel();
+        txt_Siret = new javax.swing.JTextField();
         pan_Contact3 = new javax.swing.JPanel();
         lb_Contact3 = new javax.swing.JLabel();
         txt_Contact3 = new javax.swing.JTextField();
@@ -100,7 +100,7 @@ public class AjoutClient extends javax.swing.JFrame {
         pan_Profil5Layout.setHorizontalGroup(
             pan_Profil5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pan_Profil5Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(23, Short.MAX_VALUE)
                 .addComponent(lbl_Img5)
                 .addGroup(pan_Profil5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pan_Profil5Layout.createSequentialGroup()
@@ -305,7 +305,7 @@ public class AjoutClient extends javax.swing.JFrame {
                 .addGroup(pan_Nav1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_facturation1)
                     .addComponent(cbb_facturation1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(139, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout pan_Menu5Layout = new javax.swing.GroupLayout(pan_Menu5);
@@ -315,7 +315,7 @@ public class AjoutClient extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pan_Menu5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pan_Menu5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(pan_Nav1, javax.swing.GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE)
+                    .addComponent(pan_Nav1, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE)
                     .addComponent(pan_Profil5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(13, 13, 13))
         );
@@ -325,7 +325,7 @@ public class AjoutClient extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(pan_Profil5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(pan_Nav1, javax.swing.GroupLayout.DEFAULT_SIZE, 416, Short.MAX_VALUE)
+                .addComponent(pan_Nav1, javax.swing.GroupLayout.DEFAULT_SIZE, 431, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -359,6 +359,9 @@ public class AjoutClient extends javax.swing.JFrame {
         lb_Mail3.setText("Adresse mail");
         lb_Mail3.setToolTipText("");
 
+        lb_Siret.setText("Niumero Siret");
+        lb_Siret.setToolTipText("");
+
         javax.swing.GroupLayout pan_Entreprise3Layout = new javax.swing.GroupLayout(pan_Entreprise3);
         pan_Entreprise3.setLayout(pan_Entreprise3Layout);
         pan_Entreprise3Layout.setHorizontalGroup(
@@ -370,22 +373,26 @@ public class AjoutClient extends javax.swing.JFrame {
                     .addComponent(lb_CP3)
                     .addComponent(lb_Adresse3)
                     .addComponent(lb_NumTelE3)
-                    .addComponent(lb_Mail3))
+                    .addComponent(lb_Mail3)
+                    .addComponent(lb_Siret))
                 .addGap(53, 53, 53)
                 .addGroup(pan_Entreprise3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pan_Entreprise3Layout.createSequentialGroup()
+                        .addComponent(txt_Siret, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(txt_Nom3)
                     .addComponent(txt_Adresse3)
                     .addGroup(pan_Entreprise3Layout.createSequentialGroup()
                         .addGroup(pan_Entreprise3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(txt_NumTelE3, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txt_CP3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(lb_Ville3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txt_Ville3, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pan_Entreprise3Layout.createSequentialGroup()
                         .addComponent(txt_MailE3, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 164, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         pan_Entreprise3Layout.setVerticalGroup(
@@ -413,7 +420,10 @@ public class AjoutClient extends javax.swing.JFrame {
                 .addGroup(pan_Entreprise3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lb_Mail3)
                     .addComponent(txt_MailE3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(pan_Entreprise3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lb_Siret)
+                    .addComponent(txt_Siret, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         pan_Contact3.setBorder(javax.swing.BorderFactory.createTitledBorder("Informations contact (Facultatif)"));
@@ -432,7 +442,7 @@ public class AjoutClient extends javax.swing.JFrame {
         pan_Contact3.setLayout(pan_Contact3Layout);
         pan_Contact3Layout.setHorizontalGroup(
             pan_Contact3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 469, Short.MAX_VALUE)
+            .addGap(0, 492, Short.MAX_VALUE)
             .addGroup(pan_Contact3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pan_Contact3Layout.createSequentialGroup()
                     .addContainerGap()
@@ -449,7 +459,7 @@ public class AjoutClient extends javax.swing.JFrame {
         );
         pan_Contact3Layout.setVerticalGroup(
             pan_Contact3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 105, Short.MAX_VALUE)
+            .addGap(0, 113, Short.MAX_VALUE)
             .addGroup(pan_Contact3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(pan_Contact3Layout.createSequentialGroup()
                     .addGap(5, 5, 5)
@@ -482,9 +492,9 @@ public class AjoutClient extends javax.swing.JFrame {
                 .addGroup(pan_AjoutClient3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pan_AjoutClient3Layout.createSequentialGroup()
                         .addGap(43, 43, 43)
-                        .addGroup(pan_AjoutClient3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(pan_Entreprise3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pan_Contact3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(pan_AjoutClient3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(pan_Contact3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(pan_Entreprise3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(pan_AjoutClient3Layout.createSequentialGroup()
                         .addGap(232, 232, 232)
                         .addComponent(bt_Ajouter)))
@@ -495,11 +505,11 @@ public class AjoutClient extends javax.swing.JFrame {
             .addGroup(pan_AjoutClient3Layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addComponent(pan_Entreprise3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pan_Contact3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(bt_Ajouter)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -747,7 +757,7 @@ public class AjoutClient extends javax.swing.JFrame {
         String N = txt_NumTelE3.getText();
         String M = txt_MailE3.getText();
         String regex = "[0-9]*";
-        //        String E = txt_Nom.getText();
+        String S = txt_Siret.getText();
 
         if (E.equals("")|| A.equals("") || V.equals("")) {
             JOptionPane.showMessageDialog(this, "Un ou plusieurs champs sont vides", "Erreur de saisie", JOptionPane.INFORMATION_MESSAGE);
@@ -757,7 +767,9 @@ public class AjoutClient extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Le numéro de téléphone est vide ou erroné", "Erreur de saisie", JOptionPane.INFORMATION_MESSAGE);
         }else if (N.equals("") || isValid(M)==false) {
             JOptionPane.showMessageDialog(this, "L'adresse mail est vide ou erronée", "Erreur de saisie", JOptionPane.INFORMATION_MESSAGE);
-        }else {
+        }else if(!S.matches(regex) || N.equals("")||N.length()!=18){
+            JOptionPane.showMessageDialog(this, "Le numéro Siret est vide ou erroné", "Erreur de saisie", JOptionPane.INFORMATION_MESSAGE);
+        }else{
             int input = JOptionPane.showConfirmDialog(this, "Ajouter à la base de données?", "", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
             if (input == JOptionPane.OK_OPTION) {
                 
@@ -803,8 +815,6 @@ public class AjoutClient extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JToggleButton Ajouter;
-    private javax.swing.JToggleButton Ajouter1;
     private javax.swing.JToggleButton bt_Ajouter;
     private javax.swing.JButton bt_Deco;
     private javax.swing.JComboBox<String> cbb_conventions1;
@@ -812,32 +822,15 @@ public class AjoutClient extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbb_etudiants1;
     private javax.swing.JComboBox<String> cbb_facturation1;
     private javax.swing.JComboBox<String> cbb_missions1;
-    private javax.swing.JLabel lb_Adresse;
-    private javax.swing.JLabel lb_Adresse1;
     private javax.swing.JLabel lb_Adresse3;
-    private javax.swing.JLabel lb_CP;
-    private javax.swing.JLabel lb_CP1;
     private javax.swing.JLabel lb_CP3;
-    private javax.swing.JLabel lb_Contact;
-    private javax.swing.JLabel lb_Contact1;
     private javax.swing.JLabel lb_Contact3;
-    private javax.swing.JLabel lb_Mail;
-    private javax.swing.JLabel lb_Mail1;
     private javax.swing.JLabel lb_Mail3;
-    private javax.swing.JLabel lb_MailC;
-    private javax.swing.JLabel lb_MailC1;
     private javax.swing.JLabel lb_MailC3;
-    private javax.swing.JLabel lb_Nom;
-    private javax.swing.JLabel lb_Nom1;
     private javax.swing.JLabel lb_Nom3;
-    private javax.swing.JLabel lb_NumTelC;
-    private javax.swing.JLabel lb_NumTelC1;
     private javax.swing.JLabel lb_NumTelC3;
-    private javax.swing.JLabel lb_NumTelE;
-    private javax.swing.JLabel lb_NumTelE1;
     private javax.swing.JLabel lb_NumTelE3;
-    private javax.swing.JLabel lb_Ville;
-    private javax.swing.JLabel lb_Ville1;
+    private javax.swing.JLabel lb_Siret;
     private javax.swing.JLabel lb_Ville3;
     private javax.swing.JLabel lbl_Img5;
     private javax.swing.JLabel lbl_NomUtilisateur5;
@@ -849,44 +842,21 @@ public class AjoutClient extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_prenomUtilisateur5;
     private javax.swing.JLabel lbl_profil1;
     private javax.swing.JLabel lbl_suivi_mission1;
-    private javax.swing.JPanel pan_AjoutClient;
-    private javax.swing.JPanel pan_AjoutClient1;
     private javax.swing.JPanel pan_AjoutClient3;
-    private javax.swing.JPanel pan_Contact;
-    private javax.swing.JPanel pan_Contact1;
     private javax.swing.JPanel pan_Contact3;
-    private javax.swing.JPanel pan_Entreprise;
-    private javax.swing.JPanel pan_Entreprise1;
     private javax.swing.JPanel pan_Entreprise3;
     private javax.swing.JPanel pan_Menu5;
     private javax.swing.JPanel pan_Nav1;
     private javax.swing.JPanel pan_Profil5;
-    private javax.swing.JTextField txt_Adresse;
-    private javax.swing.JTextField txt_Adresse1;
     private javax.swing.JTextField txt_Adresse3;
-    private javax.swing.JTextField txt_CP;
-    private javax.swing.JTextField txt_CP1;
     private javax.swing.JTextField txt_CP3;
-    private javax.swing.JTextField txt_Contact;
-    private javax.swing.JTextField txt_Contact1;
     private javax.swing.JTextField txt_Contact3;
-    private javax.swing.JTextField txt_MailC;
-    private javax.swing.JTextField txt_MailC1;
     private javax.swing.JTextField txt_MailC3;
-    private javax.swing.JTextField txt_MailE;
-    private javax.swing.JTextField txt_MailE1;
     private javax.swing.JTextField txt_MailE3;
-    private javax.swing.JTextField txt_Nom;
-    private javax.swing.JTextField txt_Nom1;
     private javax.swing.JTextField txt_Nom3;
-    private javax.swing.JTextField txt_NumTelC;
-    private javax.swing.JTextField txt_NumTelC1;
     private javax.swing.JTextField txt_NumTelC3;
-    private javax.swing.JTextField txt_NumTelE;
-    private javax.swing.JTextField txt_NumTelE1;
     private javax.swing.JTextField txt_NumTelE3;
-    private javax.swing.JTextField txt_Ville;
-    private javax.swing.JTextField txt_Ville1;
+    private javax.swing.JTextField txt_Siret;
     private javax.swing.JTextField txt_Ville3;
     // End of variables declaration//GEN-END:variables
 

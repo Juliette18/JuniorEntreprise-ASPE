@@ -21,9 +21,7 @@ public class FicheEtudiant extends javax.swing.JFrame {
      */
     public FicheEtudiant() {
         initComponents();
-        GraphicsEnvironment genv = GraphicsEnvironment.getLocalGraphicsEnvironment();
-        Rectangle bounds = genv.getMaximumWindowBounds();
-        this.setBounds(bounds);
+     
     }
 
     /**

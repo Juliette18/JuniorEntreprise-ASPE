@@ -20,11 +20,12 @@ public class AcceuilE extends javax.swing.JFrame {
     /**
      * Creates new form AcceuilE
      */
+    private final DefaultListModel listeModelListeConventionsPassee;
     public AcceuilE() {
         initComponents();
        
         this.setVisible(true);
-        listeModelListeConventionsPassee = new DefaultListModel<String>();
+        listeModelListeConventionsPassee = new DefaultListModel();
         remplirListModel();
         
     }
@@ -226,7 +227,15 @@ public class AcceuilE extends javax.swing.JFrame {
             }
         });
 
-        listConventionsPassees.setModel(listeModelListeConventionsPassee);
+        listePanel.setVisible(false);
+
+        listConventionsPassees.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        listConventionsPassees.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        listConventionsPassees.setToolTipText("");
         listePanel.setViewportView(listConventionsPassees);
 
         lb_pasDeMission.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
@@ -346,6 +355,7 @@ public class AcceuilE extends javax.swing.JFrame {
 
     private void bt_listeConventionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_listeConventionActionPerformed
         // get liste de convention de l etudiant from bdd et afficher 
+        listePanel.setVisible(true); 
     }//GEN-LAST:event_bt_listeConventionActionPerformed
 
     public void remplirListModel() 
@@ -419,6 +429,6 @@ public class AcceuilE extends javax.swing.JFrame {
     private javax.swing.JPanel pan_Nav;
     private javax.swing.JPanel pan_Profil;
     // End of variables declaration//GEN-END:variables
-    private DefaultListModel<String> listeModelListeConventionsPassee;
+   
 
 }

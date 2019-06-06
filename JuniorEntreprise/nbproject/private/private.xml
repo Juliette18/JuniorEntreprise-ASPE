@@ -1,20 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
             <file>file:/C:/Users/Niakulu/Desktop/JuniorEntreprise-ASPE-develop/JuniorEntreprise/src/Ecrans/AcceuilA.java</file>
-            <file>file:/C:/Users/Niakulu/Desktop/JuniorEntreprise-ASPE-develop/JuniorEntreprise/src/Ecrans/FicheEtudiant.java</file>
-=======
-<<<<<<< HEAD
-            <file>file:/C:/Users/Juliette/Desktop/JUNIOR/JuniorEntreprise-ASPE/JuniorEntreprise/src/Ecrans/Connexion.java</file>
-=======
->>>>>>> 17f0dc57cf4d80e0e67a1d026e1b76dccd34db6e
             <file>file:/C:/Users/Niakulu/Desktop/JuniorEntreprise-ASPE-develop/JuniorEntreprise/src/Ecrans/AjoutClient.java</file>
-            <file>file:/C:/Users/Niakulu/Desktop/JuniorEntreprise-ASPE-develop/JuniorEntreprise/src/Ecrans/AjoutFacture.java</file>
             <file>file:/C:/Users/Niakulu/Desktop/JuniorEntreprise-ASPE-develop/JuniorEntreprise/src/Ecrans/AjoutConvention.java</file>
->>>>>>> 4b29e6c1e415fc05f00807da0f61a1f8ca527eef
+            <file>file:/C:/Users/Niakulu/Desktop/JuniorEntreprise-ASPE-develop/JuniorEntreprise/src/Ecrans/AjoutFacture.java</file>
+            <file>file:/C:/Users/Niakulu/Desktop/JuniorEntreprise-ASPE-develop/JuniorEntreprise/src/Ecrans/FicheEtudiant.java</file>
         </group>
     </open-files>
 </project-private>

@@ -31,9 +31,7 @@ public class ListeConventionA extends javax.swing.JFrame {
     public ListeConventionA() {
         initComponents();
         this.setVisible(true);
-        GraphicsEnvironment genv = GraphicsEnvironment.getLocalGraphicsEnvironment();
-        Rectangle bounds = genv.getMaximumWindowBounds();
-        this.setBounds(bounds);
+      
         modelTableConvention = new DefaultTableModel(new String [] {"Numéro", "Année", "Client", "Etudiant", "Description", "Statut", "Facturation"}, 0);
               
         //ajoute le model a tabProduits

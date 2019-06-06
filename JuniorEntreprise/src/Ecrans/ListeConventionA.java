@@ -5,8 +5,6 @@
  */
 package Ecrans;
 
-import java.awt.GraphicsEnvironment;
-import java.awt.Rectangle;
 import java.beans.Statement;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -28,17 +26,28 @@ public class ListeConventionA extends javax.swing.JFrame {
     /**
      * Creates new form ListeConvention
      */
-    public ListeConventionA() {
+    public ListeConventionA() throws SQLException {
         initComponents();
         this.setVisible(true);
       
-        modelTableConvention = new DefaultTableModel(new String [] {"Numéro", "Année", "Client", "Etudiant", "Description", "Statut", "Facturation"}, 0);
-              
-        //ajoute le model a tabProduits
-        tableListeConv.setModel(modelTableConvention);
+        modelTableConvention = new DefaultTableModel(new String [] {"Numéro", "Année", "Client", "Etudiant", "Montant facturation"}, 0);
         
-        // l'utilisateur peut selectionner plusieurs lignes de la tables 
-        tableListeConv.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);  
+        final String maRequete = "SELECT numconvention, anne, nomentreprise, nom, montant FROM ??? where ???";
+        java.sql.Statement st;
+        ConnexionBD conn = new ConnexionBD();
+        st = conn.createStatement();
+        ResultSet rs = conn.createStatement();
+        rs = st.executeQuery(maRequete);
+        while (rs.next()) 
+        {
+            String numconvention = rs.getString("numconvention");
+            String annee = rs.getString("annee");
+            String client = rs.getString("nomentreprise");
+            String etu = rs.getString("nom");
+            String montant = rs.getString("montant");
+            modelTableConvention.addRow(new String[] {numconvention, annee, client, etu, montant});
+        }
+        if(conn != null) conn.close();
     }
 
     /**
@@ -340,6 +349,11 @@ public class ListeConventionA extends javax.swing.JFrame {
         bt_Deco.setForeground(new java.awt.Color(255, 255, 255));
         bt_Deco.setText("Déconnexion");
         bt_Deco.setToolTipText("");
+        bt_Deco.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_DecoActionPerformed(evt);
+            }
+        });
 
         mainJPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -348,11 +362,11 @@ public class ListeConventionA extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Numero", "Annee", "Client", "Etudiant", "Description", "Statut", "Facturation"
+                "Numero", "Annee", "Client", "Etudiant", "Montant facturation"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Long.class, java.lang.Long.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -716,37 +730,23 @@ public class ListeConventionA extends javax.swing.JFrame {
                 if(cbbFiltrerPar.getSelectedItem().equals("Annee") && checkAnnee)
                 {
                     String annee = tf_rechercheFiltrerPar.getText();
-                    String maRequete2 = "SELECT * FROM tab where annee == " + annee;
+                    String maRequete2 = "SELECT numconvention, annee, nomentreprise, nom, montant FROM tab where ??? && annee == " + annee;
                     //code connection bdd
-                    /*Statement st;
-                    Connection conn = null;
-                    try 
+                    java.sql.Statement st;
+                    ConnexionBD conn = new ConnexionBD();
+                    st = conn.createStatement();
+                    ResultSet rs = conn.createStatement();
+                    rs = st.executeQuery(maRequete2);
+                    while (rs.next()) 
                     {
-                        st = (Statement) conn.createStatement();
-                        ResultSet rs = st.executeQuery(maRequete2);
-                        while (rs.next()) 
-                        {
-                            long num = rs.getLong("numero");
-                            long yr = rs.getLong("annee");
-                            String client = rs.getString("nom_client");
-                            String etu = rs.getString("nom_etudiant");
-                            String desc = rs.getString("description");
-                            String statut = rs.getString("statut");
-                            String facturation = rs.getString("facturation");
-                            modelTableConvention.addRow(new Object[] {num, yr, client, etu, desc, statut, facturation});
-                            //System.out.println(a.getId() + " " + a.getLibelle() + " " + a.getCategorie());
-                        }
-                    } 
-                    catch (SQLException ex) { 
-                        Logger.getLogger(ListeConventionA.class.getName()).log(Level.SEVERE, null, ex);
-                    }                    finally 
-                    {// close result, statement and connection
-                        if(conn != null) try {
-                            conn.close(); 
-                    }   catch (SQLException ex) {
-                            Logger.getLogger(ListeConventionA.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-                    }*/
+                        String numconvention = rs.getString("numconvention");
+                        String annee = rs.getString("annee");
+                        String client = rs.getString("nomentreprise");
+                        String etu = rs.getString("nom");
+                        String montant = rs.getString("montant");
+                        modelTableConvention.addRow(new String[] {numconvention, annee, client, etu, montant});
+                    }
+                    if(conn != null) conn.close();
                 }
                 else if(!checkNumber)
                 {
@@ -782,6 +782,17 @@ public class ListeConventionA extends javax.swing.JFrame {
                 modelTableConvention.removeRow(i);
             }
     }//GEN-LAST:event_bt_reinitialiserRechercheActionPerformed
+
+    private void bt_DecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_DecoActionPerformed
+        int input = JOptionPane.showConfirmDialog(this, "Voulez vous retourner à l'écran de connexion?", "", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
+        if (input == JOptionPane.OK_OPTION) {
+            this.setVisible(false);
+            Connexion connexion = new Connexion();
+            connexion.setVisible(true);
+        } else if (input == JOptionPane.CANCEL_OPTION) {
+            this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        }
+    }//GEN-LAST:event_bt_DecoActionPerformed
 
     /**
      * @param args the command line arguments

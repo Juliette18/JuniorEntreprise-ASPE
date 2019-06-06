@@ -7,8 +7,6 @@ package Ecrans;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import java.awt.GraphicsEnvironment;
-import java.awt.Rectangle;
 
 /**
  *
@@ -326,6 +324,8 @@ public class AfficheFact extends javax.swing.JFrame {
                 bt_DecoActionPerformed(evt);
             }
         });
+
+        mainJPanel.setBackground(new java.awt.Color(255, 255, 255));
 
         lb_titreFacture.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lb_titreFacture.setText("Facture numéro :");

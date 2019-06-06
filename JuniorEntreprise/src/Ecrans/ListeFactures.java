@@ -332,6 +332,11 @@ public class ListeFactures extends javax.swing.JFrame {
         bt_Deco.setForeground(new java.awt.Color(255, 255, 255));
         bt_Deco.setText("Déconnexion");
         bt_Deco.setToolTipText("");
+        bt_Deco.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_DecoActionPerformed(evt);
+            }
+        });
 
         mainJPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -346,11 +351,11 @@ public class ListeFactures extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Numero facture", "Annee", "Client", "Etudiant", "Payee", "Statut", "Numero Convention"
+                "Numero facture", "Annee", "Client", "Payee", "Montant"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Boolean.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -360,7 +365,7 @@ public class ListeFactures extends javax.swing.JFrame {
         jspTableListeFacture.setViewportView(tableListeFacture);
 
         cbbRechercheFiltree.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        cbbRechercheFiltree.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "numero facture", "numero convention", "client", "annee", "payee", "non payee" }));
+        cbbRechercheFiltree.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "numero facture", "client", "annee", "payee", "non payee" }));
 
         tf_recherche.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -737,6 +742,17 @@ public class ListeFactures extends javax.swing.JFrame {
                 modelTableFacture.removeRow(i);
             }
     }//GEN-LAST:event_bt_reinitialiserRechercheActionPerformed
+
+    private void bt_DecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_DecoActionPerformed
+        int input = JOptionPane.showConfirmDialog(this, "Voulez vous retourner à l'écran de connexion?", "", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
+        if (input == JOptionPane.OK_OPTION) {
+            this.setVisible(false);
+            Connexion connexion = new Connexion();
+            connexion.setVisible(true);
+        } else if (input == JOptionPane.CANCEL_OPTION) {
+            this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        }
+    }//GEN-LAST:event_bt_DecoActionPerformed
 
     /**
      * @param args the command line arguments

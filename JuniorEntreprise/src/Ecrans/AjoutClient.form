@@ -111,7 +111,11 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
+<<<<<<< HEAD
                       <EmptySpace pref="23" max="32767" attributes="0"/>
+=======
+                      <EmptySpace pref="29" max="32767" attributes="0"/>
+>>>>>>> 4592657b6a195a4ec8c63373e94e315dc00d053a
                       <Component id="lbl_Img5" min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">

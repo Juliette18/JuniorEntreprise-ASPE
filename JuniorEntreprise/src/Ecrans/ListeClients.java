@@ -5,10 +5,15 @@
  */
 package Ecrans;
 
-import java.awt.GraphicsEnvironment;
-import java.awt.Rectangle;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
 
 /**
  *
@@ -19,9 +24,28 @@ public class ListeClients extends javax.swing.JFrame {
     /**
      * Creates new form ListeClients
      */
-    public ListeClients() {
+    public ListeClients() throws SQLException {
         initComponents();
         this.setVisible(true);
+        modelListeClient = new DefaultListModel();
+        
+        JScrollPane jsp = new JScrollPane();
+        listeClients.add(jsp);
+        
+       //rempli la liste avec les noms des clients dans la bdd
+        final String maRequete = "SELECT nomentreprise FROM ??? ";
+        Statement st;
+        ConnexionBD conn = new ConnexionBD();
+        
+            st = conn.createStatement();
+            ResultSet rs = st.executeQuery(maRequete);
+            while (rs.next()) 
+            {
+                String nomentreprise = rs.getString("nomentreprise");
+                modelListeClient.addElement(nomentreprise);
+            }
+        if(conn != null) conn.close(); 
+
  
     }
 
@@ -53,6 +77,11 @@ public class ListeClients extends javax.swing.JFrame {
         lbl_facturation1 = new javax.swing.JLabel();
         cbb_facturation1 = new javax.swing.JComboBox<>();
         bt_Deco = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        listeClients = new javax.swing.JList<>();
+        bt_chercher = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Unagi - Liste des clients");
@@ -79,7 +108,7 @@ public class ListeClients extends javax.swing.JFrame {
         pan_Profil5Layout.setHorizontalGroup(
             pan_Profil5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pan_Profil5Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(16, Short.MAX_VALUE)
                 .addComponent(lbl_Img5)
                 .addGroup(pan_Profil5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pan_Profil5Layout.createSequentialGroup()
@@ -284,7 +313,7 @@ public class ListeClients extends javax.swing.JFrame {
                 .addGroup(pan_Nav1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_facturation1)
                     .addComponent(cbb_facturation1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(139, Short.MAX_VALUE))
+                .addContainerGap(149, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout pan_Menu5Layout = new javax.swing.GroupLayout(pan_Menu5);
@@ -312,6 +341,56 @@ public class ListeClients extends javax.swing.JFrame {
         bt_Deco.setForeground(new java.awt.Color(255, 255, 255));
         bt_Deco.setText("Déconnexion");
         bt_Deco.setToolTipText("");
+        bt_Deco.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_DecoActionPerformed(evt);
+            }
+        });
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setText("Liste Clients");
+
+        listeClients.setModel(modelListeClient);
+        jScrollPane1.setViewportView(listeClients);
+
+        bt_chercher.setText("Chercher");
+        bt_chercher.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_chercherActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(298, 298, 298))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(227, 227, 227))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(bt_chercher)
+                        .addGap(309, 309, 309))))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jLabel1)
+                .addGap(37, 37, 37)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35)
+                .addComponent(bt_chercher)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -319,8 +398,14 @@ public class ListeClients extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(pan_Menu5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 643, Short.MAX_VALUE)
-                .addComponent(bt_Deco))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 633, Short.MAX_VALUE)
+                        .addComponent(bt_Deco))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -328,7 +413,9 @@ public class ListeClients extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(bt_Deco)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(12, 12, 12)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -531,6 +618,30 @@ public class ListeClients extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_formWindowClosing
 
+    private void bt_chercherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_chercherActionPerformed
+        String nom = listeClients.getSelectedValue();
+            
+            FichecClient_Paiement fClient = null;
+        try {
+            fClient = new FichecClient_Paiement(nom);
+        } catch (SQLException ex) {
+            Logger.getLogger(ListeEtudiants.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        this.setVisible(false);    
+        fClient.setVisible(true);
+    }//GEN-LAST:event_bt_chercherActionPerformed
+
+    private void bt_DecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_DecoActionPerformed
+       int input = JOptionPane.showConfirmDialog(this, "Voulez vous retourner à l'écran de connexion?", "", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
+        if (input == JOptionPane.OK_OPTION) {
+            this.setVisible(false);
+            Connexion connexion = new Connexion();
+            connexion.setVisible(true);
+        } else if (input == JOptionPane.CANCEL_OPTION) {
+            this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        }
+    }//GEN-LAST:event_bt_DecoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -568,11 +679,15 @@ public class ListeClients extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_Deco;
+    private javax.swing.JButton bt_chercher;
     private javax.swing.JComboBox<String> cbb_conventions1;
     private javax.swing.JComboBox<String> cbb_entreprises1;
     private javax.swing.JComboBox<String> cbb_etudiants1;
     private javax.swing.JComboBox<String> cbb_facturation1;
     private javax.swing.JComboBox<String> cbb_missions1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbl_Img5;
     private javax.swing.JLabel lbl_NomUtilisateur5;
     private javax.swing.JLabel lbl_accueil1;
@@ -583,8 +698,10 @@ public class ListeClients extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_prenomUtilisateur5;
     private javax.swing.JLabel lbl_profil1;
     private javax.swing.JLabel lbl_suivi_mission1;
+    private javax.swing.JList<String> listeClients;
     private javax.swing.JPanel pan_Menu5;
     private javax.swing.JPanel pan_Nav1;
     private javax.swing.JPanel pan_Profil5;
     // End of variables declaration//GEN-END:variables
+    private DefaultListModel modelListeClient;
 }

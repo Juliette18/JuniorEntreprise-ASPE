@@ -5,10 +5,10 @@
  */
 package Ecrans;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import java.awt.GraphicsEnvironment;
+import java.awt.Rectangle;
 
 /**
  *
@@ -19,22 +19,9 @@ public class AcceuilA extends javax.swing.JFrame {
     /**
      * Creates new form AcceuilA
      */
-    public AcceuilA(String username) throws SQLException {
-        this.username = username;
+    public AcceuilA() {
         initComponents();
         this.setVisible(true);
-        final String maRequete = "SELECT count(numconvention) FROM ??? where ???";
-        java.sql.Statement st;
-        ConnexionBD conn = new ConnexionBD();
-        st = conn.createStatement();
-        ResultSet rs = conn.createStatement();
-        rs = st.executeQuery(maRequete);
-
-            Integer nbConv = rs.getInt("count(numconvention)");
-            lb_nbConventionAttenteFacturation.setText(nbConv.toString());
-        if(conn != null) conn.close();
-        
-        
 
     }
 
@@ -77,8 +64,10 @@ public class AcceuilA extends javax.swing.JFrame {
         lb_missionsEnCours = new javax.swing.JLabel();
         lb_nbMissionsEnCours = new javax.swing.JLabel();
         lb_missionsTerminees = new javax.swing.JLabel();
+        lb_missionsEnAttente = new javax.swing.JLabel();
         lb_nbMissionsTerminees = new javax.swing.JLabel();
         lb_payementsEnAttente = new javax.swing.JLabel();
+        lb_nbMissionsEnAttente = new javax.swing.JLabel();
         lb_nbPayementsEnAttente = new javax.swing.JLabel();
         lb_suiviActivites = new javax.swing.JLabel();
 
@@ -386,11 +375,17 @@ public class AcceuilA extends javax.swing.JFrame {
         lb_missionsTerminees.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         lb_missionsTerminees.setText("Missions terminees : ");
 
+        lb_missionsEnAttente.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        lb_missionsEnAttente.setText("Missions en attente : ");
+
         lb_nbMissionsTerminees.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lb_nbMissionsTerminees.setText("0");
 
         lb_payementsEnAttente.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         lb_payementsEnAttente.setText("Payements en attente :");
+
+        lb_nbMissionsEnAttente.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        lb_nbMissionsEnAttente.setText("0");
 
         lb_nbPayementsEnAttente.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         lb_nbPayementsEnAttente.setText("0");
@@ -403,18 +398,24 @@ public class AcceuilA extends javax.swing.JFrame {
                 .addGap(45, 45, 45)
                 .addGroup(suiviActiviteJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(suiviActiviteJPanelLayout.createSequentialGroup()
-                        .addComponent(lb_missionsTerminees)
-                        .addGap(29, 29, 29)
-                        .addComponent(lb_nbMissionsTerminees, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(suiviActiviteJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(suiviActiviteJPanelLayout.createSequentialGroup()
+                                .addGroup(suiviActiviteJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lb_missionsTerminees)
+                                    .addComponent(lb_missionsEnAttente))
+                                .addGap(28, 28, 28))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, suiviActiviteJPanelLayout.createSequentialGroup()
+                                .addComponent(lb_payementsEnAttente)
+                                .addGap(18, 18, 18)))
+                        .addGroup(suiviActiviteJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lb_nbMissionsEnAttente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lb_nbMissionsTerminees, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lb_nbPayementsEnAttente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(suiviActiviteJPanelLayout.createSequentialGroup()
                         .addComponent(lb_missionsEnCours)
                         .addGap(41, 41, 41)
                         .addComponent(lb_nbMissionsEnCours, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 353, Short.MAX_VALUE))
-                    .addGroup(suiviActiviteJPanelLayout.createSequentialGroup()
-                        .addComponent(lb_payementsEnAttente)
-                        .addGap(18, 18, 18)
-                        .addComponent(lb_nbPayementsEnAttente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(0, 353, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         suiviActiviteJPanelLayout.setVerticalGroup(
@@ -428,11 +429,15 @@ public class AcceuilA extends javax.swing.JFrame {
                 .addGroup(suiviActiviteJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lb_missionsTerminees)
                     .addComponent(lb_nbMissionsTerminees))
-                .addGap(41, 41, 41)
+                .addGap(45, 45, 45)
+                .addGroup(suiviActiviteJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lb_missionsEnAttente)
+                    .addComponent(lb_nbMissionsEnAttente))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                 .addGroup(suiviActiviteJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lb_payementsEnAttente)
                     .addComponent(lb_nbPayementsEnAttente))
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addGap(34, 34, 34))
         );
 
         lb_suiviActivites.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -480,11 +485,11 @@ public class AcceuilA extends javax.swing.JFrame {
                     .addComponent(lb_nbConventionAttenteFacturation)
                     .addComponent(bt_convention)
                     .addComponent(bt_facturation))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lb_suiviActivites)
                 .addGap(41, 41, 41)
                 .addComponent(suiviActiviteJPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(86, 86, 86))
+                .addGap(33, 33, 33))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -781,9 +786,11 @@ int input = JOptionPane.showConfirmDialog(this, "Voulez vous quitter l'applicati
     private javax.swing.JComboBox<String> cbb_missions;
     private javax.swing.JLabel lb_bjr;
     private javax.swing.JLabel lb_conventionAttenteFacturation;
+    private javax.swing.JLabel lb_missionsEnAttente;
     private javax.swing.JLabel lb_missionsEnCours;
     private javax.swing.JLabel lb_missionsTerminees;
     private javax.swing.JLabel lb_nbConventionAttenteFacturation;
+    private javax.swing.JLabel lb_nbMissionsEnAttente;
     private javax.swing.JLabel lb_nbMissionsEnCours;
     private javax.swing.JLabel lb_nbMissionsTerminees;
     private javax.swing.JLabel lb_nbPayementsEnAttente;
@@ -806,5 +813,4 @@ int input = JOptionPane.showConfirmDialog(this, "Voulez vous quitter l'applicati
     private javax.swing.JPanel pan_Profil;
     private javax.swing.JPanel suiviActiviteJPanel;
     // End of variables declaration//GEN-END:variables
-    private String username;
 }

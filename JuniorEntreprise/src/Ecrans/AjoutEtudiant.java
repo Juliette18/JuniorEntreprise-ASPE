@@ -5,7 +5,8 @@
  */
 package Ecrans;
 
-
+import java.awt.GraphicsEnvironment;
+import java.awt.Rectangle;
 import java.util.regex.Pattern;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -64,7 +65,6 @@ public class AjoutEtudiant extends javax.swing.JFrame {
         lb_Mail = new javax.swing.JLabel();
         txt_MailEtu = new javax.swing.JTextField();
         bt_AjoutEtu = new javax.swing.JToggleButton();
-        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Unagi - Ajout d'étudiant");
@@ -91,7 +91,7 @@ public class AjoutEtudiant extends javax.swing.JFrame {
         pan_Profil5Layout.setHorizontalGroup(
             pan_Profil5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pan_Profil5Layout.createSequentialGroup()
-                .addContainerGap(16, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lbl_Img5)
                 .addGroup(pan_Profil5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pan_Profil5Layout.createSequentialGroup()
@@ -296,7 +296,7 @@ public class AjoutEtudiant extends javax.swing.JFrame {
                 .addGroup(pan_Nav1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_facturation1)
                     .addComponent(cbb_facturation1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(149, Short.MAX_VALUE))
+                .addContainerGap(139, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout pan_Menu5Layout = new javax.swing.GroupLayout(pan_Menu5);
@@ -335,18 +335,14 @@ public class AjoutEtudiant extends javax.swing.JFrame {
 
         pan_Etudiant.setBorder(javax.swing.BorderFactory.createTitledBorder("Informations étudiant (Obligatoire)"));
 
-        lb_Nom.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         lb_Nom.setText("Nom ");
 
         txt_Nom.setToolTipText("");
 
-        lb_Prenom.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         lb_Prenom.setText("Prénom");
 
-        lb_NumTelEtu.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         lb_NumTelEtu.setText("Numéro de téléphone");
 
-        lb_Mail.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
         lb_Mail.setText("Adresse mail");
         lb_Mail.setToolTipText("");
 
@@ -365,7 +361,7 @@ public class AjoutEtudiant extends javax.swing.JFrame {
                 .addGroup(pan_EtudiantLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pan_EtudiantLayout.createSequentialGroup()
                         .addComponent(txt_MailEtu, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(178, 188, Short.MAX_VALUE))
                     .addGroup(pan_EtudiantLayout.createSequentialGroup()
                         .addGroup(pan_EtudiantLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(txt_Nom, javax.swing.GroupLayout.Alignment.LEADING)
@@ -407,14 +403,13 @@ public class AjoutEtudiant extends javax.swing.JFrame {
         pan_AjoutEtudiantLayout.setHorizontalGroup(
             pan_AjoutEtudiantLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pan_AjoutEtudiantLayout.createSequentialGroup()
+                .addGap(263, 263, 263)
+                .addComponent(bt_AjoutEtu)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pan_AjoutEtudiantLayout.createSequentialGroup()
                 .addContainerGap(45, Short.MAX_VALUE)
-                .addGroup(pan_AjoutEtudiantLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pan_AjoutEtudiantLayout.createSequentialGroup()
-                        .addComponent(pan_Etudiant, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(41, 41, 41))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pan_AjoutEtudiantLayout.createSequentialGroup()
-                        .addComponent(bt_AjoutEtu)
-                        .addGap(171, 171, 171))))
+                .addComponent(pan_Etudiant, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(41, 41, 41))
         );
         pan_AjoutEtudiantLayout.setVerticalGroup(
             pan_AjoutEtudiantLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -426,27 +421,18 @@ public class AjoutEtudiant extends javax.swing.JFrame {
                 .addGap(29, 29, 29))
         );
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel1.setText("Ajout Etudiant");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(pan_Menu5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(bt_Deco, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(307, 307, 307))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(161, 161, 161)
+                    .addComponent(bt_Deco, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(pan_AjoutEtudiant, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 169, Short.MAX_VALUE))))
+                        .addGap(74, 74, 74))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -454,9 +440,7 @@ public class AjoutEtudiant extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(bt_Deco)
-                .addGap(23, 23, 23)
-                .addComponent(jLabel1)
-                .addGap(54, 54, 54)
+                .addGap(139, 139, 139)
                 .addComponent(pan_AjoutEtudiant, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -743,7 +727,6 @@ public class AjoutEtudiant extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbb_etudiants1;
     private javax.swing.JComboBox<String> cbb_facturation1;
     private javax.swing.JComboBox<String> cbb_missions1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lb_Mail;
     private javax.swing.JLabel lb_Nom;
     private javax.swing.JLabel lb_NumTelEtu;

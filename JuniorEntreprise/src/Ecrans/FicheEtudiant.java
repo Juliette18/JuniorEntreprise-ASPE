@@ -5,12 +5,8 @@
  */
 package Ecrans;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.DefaultListModel;
+import java.awt.GraphicsEnvironment;
+import java.awt.Rectangle;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -22,35 +18,10 @@ public class FicheEtudiant extends javax.swing.JFrame {
 
     /**
      * Creates new form FicheEtudiant
-     * @param nom
      */
-    public FicheEtudiant(String nom) throws SQLException {
+    public FicheEtudiant() {
         initComponents();
-        nomEtu = nom;
-        modelListConvEtu = new DefaultListModel();
-        //connexion a la bdd pour retoruver les infos de la personne
-        final String maRequete = "SELECT nom, prenom FROM ??? where nom=" + nomEtu;
-        final String maRequete1 = "SELECT numconvention FROM ??? where nom=" + nomEtu;
-        Statement st, st1;
-        ConnexionBD conn = new ConnexionBD();
-        st = conn.createStatement();
-        ResultSet rs = st.executeQuery(maRequete);
-        String nomE = rs.getString("Nom");
-        String prenom = rs.getString("Prenom");
-        lbNomEtuFromBdd.setText(nomE);
-        lbPrenomEtuFromBdd.setText(prenom);
-        
-        st1 = conn.createStatement();
-        ResultSet rs1 = conn.createStatement();
-        rs1 = st1.executeQuery(maRequete1);
-        while (rs.next()) 
-        {
-            String numConv = rs.getString("numconvention");
-            modelListConvEtu.addElement(numConv);
-        }
-        if(conn != null) conn.close();
-        
-        
+     
     }
 
     /**
@@ -81,15 +52,6 @@ public class FicheEtudiant extends javax.swing.JFrame {
         lbl_facturation = new javax.swing.JLabel();
         cbb_facturation = new javax.swing.JComboBox<>();
         bt_Deco = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        lbNomEtuFromBdd = new javax.swing.JLabel();
-        lbPrenomEtuFromBdd = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        listConvEtu = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Fiche étudiant");
@@ -117,7 +79,7 @@ public class FicheEtudiant extends javax.swing.JFrame {
         pan_ProfilLayout.setHorizontalGroup(
             pan_ProfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pan_ProfilLayout.createSequentialGroup()
-                .addContainerGap(16, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lbl_Img)
                 .addGroup(pan_ProfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pan_ProfilLayout.createSequentialGroup()
@@ -322,7 +284,7 @@ public class FicheEtudiant extends javax.swing.JFrame {
                 .addGroup(pan_NavLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_facturation)
                     .addComponent(cbb_facturation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(149, Short.MAX_VALUE))
+                .addContainerGap(139, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout pan_MenuLayout = new javax.swing.GroupLayout(pan_Menu);
@@ -350,80 +312,6 @@ public class FicheEtudiant extends javax.swing.JFrame {
         bt_Deco.setForeground(new java.awt.Color(255, 255, 255));
         bt_Deco.setText("Déconnexion");
         bt_Deco.setToolTipText("");
-        bt_Deco.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bt_DecoActionPerformed(evt);
-            }
-        });
-
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        jLabel1.setText("Nom : ");
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        jLabel2.setText("Prenom : ");
-
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        jLabel3.setText("Conventions :");
-
-        lbNomEtuFromBdd.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        lbNomEtuFromBdd.setText("nomEtuFromBdd");
-
-        lbPrenomEtuFromBdd.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        lbPrenomEtuFromBdd.setText("jLabel5");
-
-        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel6.setText("Fiche Etudiant");
-
-        listConvEtu.setModel(modelListConvEtu);
-        jScrollPane1.setViewportView(listConvEtu);
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(153, 153, 153)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(lbNomEtuFromBdd, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(46, 46, 46)
-                                .addComponent(jLabel2)
-                                .addGap(18, 18, 18)
-                                .addComponent(lbPrenomEtuFromBdd, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(74, 74, 74))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(306, 306, 306)
-                        .addComponent(jLabel6)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(jLabel6)
-                .addGap(28, 28, 28)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(lbNomEtuFromBdd, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbPrenomEtuFromBdd, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(47, 47, 47)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -431,14 +319,8 @@ public class FicheEtudiant extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(pan_Menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 625, Short.MAX_VALUE)
-                        .addComponent(bt_Deco))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 643, Short.MAX_VALUE)
+                .addComponent(bt_Deco))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -446,9 +328,7 @@ public class FicheEtudiant extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(bt_Deco)
-                .addGap(21, 21, 21)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -556,13 +436,7 @@ public class FicheEtudiant extends javax.swing.JFrame {
         }
         if (choix.equals("Liste des étudiants")){
             this.setVisible(false);
-            ListeEtudiants listeE;
-            listeE = null;
-            try {
-                listeE = new ListeEtudiants();
-            } catch (SQLException ex) {
-                Logger.getLogger(FicheEtudiant.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            ListeEtudiants listeE = new ListeEtudiants();
             listeE.setVisible(true);
         }
     }//GEN-LAST:event_cbb_etudiantsActionPerformed
@@ -657,17 +531,6 @@ public class FicheEtudiant extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_formWindowClosing
 
-    private void bt_DecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_DecoActionPerformed
-        int input = JOptionPane.showConfirmDialog(this, "Voulez vous retourner à l'écran de connexion?", "", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
-        if (input == JOptionPane.OK_OPTION) {
-            this.setVisible(false);
-            Connexion connexion = new Connexion();
-            connexion.setVisible(true);
-        } else if (input == JOptionPane.CANCEL_OPTION) {
-            this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-        }
-    }//GEN-LAST:event_bt_DecoActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -710,14 +573,6 @@ public class FicheEtudiant extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbb_etudiants;
     private javax.swing.JComboBox<String> cbb_facturation;
     private javax.swing.JComboBox<String> cbb_missions;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lbNomEtuFromBdd;
-    private javax.swing.JLabel lbPrenomEtuFromBdd;
     private javax.swing.JLabel lbl_Img;
     private javax.swing.JLabel lbl_NomUtilisateur;
     private javax.swing.JLabel lbl_accueil;
@@ -728,11 +583,8 @@ public class FicheEtudiant extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_prenomUtilisateur;
     private javax.swing.JLabel lbl_profil;
     private javax.swing.JLabel lbl_suivi_mission;
-    private javax.swing.JList<String> listConvEtu;
     private javax.swing.JPanel pan_Menu;
     private javax.swing.JPanel pan_Nav;
     private javax.swing.JPanel pan_Profil;
     // End of variables declaration//GEN-END:variables
-    private DefaultListModel modelListConvEtu;
-    private String nomEtu;
 }

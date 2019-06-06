@@ -5,17 +5,10 @@
  */
 package Ecrans;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.JScrollPane;
+import java.awt.GraphicsEnvironment;
+import java.awt.Rectangle;
 
 /**
  *
@@ -26,27 +19,10 @@ public class ListeEtudiants extends javax.swing.JFrame {
     /**
      * Creates new form ListeEtudiants
      */
-    public ListeEtudiants() throws SQLException {
+    public ListeEtudiants() {
         initComponents();
         this.setVisible(true);
-        JScrollPane jsp = new JScrollPane();
-        listEtudiant.add(jsp);
-        
-       //rempli la liste avec les noms et prenoms des etudiants dans la bdd
-        final String maRequete = "SELECT nom, prenom FROM ??? ";
-        Statement st;
-        ConnexionBD conn = new ConnexionBD();
-        
-            st = conn.createStatement();
-            ResultSet rs = st.executeQuery(maRequete);
-            while (rs.next()) 
-            {
-                String nom = rs.getString("Nom");
-                String prenom = rs.getString("Prenom");
-                modelListeEtu.addElement(nom + " " + prenom);
-            }
-        if(conn != null) conn.close(); 
-
+  
     }
 
     /**
@@ -77,11 +53,6 @@ public class ListeEtudiants extends javax.swing.JFrame {
         lbl_facturation = new javax.swing.JLabel();
         cbb_facturation = new javax.swing.JComboBox<>();
         bt_Deco = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        listEtudiant = new javax.swing.JList<>();
-        lb_titre = new javax.swing.JLabel();
-        bt_chercher = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Unagi - Liste des étudiants");
@@ -109,7 +80,7 @@ public class ListeEtudiants extends javax.swing.JFrame {
         pan_ProfilLayout.setHorizontalGroup(
             pan_ProfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pan_ProfilLayout.createSequentialGroup()
-                .addContainerGap(16, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lbl_Img)
                 .addGroup(pan_ProfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pan_ProfilLayout.createSequentialGroup()
@@ -314,7 +285,7 @@ public class ListeEtudiants extends javax.swing.JFrame {
                 .addGroup(pan_NavLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_facturation)
                     .addComponent(cbb_facturation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(149, Short.MAX_VALUE))
+                .addContainerGap(139, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout pan_MenuLayout = new javax.swing.GroupLayout(pan_Menu);
@@ -342,57 +313,6 @@ public class ListeEtudiants extends javax.swing.JFrame {
         bt_Deco.setForeground(new java.awt.Color(255, 255, 255));
         bt_Deco.setText("Déconnexion");
         bt_Deco.setToolTipText("");
-        bt_Deco.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bt_DecoActionPerformed(evt);
-            }
-        });
-
-        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-
-        listEtudiant.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        listEtudiant.setModel(modelListeEtu);
-        jScrollPane1.setViewportView(listEtudiant);
-
-        lb_titre.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lb_titre.setText("Liste etudiants");
-
-        bt_chercher.setText("Chercher");
-        bt_chercher.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bt_chercherActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lb_titre)
-                .addGap(295, 295, 295))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(176, 176, 176)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(317, 317, 317)
-                        .addComponent(bt_chercher)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(lb_titre)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
-                .addComponent(bt_chercher)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -400,14 +320,8 @@ public class ListeEtudiants extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(pan_Menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 625, Short.MAX_VALUE)
-                        .addComponent(bt_Deco))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 643, Short.MAX_VALUE)
+                .addComponent(bt_Deco))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -415,9 +329,7 @@ public class ListeEtudiants extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(bt_Deco)
-                .addGap(18, 18, 18)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -525,13 +437,7 @@ public class ListeEtudiants extends javax.swing.JFrame {
         }
         if (choix.equals("Liste des étudiants")){
             this.setVisible(false);
-            ListeEtudiants listeE;
-            listeE = null;
-            try {
-                listeE = new ListeEtudiants();
-            } catch (SQLException ex) {
-                Logger.getLogger(ListeEtudiants.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            ListeEtudiants listeE = new ListeEtudiants();
             listeE.setVisible(true);
         }
     }//GEN-LAST:event_cbb_etudiantsActionPerformed
@@ -626,33 +532,6 @@ public class ListeEtudiants extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_formWindowClosing
 
-    private void bt_chercherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_chercherActionPerformed
-        
-            String nom = listEtudiant.getSelectedValue();
-            
-            FicheEtudiant fEtu = null;
-        try {
-            fEtu = new FicheEtudiant(nom);
-        } catch (SQLException ex) {
-            Logger.getLogger(ListeEtudiants.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        this.setVisible(false);   
-        fEtu.setVisible(true);
-       
-        
-    }//GEN-LAST:event_bt_chercherActionPerformed
-
-    private void bt_DecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_DecoActionPerformed
-        int input = JOptionPane.showConfirmDialog(this, "Voulez vous retourner à l'écran de connexion?", "", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
-        if (input == JOptionPane.OK_OPTION) {
-            this.setVisible(false);
-            Connexion connexion = new Connexion();
-            connexion.setVisible(true);
-        } else if (input == JOptionPane.CANCEL_OPTION) {
-            this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-        }
-    }//GEN-LAST:event_bt_DecoActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -683,26 +562,18 @@ public class ListeEtudiants extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                try {
-                    new ListeEtudiants().setVisible(true);
-                } catch (SQLException ex) {
-                    Logger.getLogger(ListeEtudiants.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                new ListeEtudiants().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_Deco;
-    private javax.swing.JButton bt_chercher;
     private javax.swing.JComboBox<String> cbb_conventions;
     private javax.swing.JComboBox<String> cbb_entreprises;
     private javax.swing.JComboBox<String> cbb_etudiants;
     private javax.swing.JComboBox<String> cbb_facturation;
     private javax.swing.JComboBox<String> cbb_missions;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lb_titre;
     private javax.swing.JLabel lbl_Img;
     private javax.swing.JLabel lbl_NomUtilisateur;
     private javax.swing.JLabel lbl_accueil;
@@ -713,10 +584,8 @@ public class ListeEtudiants extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_prenomUtilisateur;
     private javax.swing.JLabel lbl_profil;
     private javax.swing.JLabel lbl_suivi_mission;
-    private javax.swing.JList<String> listEtudiant;
     private javax.swing.JPanel pan_Menu;
     private javax.swing.JPanel pan_Nav;
     private javax.swing.JPanel pan_Profil;
     // End of variables declaration//GEN-END:variables
-    private DefaultListModel modelListeEtu;
 }

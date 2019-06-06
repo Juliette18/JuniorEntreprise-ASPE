@@ -52,6 +52,13 @@ public class SMission_EnAttente extends javax.swing.JFrame {
         lbl_facturation1 = new javax.swing.JLabel();
         cbb_facturation1 = new javax.swing.JComboBox<>();
         bt_Deco = new javax.swing.JButton();
+        jpane_missions_en_attente = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jtable_missions_en_cours = new javax.swing.JTable();
+        lbl_recherche = new javax.swing.JLabel();
+        bt_valider = new javax.swing.JButton();
+        txtField_recherche = new javax.swing.JTextField();
+        jComboBox_enAttente = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Unagi - Missions en attente");
@@ -283,7 +290,7 @@ public class SMission_EnAttente extends javax.swing.JFrame {
                 .addGroup(pan_Nav1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_facturation1)
                     .addComponent(cbb_facturation1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(139, Short.MAX_VALUE))
+                .addContainerGap(149, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout pan_Menu3Layout = new javax.swing.GroupLayout(pan_Menu3);
@@ -311,11 +318,80 @@ public class SMission_EnAttente extends javax.swing.JFrame {
         bt_Deco.setForeground(new java.awt.Color(255, 255, 255));
         bt_Deco.setText("Déconnexion");
         bt_Deco.setToolTipText("");
-        bt_Deco.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bt_DecoActionPerformed(evt);
+
+        jpane_missions_en_attente.setBackground(new java.awt.Color(255, 255, 255));
+        jpane_missions_en_attente.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jtable_missions_en_cours.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 12)), "Liste desMissions en cours", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 13))); // NOI18N
+        jtable_missions_en_cours.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        jtable_missions_en_cours.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Client", "Etudiant", "Annee", "Statut", "Convention", "Facture"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
+        jScrollPane1.setViewportView(jtable_missions_en_cours);
+
+        lbl_recherche.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        lbl_recherche.setText("Recherche");
+
+        bt_valider.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        bt_valider.setText("Valider");
+
+        txtField_recherche.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        txtField_recherche.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtField_rechercheFocusGained(evt);
+            }
+        });
+
+        jComboBox_enAttente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Par année", "Par Nom Client", "Par Nom Etudiant" }));
+        jComboBox_enAttente.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        javax.swing.GroupLayout jpane_missions_en_attenteLayout = new javax.swing.GroupLayout(jpane_missions_en_attente);
+        jpane_missions_en_attente.setLayout(jpane_missions_en_attenteLayout);
+        jpane_missions_en_attenteLayout.setHorizontalGroup(
+            jpane_missions_en_attenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpane_missions_en_attenteLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jpane_missions_en_attenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 595, Short.MAX_VALUE)
+                    .addGroup(jpane_missions_en_attenteLayout.createSequentialGroup()
+                        .addGroup(jpane_missions_en_attenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbl_recherche)
+                            .addGroup(jpane_missions_en_attenteLayout.createSequentialGroup()
+                                .addComponent(jComboBox_enAttente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtField_recherche, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(bt_valider)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jpane_missions_en_attenteLayout.setVerticalGroup(
+            jpane_missions_en_attenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpane_missions_en_attenteLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lbl_recherche)
+                .addGap(11, 11, 11)
+                .addGroup(jpane_missions_en_attenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtField_recherche, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bt_valider)
+                    .addComponent(jComboBox_enAttente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 489, Short.MAX_VALUE)
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -323,7 +399,9 @@ public class SMission_EnAttente extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(pan_Menu3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 643, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jpane_missions_en_attente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(14, 14, 14)
                 .addComponent(bt_Deco))
         );
         layout.setVerticalGroup(
@@ -331,8 +409,12 @@ public class SMission_EnAttente extends javax.swing.JFrame {
             .addComponent(pan_Menu3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(bt_Deco)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jpane_missions_en_attente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(bt_Deco)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
 
         pack();
@@ -540,17 +622,6 @@ int input = JOptionPane.showConfirmDialog(this, "Voulez vous quitter l'applicati
         txtField_recherche.setToolTipText("Entrez numero de mission");
     }//GEN-LAST:event_txtField_rechercheFocusGained
 
-    private void bt_DecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_DecoActionPerformed
-        int input = JOptionPane.showConfirmDialog(this, "Voulez vous retourner à l'écran de connexion?", "", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
-        if (input == JOptionPane.OK_OPTION) {
-            this.setVisible(false);
-            Connexion connexion = new Connexion();
-            connexion.setVisible(true);
-        } else if (input == JOptionPane.CANCEL_OPTION) {
-            this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-        }
-    }//GEN-LAST:event_bt_DecoActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -588,11 +659,16 @@ int input = JOptionPane.showConfirmDialog(this, "Voulez vous quitter l'applicati
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_Deco;
+    private javax.swing.JButton bt_valider;
     private javax.swing.JComboBox<String> cbb_conventions1;
     private javax.swing.JComboBox<String> cbb_entreprises1;
     private javax.swing.JComboBox<String> cbb_etudiants1;
     private javax.swing.JComboBox<String> cbb_facturation1;
     private javax.swing.JComboBox<String> cbb_missions1;
+    private javax.swing.JComboBox<String> jComboBox_enAttente;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel jpane_missions_en_attente;
+    private javax.swing.JTable jtable_missions_en_cours;
     private javax.swing.JLabel lbl_Img3;
     private javax.swing.JLabel lbl_NomUtilisateur3;
     private javax.swing.JLabel lbl_accueil1;
@@ -602,9 +678,11 @@ int input = JOptionPane.showConfirmDialog(this, "Voulez vous quitter l'applicati
     private javax.swing.JLabel lbl_facturation1;
     private javax.swing.JLabel lbl_prenomUtilisateur3;
     private javax.swing.JLabel lbl_profil1;
+    private javax.swing.JLabel lbl_recherche;
     private javax.swing.JLabel lbl_suivi_mission1;
     private javax.swing.JPanel pan_Menu3;
     private javax.swing.JPanel pan_Nav1;
     private javax.swing.JPanel pan_Profil3;
+    private javax.swing.JTextField txtField_recherche;
     // End of variables declaration//GEN-END:variables
 }

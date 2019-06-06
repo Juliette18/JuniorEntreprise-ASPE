@@ -556,11 +556,11 @@
                       <Component id="bt_convention" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="bt_facturation" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="38" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
                   <Component id="lb_suiviActivites" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                   <Component id="suiviActiviteJPanel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="86" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -633,20 +633,30 @@
                       <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="lb_missionsTerminees" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                              <Component id="lb_nbMissionsTerminees" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="lb_missionsTerminees" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lb_missionsEnAttente" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="lb_payementsEnAttente" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lb_nbMissionsEnAttente" max="32767" attributes="0"/>
+                                  <Component id="lb_nbMissionsTerminees" max="32767" attributes="0"/>
+                                  <Component id="lb_nbPayementsEnAttente" alignment="0" max="32767" attributes="0"/>
+                              </Group>
                           </Group>
-                          <Group type="102" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
                               <Component id="lb_missionsEnCours" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                               <Component id="lb_nbMissionsEnCours" min="-2" pref="44" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="353" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="lb_payementsEnAttente" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="lb_nbPayementsEnAttente" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -666,12 +676,17 @@
                           <Component id="lb_missionsTerminees" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lb_nbMissionsTerminees" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lb_missionsEnAttente" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lb_nbMissionsEnAttente" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="41" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="lb_payementsEnAttente" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lb_nbPayementsEnAttente" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="42" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -701,6 +716,14 @@
                 <Property name="text" type="java.lang.String" value="Missions terminees : "/>
               </Properties>
             </Component>
+            <Component class="javax.swing.JLabel" name="lb_missionsEnAttente">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="13" style="0"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Missions en attente : "/>
+              </Properties>
+            </Component>
             <Component class="javax.swing.JLabel" name="lb_nbMissionsTerminees">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -715,6 +738,14 @@
                   <Font name="Tahoma" size="13" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Payements en attente :"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lb_nbMissionsEnAttente">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="13" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="0"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lb_nbPayementsEnAttente">

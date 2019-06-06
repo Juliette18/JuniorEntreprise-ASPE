@@ -175,7 +175,6 @@ public class Connexion extends javax.swing.JFrame {
             while (rs.next()) {
                 if ((rs.getString("username").equals(I)) && rs.getString("password").equals(M)) {
                     System.out.println(rs.getString("username"));
-<<<<<<< HEAD
                     if (rs.getBoolean("emp") == true) {
                         AcceuilA acceuilA = new AcceuilA();
                         this.setVisible(false);
@@ -183,16 +182,6 @@ public class Connexion extends javax.swing.JFrame {
                         break;
                     } else {
                         AcceuilE acceuilE = new AcceuilE();
-=======
-                    if (rs.getBoolean("emp")==true){
-                        AcceuilA  acceuilA = new AcceuilA(rs.getString("username"));
-                        this.setVisible(false);
-                        out = true;
-                        break;
-                    }
-                    else {
-                        AcceuilE  acceuilE = new AcceuilE(rs.getString("username"));
->>>>>>> 4592657b6a195a4ec8c63373e94e315dc00d053a
                         this.setVisible(false);
                         out = true;
                         break;

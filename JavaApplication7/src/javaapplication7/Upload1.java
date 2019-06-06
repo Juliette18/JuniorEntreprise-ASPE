@@ -3,25 +3,27 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Ecrans;
+package javaapplication7;
 
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
+import java.awt.FileDialog;
 import java.awt.GraphicsEnvironment;
 import java.awt.Rectangle;
+import java.io.File;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Niakulu
  */
-public class AfficheFact extends javax.swing.JFrame {
+public class Upload1 extends javax.swing.JFrame {
 
     /**
-     * Creates new form AfficheFact
+     * Creates new form Upload
      */
-    public AfficheFact() {
+    public Upload1() {
         initComponents();
-      
+        this.setVisible(true);
     }
 
     /**
@@ -52,19 +54,15 @@ public class AfficheFact extends javax.swing.JFrame {
         lbl_facturation = new javax.swing.JLabel();
         cbb_facturation = new javax.swing.JComboBox<>();
         bt_Deco = new javax.swing.JButton();
-        mainJPanel = new javax.swing.JPanel();
-        lb_titreFacture = new javax.swing.JLabel();
-        lb_montant = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        lb_client = new javax.swing.JLabel();
-        lb_paye = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        lb_montantFromBdd = new javax.swing.JLabel();
-        lb_dateFromBdd = new javax.swing.JLabel();
-        lb_clientFromBdd = new javax.swing.JLabel();
-        lb_payeeFromBdd = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jTextField1 = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Unagi - Upload");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
@@ -73,6 +71,7 @@ public class AfficheFact extends javax.swing.JFrame {
 
         pan_Menu.setBackground(new java.awt.Color(220, 220, 220));
         pan_Menu.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        pan_Menu.setToolTipText("");
 
         pan_Profil.setBackground(new java.awt.Color(255, 255, 255));
         pan_Profil.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -293,7 +292,7 @@ public class AfficheFact extends javax.swing.JFrame {
                 .addGroup(pan_NavLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_facturation)
                     .addComponent(cbb_facturation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(149, Short.MAX_VALUE))
+                .addContainerGap(139, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout pan_MenuLayout = new javax.swing.GroupLayout(pan_Menu);
@@ -327,81 +326,63 @@ public class AfficheFact extends javax.swing.JFrame {
             }
         });
 
-        lb_titreFacture.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lb_titreFacture.setText("Facture numéro :");
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        lb_montant.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        lb_montant.setText("Montant : ");
+        jLabel1.setText("Zone d'upload des conventions signées par toutes les parties");
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        jLabel3.setText("Date : ");
+        jLabel2.setText("Veuillez sélectionnez un fichier  au format pdf sur votre ordinateur.");
 
-        lb_client.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        lb_client.setText("Client :");
+        jButton1.setText("Choix du fichier");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
-        lb_paye.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        lb_paye.setText("Payée :");
+        jButton2.setText("Upload");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel1.setText("NumFacture");
-
-        lb_montantFromBdd.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        lb_montantFromBdd.setText("jLabel4");
-
-        lb_dateFromBdd.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        lb_dateFromBdd.setText("jLabel5");
-
-        lb_clientFromBdd.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        lb_clientFromBdd.setText("jLabel6");
-
-        lb_payeeFromBdd.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        lb_payeeFromBdd.setText("jLabel7");
-
-        javax.swing.GroupLayout mainJPanelLayout = new javax.swing.GroupLayout(mainJPanel);
-        mainJPanel.setLayout(mainJPanelLayout);
-        mainJPanelLayout.setHorizontalGroup(
-            mainJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(mainJPanelLayout.createSequentialGroup()
-                .addGap(186, 186, 186)
-                .addGroup(mainJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lb_titreFacture)
-                    .addComponent(lb_montant)
-                    .addComponent(lb_client)
-                    .addComponent(lb_paye)
-                    .addComponent(jLabel3))
-                .addGap(18, 18, 18)
-                .addGroup(mainJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lb_payeeFromBdd)
-                    .addComponent(lb_dateFromBdd)
-                    .addComponent(lb_montantFromBdd)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lb_clientFromBdd))
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(217, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(235, 235, 235))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jButton1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextField1))
+                            .addComponent(jLabel2))
+                        .addGap(219, 219, 219))))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(339, 339, 339)
+                .addComponent(jButton2)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
-        mainJPanelLayout.setVerticalGroup(
-            mainJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(mainJPanelLayout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addGroup(mainJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lb_titreFacture)
-                    .addComponent(jLabel1))
-                .addGap(48, 48, 48)
-                .addGroup(mainJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lb_montant)
-                    .addComponent(lb_montantFromBdd))
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(46, 46, 46)
-                .addGroup(mainJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(lb_dateFromBdd))
-                .addGap(46, 46, 46)
-                .addGroup(mainJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lb_client)
-                    .addComponent(lb_clientFromBdd))
-                .addGap(44, 44, 44)
-                .addGroup(mainJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lb_paye)
-                    .addComponent(lb_payeeFromBdd))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2)
+                .addGap(70, 70, 70)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(38, 38, 38)
+                .addComponent(jButton2)
+                .addContainerGap(164, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -410,14 +391,14 @@ public class AfficheFact extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(pan_Menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 586, Short.MAX_VALUE)
-                        .addComponent(bt_Deco, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 925, Short.MAX_VALUE)
+                        .addComponent(bt_Deco))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(mainJPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())))
+                        .addGap(114, 114, 114)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -425,9 +406,9 @@ public class AfficheFact extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(bt_Deco)
-                .addGap(16, 16, 16)
-                .addComponent(mainJPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(45, 45, 45)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -572,7 +553,7 @@ public class AfficheFact extends javax.swing.JFrame {
         }
         if (choix.equals("Upload")){
             this.setVisible(false);
-            Upload upload = new Upload();
+            Upload1 upload = new Upload1();
             upload.setVisible(true);
         }
         if (choix.equals("Liste des conventions")){
@@ -619,18 +600,32 @@ public class AfficheFact extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_cbb_facturationActionPerformed
 
-    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-    int input = JOptionPane.showConfirmDialog(this, "Voulez vous quitter l'application ?", "", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {                                   
+int input = JOptionPane.showConfirmDialog(this, "Voulez vous quitter l'application ?", "", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
         if (input == JOptionPane.OK_OPTION) {
             System.out.println("Application Fermée");
             this.dispose();
             System.exit(0);
         } else if (input == JOptionPane.CANCEL_OPTION) {
             this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-        }
-    }//GEN-LAST:event_formWindowClosing
+        }        // TODO add your handling code here:
+    }                                                                    
 
-    private void bt_DecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_DecoActionPerformed
+<<<<<<< HEAD
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        FileDialog fd = new FileDialog(this, "Choose a file", FileDialog.LOAD);
+        fd.setDirectory("C:\\");
+        fd.setFile("*.pdf");
+        fd.setVisible(true);
+        String filename = fd.getFile();
+        jTextField1.setText(filename);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        //To do envoi bdd vpoir avec Juliette La Grande Prêtresse
+    }                                                                                
+=======
+    private void bt_DecoActionPerformed(java.awt.event.ActionEvent evt) {                                        
         int input = JOptionPane.showConfirmDialog(this, "Voulez vous retourner à l'écran de connexion?", "", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
         if (input == JOptionPane.OK_OPTION) {
             this.setVisible(false);
@@ -639,7 +634,8 @@ public class AfficheFact extends javax.swing.JFrame {
         } else if (input == JOptionPane.CANCEL_OPTION) {
             this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         }
-    }//GEN-LAST:event_bt_DecoActionPerformed
+    }                                                                              
+>>>>>>> 4592657b6a195a4ec8c63373e94e315dc00d053a
 
     /**
      * @param args the command line arguments
@@ -658,20 +654,21 @@ public class AfficheFact extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AfficheFact.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Upload1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AfficheFact.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Upload1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AfficheFact.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Upload1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AfficheFact.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Upload1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AfficheFact().setVisible(true);
+                new Upload1().setVisible(true);
             }
         });
     }
@@ -683,16 +680,12 @@ public class AfficheFact extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbb_etudiants;
     private javax.swing.JComboBox<String> cbb_facturation;
     private javax.swing.JComboBox<String> cbb_missions;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel lb_client;
-    private javax.swing.JLabel lb_clientFromBdd;
-    private javax.swing.JLabel lb_dateFromBdd;
-    private javax.swing.JLabel lb_montant;
-    private javax.swing.JLabel lb_montantFromBdd;
-    private javax.swing.JLabel lb_paye;
-    private javax.swing.JLabel lb_payeeFromBdd;
-    private javax.swing.JLabel lb_titreFacture;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel lbl_Img;
     private javax.swing.JLabel lbl_NomUtilisateur;
     private javax.swing.JLabel lbl_accueil;
@@ -703,7 +696,6 @@ public class AfficheFact extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_prenomUtilisateur;
     private javax.swing.JLabel lbl_profil;
     private javax.swing.JLabel lbl_suivi_mission;
-    private javax.swing.JPanel mainJPanel;
     private javax.swing.JPanel pan_Menu;
     private javax.swing.JPanel pan_Nav;
     private javax.swing.JPanel pan_Profil;

@@ -8,6 +8,9 @@ package Ecrans;
 import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import java.awt.GraphicsEnvironment;
+import java.awt.Rectangle;
+
 /**
  *
  * @author Niakulu
@@ -17,8 +20,7 @@ public class AcceuilE extends javax.swing.JFrame {
     /**
      * Creates new form AcceuilE
      */
-    public AcceuilE(String username) {
-        this.username=username;
+    public AcceuilE() {
         initComponents();
        
         this.setVisible(true);
@@ -152,9 +154,9 @@ public class AcceuilE extends javax.swing.JFrame {
             .addGroup(pan_NavLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lbl_profil)
-                .addGap(18, 18, 18)
+                .addGap(20, 20, 20)
                 .addComponent(lbl_accueil)
-                .addGap(30, 30, 30)
+                .addGap(28, 28, 28)
                 .addComponent(lbl_conventions)
                 .addContainerGap(33, Short.MAX_VALUE))
         );
@@ -418,5 +420,5 @@ public class AcceuilE extends javax.swing.JFrame {
     private javax.swing.JPanel pan_Profil;
     // End of variables declaration//GEN-END:variables
     private DefaultListModel<String> listeModelListeConventionsPassee;
-    private String username;
+
 }

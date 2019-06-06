@@ -87,7 +87,7 @@ public class Upload extends javax.swing.JFrame {
         pan_ProfilLayout.setHorizontalGroup(
             pan_ProfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pan_ProfilLayout.createSequentialGroup()
-                .addContainerGap(16, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lbl_Img)
                 .addGroup(pan_ProfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pan_ProfilLayout.createSequentialGroup()
@@ -320,11 +320,6 @@ public class Upload extends javax.swing.JFrame {
         bt_Deco.setForeground(new java.awt.Color(255, 255, 255));
         bt_Deco.setText("Déconnexion");
         bt_Deco.setToolTipText("");
-        bt_Deco.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bt_DecoActionPerformed(evt);
-            }
-        });
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -611,7 +606,6 @@ int input = JOptionPane.showConfirmDialog(this, "Voulez vous quitter l'applicati
         }        // TODO add your handling code here:
     }//GEN-LAST:event_formWindowClosing
 
-<<<<<<< HEAD
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         FileDialog fd = new FileDialog(this, "Choose a file", FileDialog.LOAD);
         fd.setDirectory("C:\\");
@@ -624,18 +618,6 @@ int input = JOptionPane.showConfirmDialog(this, "Voulez vous quitter l'applicati
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         //To do envoi bdd vpoir avec Juliette La Grande Prêtresse
     }//GEN-LAST:event_jButton2ActionPerformed
-=======
-    private void bt_DecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_DecoActionPerformed
-        int input = JOptionPane.showConfirmDialog(this, "Voulez vous retourner à l'écran de connexion?", "", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
-        if (input == JOptionPane.OK_OPTION) {
-            this.setVisible(false);
-            Connexion connexion = new Connexion();
-            connexion.setVisible(true);
-        } else if (input == JOptionPane.CANCEL_OPTION) {
-            this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-        }
-    }//GEN-LAST:event_bt_DecoActionPerformed
->>>>>>> 4592657b6a195a4ec8c63373e94e315dc00d053a
 
     /**
      * @param args the command line arguments

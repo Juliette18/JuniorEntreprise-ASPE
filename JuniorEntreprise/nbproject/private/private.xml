@@ -1,42 +1,16 @@
-<<<<<<< HEAD
-<?xml version="1.0" encoding="UTF-8"?>
-<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/Niakulu/Desktop/JuniorEntreprise-ASPE-develop/JuniorEntreprise/src/Ecrans/AcceuilA.java</file>
-            <file>file:/C:/Users/Niakulu/Desktop/JuniorEntreprise-ASPE-develop/JuniorEntreprise/src/Ecrans/AjoutClient.java</file>
-            <file>file:/C:/Users/Niakulu/Desktop/JuniorEntreprise-ASPE-develop/JuniorEntreprise/src/Ecrans/AjoutConvention.java</file>
-            <file>file:/C:/Users/Niakulu/Desktop/JuniorEntreprise-ASPE-develop/JuniorEntreprise/src/Ecrans/AjoutFacture.java</file>
-            <file>file:/C:/Users/Niakulu/Desktop/JuniorEntreprise-ASPE-develop/JuniorEntreprise/src/Ecrans/FicheEtudiant.java</file>
-        </group>
-    </open-files>
-</project-private>
-=======
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Juliette/Desktop/JUNIOR/JuniorEntreprise-ASPE/JuniorEntreprise/src/Ecrans/AjoutClient.java</file>
-            <file>file:/C:/Users/Juliette/Desktop/JUNIOR/JuniorEntreprise-ASPE/JuniorEntreprise/src/Ecrans/ConnexionBD.java</file>
-            <file>file:/C:/Users/Juliette/Desktop/JUNIOR/JuniorEntreprise-ASPE/JuniorEntreprise/src/Ecrans/Connexion.java</file>
             <file>file:/C:/Users/Niakulu/Desktop/JuniorEntreprise-ASPE-develop/JuniorEntreprise/src/Ecrans/AcceuilA.java</file>
+            <file>file:/C:/Users/Niakulu/Desktop/JuniorEntreprise-ASPE-develop/JuniorEntreprise/src/Ecrans/Upload.java</file>
             <file>file:/C:/Users/Niakulu/Desktop/JuniorEntreprise-ASPE-develop/JuniorEntreprise/src/Ecrans/FicheEtudiant.java</file>
-
-<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
-    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/Juliette/Desktop/JUNIOR/JuniorEntreprise-ASPE/JuniorEntreprise/src/Ecrans/AjoutClient.java</file>
-            <file>file:/C:/Users/Juliette/Desktop/JUNIOR/JuniorEntreprise-ASPE/JuniorEntreprise/src/Ecrans/ConnexionBD.java</file>
-            <file>file:/C:/Users/Juliette/Desktop/JUNIOR/JuniorEntreprise-ASPE/JuniorEntreprise/src/Ecrans/Connexion.java</file>
-            <file>file:/C:/Users/Niakulu/Desktop/JuniorEntreprise-ASPE-develop/JuniorEntreprise/src/Ecrans/AcceuilA.java</file>
-            <file>file:/C:/Users/Niakulu/Desktop/JuniorEntreprise-ASPE-develop/JuniorEntreprise/src/Ecrans/FicheEtudiant.java</file>
-            <file>file:/C:/Users/Juliette/Desktop/JUNIOR/JuniorEntreprise-ASPE/JuniorEntreprise/src/Ecrans/Connexion.java</file>
+            <file>file:/C:/Users/Niakulu/Desktop/JuniorEntreprise-ASPE-develop/JuniorEntreprise/src/Ecrans/AcceuilE.java</file>
+            <file>file:/C:/Users/Niakulu/Desktop/JuniorEntreprise-ASPE-develop/JuniorEntreprise/src/Ecrans/AjoutEtudiant.java</file>
+            <file>file:/C:/Users/Niakulu/Desktop/JuniorEntreprise-ASPE-develop/JuniorEntreprise/src/Ecrans/FicheClient_Paiement.java</file>
             <file>file:/C:/Users/Niakulu/Desktop/JuniorEntreprise-ASPE-develop/JuniorEntreprise/src/Ecrans/AjoutClient.java</file>
-            <file>file:/C:/Users/Niakulu/Desktop/JuniorEntreprise-ASPE-develop/JuniorEntreprise/src/Ecrans/AjoutFacture.java</file>
-            <file>file:/C:/Users/Niakulu/Desktop/JuniorEntreprise-ASPE-develop/JuniorEntreprise/src/Ecrans/AjoutConvention.java</file>
+            <file>file:/C:/Users/Niakulu/Desktop/JuniorEntreprise-ASPE-develop/JuniorEntreprise/src/Ecrans/Connexion.java</file>
         </group>
     </open-files>
 </project-private>
->>>>>>> 3f551f6b8885b19e5e9a63c041e436936d2cb964

@@ -21,9 +21,7 @@ public class SMission_EnCours extends javax.swing.JFrame {
      */
     public SMission_EnCours() {
         initComponents();
-        GraphicsEnvironment genv = GraphicsEnvironment.getLocalGraphicsEnvironment();
-        Rectangle bounds = genv.getMaximumWindowBounds();
-        this.setBounds(bounds);
+      
     }
 
     /**

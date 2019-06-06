@@ -340,6 +340,11 @@ public class ListeConventionA extends javax.swing.JFrame {
         bt_Deco.setForeground(new java.awt.Color(255, 255, 255));
         bt_Deco.setText("Déconnexion");
         bt_Deco.setToolTipText("");
+        bt_Deco.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_DecoActionPerformed(evt);
+            }
+        });
 
         mainJPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -782,6 +787,17 @@ public class ListeConventionA extends javax.swing.JFrame {
                 modelTableConvention.removeRow(i);
             }
     }//GEN-LAST:event_bt_reinitialiserRechercheActionPerformed
+
+    private void bt_DecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_DecoActionPerformed
+        int input = JOptionPane.showConfirmDialog(this, "Voulez vous retourner à l'écran de connexion?", "", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
+        if (input == JOptionPane.OK_OPTION) {
+            this.setVisible(false);
+            Connexion connexion = new Connexion();
+            connexion.setVisible(true);
+        } else if (input == JOptionPane.CANCEL_OPTION) {
+            this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        }
+    }//GEN-LAST:event_bt_DecoActionPerformed
 
     /**
      * @param args the command line arguments

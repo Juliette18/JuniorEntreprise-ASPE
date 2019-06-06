@@ -8,9 +8,6 @@ package Ecrans;
 import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import java.awt.GraphicsEnvironment;
-import java.awt.Rectangle;
-
 /**
  *
  * @author Niakulu

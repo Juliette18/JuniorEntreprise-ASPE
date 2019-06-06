@@ -5,8 +5,6 @@ import java.sql.PreparedStatement;
 import java.util.regex.Pattern;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import java.awt.GraphicsEnvironment;
-import java.awt.Rectangle;
 
 /**
  * @author Niakulu

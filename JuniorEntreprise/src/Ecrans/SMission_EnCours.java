@@ -52,6 +52,13 @@ public class SMission_EnCours extends javax.swing.JFrame {
         lbl_facturation1 = new javax.swing.JLabel();
         cbb_facturation1 = new javax.swing.JComboBox<>();
         bt_Deco = new javax.swing.JButton();
+        jpane_missions_en_cours = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jtable_missions_en_cours = new javax.swing.JTable();
+        lbl_recherche = new javax.swing.JLabel();
+        bt_valider = new javax.swing.JButton();
+        txtField_recherche = new javax.swing.JTextField();
+        jComboBox_enCours = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Unagi- Missions en cours");
@@ -78,7 +85,7 @@ public class SMission_EnCours extends javax.swing.JFrame {
         pan_Profil3Layout.setHorizontalGroup(
             pan_Profil3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pan_Profil3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(16, Short.MAX_VALUE)
                 .addComponent(lbl_Img3)
                 .addGroup(pan_Profil3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pan_Profil3Layout.createSequentialGroup()
@@ -283,7 +290,7 @@ public class SMission_EnCours extends javax.swing.JFrame {
                 .addGroup(pan_Nav1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_facturation1)
                     .addComponent(cbb_facturation1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(139, Short.MAX_VALUE))
+                .addContainerGap(149, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout pan_Menu3Layout = new javax.swing.GroupLayout(pan_Menu3);
@@ -312,13 +319,94 @@ public class SMission_EnCours extends javax.swing.JFrame {
         bt_Deco.setText("Déconnexion");
         bt_Deco.setToolTipText("");
 
+        jpane_missions_en_cours.setBackground(new java.awt.Color(255, 255, 255));
+        jpane_missions_en_cours.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jtable_missions_en_cours.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 12)), "Liste desMissions en cours", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 13))); // NOI18N
+        jtable_missions_en_cours.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        jtable_missions_en_cours.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Client", "Etudiant", "Annee", "Statut", "Convention", "Facture"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(jtable_missions_en_cours);
+
+        lbl_recherche.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        lbl_recherche.setText("Recherche");
+
+        bt_valider.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        bt_valider.setText("Valider");
+
+        txtField_recherche.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        txtField_recherche.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtField_rechercheFocusGained(evt);
+            }
+        });
+
+        jComboBox_enCours.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Par année", "Par Nom Client", "Par Nom Etudiant" }));
+        jComboBox_enCours.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jComboBox_enCours.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox_enCoursActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jpane_missions_en_coursLayout = new javax.swing.GroupLayout(jpane_missions_en_cours);
+        jpane_missions_en_cours.setLayout(jpane_missions_en_coursLayout);
+        jpane_missions_en_coursLayout.setHorizontalGroup(
+            jpane_missions_en_coursLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpane_missions_en_coursLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jpane_missions_en_coursLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 595, Short.MAX_VALUE)
+                    .addGroup(jpane_missions_en_coursLayout.createSequentialGroup()
+                        .addGroup(jpane_missions_en_coursLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbl_recherche)
+                            .addGroup(jpane_missions_en_coursLayout.createSequentialGroup()
+                                .addComponent(jComboBox_enCours, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(21, 21, 21)
+                                .addComponent(txtField_recherche, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(bt_valider)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jpane_missions_en_coursLayout.setVerticalGroup(
+            jpane_missions_en_coursLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpane_missions_en_coursLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lbl_recherche)
+                .addGap(8, 8, 8)
+                .addGroup(jpane_missions_en_coursLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtField_recherche, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bt_valider)
+                    .addComponent(jComboBox_enCours, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 485, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(pan_Menu3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 643, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jpane_missions_en_cours, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(14, 14, 14)
                 .addComponent(bt_Deco))
         );
         layout.setVerticalGroup(
@@ -326,8 +414,12 @@ public class SMission_EnCours extends javax.swing.JFrame {
             .addComponent(pan_Menu3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(bt_Deco)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jpane_missions_en_cours, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(bt_Deco)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
 
         pack();
@@ -530,6 +622,25 @@ int input = JOptionPane.showConfirmDialog(this, "Voulez vous quitter l'applicati
         }        // TODO add your handling code here:
     }//GEN-LAST:event_formWindowClosing
 
+    private void txtField_rechercheFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtField_rechercheFocusGained
+        // TODO add your handling code here:
+        txtField_recherche.setToolTipText("Entrez numero de mission");
+    }//GEN-LAST:event_txtField_rechercheFocusGained
+
+    private void jComboBox_enCoursActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox_enCoursActionPerformed
+        // TODO add your handling code here:
+        String choix = (String) jComboBox_enCours.getSelectedItem();
+        if (choix.equals("Par année")){
+            //recup donnée BD
+        }
+        if (choix.equals("Par Nom Client")){
+            //recup donnée BD
+        }
+        if (choix.equals("Par nom Etudiant")){
+            //recup donnée BD
+        }
+    }//GEN-LAST:event_jComboBox_enCoursActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -567,11 +678,16 @@ int input = JOptionPane.showConfirmDialog(this, "Voulez vous quitter l'applicati
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_Deco;
+    private javax.swing.JButton bt_valider;
     private javax.swing.JComboBox<String> cbb_conventions1;
     private javax.swing.JComboBox<String> cbb_entreprises1;
     private javax.swing.JComboBox<String> cbb_etudiants1;
     private javax.swing.JComboBox<String> cbb_facturation1;
     private javax.swing.JComboBox<String> cbb_missions1;
+    private javax.swing.JComboBox<String> jComboBox_enCours;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel jpane_missions_en_cours;
+    private javax.swing.JTable jtable_missions_en_cours;
     private javax.swing.JLabel lbl_Img3;
     private javax.swing.JLabel lbl_NomUtilisateur3;
     private javax.swing.JLabel lbl_accueil1;
@@ -581,9 +697,11 @@ int input = JOptionPane.showConfirmDialog(this, "Voulez vous quitter l'applicati
     private javax.swing.JLabel lbl_facturation1;
     private javax.swing.JLabel lbl_prenomUtilisateur3;
     private javax.swing.JLabel lbl_profil1;
+    private javax.swing.JLabel lbl_recherche;
     private javax.swing.JLabel lbl_suivi_mission1;
     private javax.swing.JPanel pan_Menu3;
     private javax.swing.JPanel pan_Nav1;
     private javax.swing.JPanel pan_Profil3;
+    private javax.swing.JTextField txtField_recherche;
     // End of variables declaration//GEN-END:variables
 }

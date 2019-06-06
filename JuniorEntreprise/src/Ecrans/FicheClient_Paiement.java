@@ -22,9 +22,7 @@ public class FicheClient_Paiement extends javax.swing.JFrame {
     public FicheClient_Paiement() {
         initComponents();
         this.setVisible(true);
-        GraphicsEnvironment genv = GraphicsEnvironment.getLocalGraphicsEnvironment();
-        Rectangle bounds = genv.getMaximumWindowBounds();
-        this.setBounds(bounds);
+ 
     }
 
     /**

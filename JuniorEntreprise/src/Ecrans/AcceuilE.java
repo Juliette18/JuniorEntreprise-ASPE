@@ -22,9 +22,7 @@ public class AcceuilE extends javax.swing.JFrame {
      */
     public AcceuilE() {
         initComponents();
-        GraphicsEnvironment genv = GraphicsEnvironment.getLocalGraphicsEnvironment();
-        Rectangle bounds = genv.getMaximumWindowBounds();
-        this.setBounds(bounds);
+       
         this.setVisible(true);
         listeModelListeConventionsPassee = new DefaultListModel<String>();
         remplirListModel();

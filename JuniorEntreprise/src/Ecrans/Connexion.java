@@ -40,9 +40,7 @@ public class Connexion extends javax.swing.JFrame {
 
         initComponents();
         this.setVisible(true);
-        GraphicsEnvironment genv = GraphicsEnvironment.getLocalGraphicsEnvironment();
-        Rectangle bounds = genv.getMaximumWindowBounds();
-        this.setBounds(bounds);
+     
     }
 
 

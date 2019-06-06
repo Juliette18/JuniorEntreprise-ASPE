@@ -21,9 +21,7 @@ public class AfficheConv extends javax.swing.JFrame {
      */
     public AfficheConv() {
         initComponents();
-        GraphicsEnvironment genv = GraphicsEnvironment.getLocalGraphicsEnvironment();
-        Rectangle bounds = genv.getMaximumWindowBounds();
-        this.setBounds(bounds);
+        
     }
 
     /**

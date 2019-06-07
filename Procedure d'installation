@@ -1,1 +1,6 @@
 executer le fichier .jar (dans le répertoire \JuniorEntreprise\dist) dans le système d'exploitation Windows.
+
+Remarque: Il y a des fichiers en python dans le dossier. 
+Cela est dû au fait que nous avions commencé le projet avec l'objectif de développer avec le langage python. 
+Nous nous sommes vues obligées changer de langage 2 semaines avant la date de rendu. 
+c'est également la raison pour laquelle toutes les fonctionnalités sont partiellement implémentées.

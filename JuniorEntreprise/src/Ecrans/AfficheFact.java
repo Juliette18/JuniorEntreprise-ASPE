@@ -9,6 +9,9 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import java.awt.GraphicsEnvironment;
 import java.awt.Rectangle;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -535,7 +538,12 @@ public class AfficheFact extends javax.swing.JFrame {
         }
         if (choix.equals("Liste des étudiants")){
             this.setVisible(false);
-            ListeEtudiants listeE = new ListeEtudiants();
+            ListeEtudiants listeE = null;
+            try {
+                listeE = new ListeEtudiants();
+            } catch (SQLException ex) {
+                Logger.getLogger(AfficheFact.class.getName()).log(Level.SEVERE, null, ex);
+            }
             listeE.setVisible(true);
         }
     }//GEN-LAST:event_cbb_etudiantsActionPerformed

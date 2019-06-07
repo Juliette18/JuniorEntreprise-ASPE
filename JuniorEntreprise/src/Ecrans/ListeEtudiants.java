@@ -626,14 +626,10 @@ public class ListeEtudiants extends javax.swing.JFrame {
             String nom = listEtudiant.getSelectedValue();
             
             FicheEtudiant fEtu = null;
-        try {
             fEtu = new FicheEtudiant();
-            fEtu.lb_NomBD.setText();
-        } catch (SQLException ex) {
-            Logger.getLogger(ListeEtudiants.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        this.setVisible(false);   
-        fEtu.setVisible(true);
+            fEtu.lb_NomBD.setText(nom);
+            this.setVisible(false);   
+            fEtu.setVisible(true);
        
         
     }//GEN-LAST:event_bt_chercherActionPerformed

@@ -2,6 +2,7 @@ package Ecrans;
 
 import java.awt.GraphicsEnvironment;
 import java.awt.Rectangle;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -30,24 +31,31 @@ public class ListeClients extends javax.swing.JFrame {
         initComponents();
         this.setVisible(true);
         modelListeClient = new DefaultListModel();
+        listeClients.setModel(modelListeClient);
         
         JScrollPane jsp = new JScrollPane();
         listeClients.add(jsp);
         
        //rempli la liste avec les noms des clients dans la bdd
-        final String maRequete = "SELECT nomentreprise FROM ??? ";
-        Statement st;
-        ConnexionBD conn = new ConnexionBD();
+        final String maRequete = "select nomentreprise from entreprise ";
+        PreparedStatement ps;
+        ResultSet rs;
         
-            st = conn.createStatement();
-            ResultSet rs = st.executeQuery(maRequete);
+        try {
+            ps= ConnexionBD.getConnection().prepareStatement(maRequete);
+            rs=ps.executeQuery();
+            
             while (rs.next()) 
             {
-                String nomentreprise = rs.getString("nomentreprise");
-                modelListeClient.addElement(nomentreprise);
+                String np = rs.getString("nomentreprise");
+                
+                modelListeClient.addElement(np);
             }
-        if(conn != null) conn.close(); 
-
+            
+            
+        } catch (ClassNotFoundException ex) {     
+            Logger.getLogger(ListeEtudiants.class.getName()).log(Level.SEVERE, null, ex);
+        }
  
     }
 

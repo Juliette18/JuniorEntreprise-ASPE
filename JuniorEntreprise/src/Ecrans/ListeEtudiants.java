@@ -32,9 +32,10 @@ public class ListeEtudiants extends javax.swing.JFrame {
         JScrollPane jsp = new JScrollPane();
         listEtudiant.add(jsp);
         modelListeEtu = new DefaultListModel();
+        listEtudiant.setModel(modelListeEtu);
         
        //rempli la liste avec les noms et prenoms des etudiants dans la bdd
-        final String maRequete = "SELECT nom, prenom FROM user where emp==0 ";
+        final String maRequete = "select nom, prenom from user where emp=0 ";
         PreparedStatement ps;
         ResultSet rs;
         
@@ -361,11 +362,6 @@ public class ListeEtudiants extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         listEtudiant.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        listEtudiant.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1, Item 2, Item 3, Item 4, Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         jScrollPane1.setViewportView(listEtudiant);
 
         lb_titre.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N

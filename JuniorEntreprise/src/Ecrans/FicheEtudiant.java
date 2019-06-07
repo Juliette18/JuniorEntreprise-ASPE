@@ -52,6 +52,16 @@ public class FicheEtudiant extends javax.swing.JFrame {
         lbl_facturation = new javax.swing.JLabel();
         cbb_facturation = new javax.swing.JComboBox<>();
         bt_Deco = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        pan_Etudiant = new javax.swing.JPanel();
+        lb_Nom = new javax.swing.JLabel();
+        lb_Prenom = new javax.swing.JLabel();
+        lb_NumTelEtu = new javax.swing.JLabel();
+        lb_Mail = new javax.swing.JLabel();
+        lb_NomBD = new javax.swing.JLabel();
+        lb_prenomBD = new javax.swing.JLabel();
+        lb_NumBD = new javax.swing.JLabel();
+        lb_MailBD = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Fiche étudiant");
@@ -79,7 +89,7 @@ public class FicheEtudiant extends javax.swing.JFrame {
         pan_ProfilLayout.setHorizontalGroup(
             pan_ProfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pan_ProfilLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(16, Short.MAX_VALUE)
                 .addComponent(lbl_Img)
                 .addGroup(pan_ProfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pan_ProfilLayout.createSequentialGroup()
@@ -284,7 +294,7 @@ public class FicheEtudiant extends javax.swing.JFrame {
                 .addGroup(pan_NavLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_facturation)
                     .addComponent(cbb_facturation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(139, Short.MAX_VALUE))
+                .addContainerGap(149, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout pan_MenuLayout = new javax.swing.GroupLayout(pan_Menu);
@@ -313,14 +323,95 @@ public class FicheEtudiant extends javax.swing.JFrame {
         bt_Deco.setText("Déconnexion");
         bt_Deco.setToolTipText("");
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
+        pan_Etudiant.setBorder(javax.swing.BorderFactory.createTitledBorder("Etudiant"));
+
+        lb_Nom.setText("Nom ");
+
+        lb_Prenom.setText("Prénom");
+
+        lb_NumTelEtu.setText("Numéro de téléphone");
+
+        lb_Mail.setText("Adresse mail");
+        lb_Mail.setToolTipText("");
+
+        javax.swing.GroupLayout pan_EtudiantLayout = new javax.swing.GroupLayout(pan_Etudiant);
+        pan_Etudiant.setLayout(pan_EtudiantLayout);
+        pan_EtudiantLayout.setHorizontalGroup(
+            pan_EtudiantLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pan_EtudiantLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pan_EtudiantLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lb_Nom)
+                    .addComponent(lb_Prenom)
+                    .addComponent(lb_Mail)
+                    .addComponent(lb_NumTelEtu))
+                .addContainerGap(363, Short.MAX_VALUE))
+        );
+        pan_EtudiantLayout.setVerticalGroup(
+            pan_EtudiantLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pan_EtudiantLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lb_Nom)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lb_Prenom)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lb_NumTelEtu)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lb_Mail)
+                .addContainerGap(40, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(254, 254, 254)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lb_NomBD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lb_prenomBD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lb_NumBD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lb_MailBD, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE))
+                .addContainerGap(168, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(94, 94, 94)
+                    .addComponent(pan_Etudiant, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(95, Short.MAX_VALUE)))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(144, 144, 144)
+                .addComponent(lb_NomBD)
+                .addGap(18, 18, 18)
+                .addComponent(lb_prenomBD)
+                .addGap(26, 26, 26)
+                .addComponent(lb_NumBD)
+                .addGap(32, 32, 32)
+                .addComponent(lb_MailBD)
+                .addContainerGap(176, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(116, 116, 116)
+                    .addComponent(pan_Etudiant, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(117, Short.MAX_VALUE)))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(pan_Menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 643, Short.MAX_VALUE)
-                .addComponent(bt_Deco))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(bt_Deco, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(20, 20, 20))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -328,6 +419,8 @@ public class FicheEtudiant extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(bt_Deco)
+                .addGap(55, 55, 55)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -573,6 +666,15 @@ public class FicheEtudiant extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbb_etudiants;
     private javax.swing.JComboBox<String> cbb_facturation;
     private javax.swing.JComboBox<String> cbb_missions;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lb_Mail;
+    private javax.swing.JLabel lb_MailBD;
+    private javax.swing.JLabel lb_Nom;
+    private javax.swing.JLabel lb_NomBD;
+    private javax.swing.JLabel lb_NumBD;
+    private javax.swing.JLabel lb_NumTelEtu;
+    private javax.swing.JLabel lb_Prenom;
+    private javax.swing.JLabel lb_prenomBD;
     private javax.swing.JLabel lbl_Img;
     private javax.swing.JLabel lbl_NomUtilisateur;
     private javax.swing.JLabel lbl_accueil;
@@ -583,6 +685,7 @@ public class FicheEtudiant extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_prenomUtilisateur;
     private javax.swing.JLabel lbl_profil;
     private javax.swing.JLabel lbl_suivi_mission;
+    private javax.swing.JPanel pan_Etudiant;
     private javax.swing.JPanel pan_Menu;
     private javax.swing.JPanel pan_Nav;
     private javax.swing.JPanel pan_Profil;

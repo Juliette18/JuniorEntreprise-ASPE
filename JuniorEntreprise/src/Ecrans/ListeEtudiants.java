@@ -21,7 +21,7 @@ public class ListeEtudiants extends javax.swing.JFrame {
     /**
      * Creates new form ListeEtudiants
      */
-    public ListeEtudiants() throws SQLException {
+    public ListeEtudiants()  throws SQLException  {
         initComponents();
         this.setVisible(true);
         JScrollPane jsp = new JScrollPane();
@@ -628,7 +628,8 @@ public class ListeEtudiants extends javax.swing.JFrame {
             FicheEtudiant fEtu = null;
         try {
             fEtu = new FicheEtudiant(nom);
-        } catch (SQLException ex) {
+        } 
+        catch (SQLException ex) {
             Logger.getLogger(ListeEtudiants.class.getName()).log(Level.SEVERE, null, ex);
         }
         this.setVisible(false);   

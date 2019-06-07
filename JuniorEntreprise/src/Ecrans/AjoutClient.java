@@ -7,6 +7,10 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import java.awt.GraphicsEnvironment;
 import java.awt.Rectangle;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * @author Niakulu
@@ -643,7 +647,12 @@ public class AjoutClient extends javax.swing.JFrame {
         }
         if (choix.equals("Liste des étudiants")){
             this.setVisible(false);
-            ListeEtudiants listeE = new ListeEtudiants();
+            ListeEtudiants listeE = null;
+            try {
+                listeE = new ListeEtudiants();
+            } catch (SQLException ex) {
+                Logger.getLogger(AjoutClient.class.getName()).log(Level.SEVERE, null, ex);
+            }
             listeE.setVisible(true);
         }
     }//GEN-LAST:event_cbb_etudiants1ActionPerformed
@@ -758,6 +767,9 @@ public class AjoutClient extends javax.swing.JFrame {
         String M = txt_MailE3.getText();
         String regex = "[0-9]*";
         String S = txt_Siret.getText();
+        String contact = txt_Contact3.getText();
+        String num_contact=txt_NumTelC3.getText();
+        String mail_contact=txt_MailC3.getText();
 
         if (E.equals("")|| A.equals("") || V.equals("")) {
             JOptionPane.showMessageDialog(this, "Un ou plusieurs champs sont vides", "Erreur de saisie", JOptionPane.INFORMATION_MESSAGE);
@@ -776,18 +788,26 @@ public class AjoutClient extends javax.swing.JFrame {
                 
                 PreparedStatement ps;
                 
-                final String requete = "insert into entreprise  values (?,?,?,?,?,?)";
+                final String requete = "insert into entreprise  values (?,?,?,?,?,?,?,?,?,?,?)";
                 try {
                     ps= ConnexionBD.getConnection().prepareStatement(requete);
-                    int n = ps.executeUpdate();
-                    ps.setString(2,E);
-                    ps.setString(7,A);
+                    
+                    ps.setInt(1,0);
+                    ps.setString(2,S);
+                    ps.setString(3, E);
+                    ps.setString(4,contact);
+                    ps.setString(5,N);
+                    ps.setString(10,num_contact);
                     ps.setString(8,CP);
                     ps.setString(9,V);
-                    ps.setString(6,N);
-                    ps.setString(7,M);
+                    ps.setString(6,M);
+                    ps.setString(7,A);
+                    ps.setString(11,mail_contact);
                     
-                    ps.execute();
+                    ps.executeUpdate();
+                    ResultSet rs = ps.getGeneratedKeys();
+                    rs.next();
+                    int ai = rs.getInt(1);
                                         
                 }
                 catch (Exception e){

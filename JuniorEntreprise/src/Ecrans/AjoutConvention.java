@@ -30,6 +30,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import java.io.FileOutputStream;
+import java.sql.SQLException;
 
 /**
  *
@@ -692,7 +693,12 @@ public class AjoutConvention extends javax.swing.JFrame {
         }
         if (choix.equals("Liste des étudiants")){
             this.setVisible(false);
-            ListeEtudiants listeE = new ListeEtudiants();
+            ListeEtudiants listeE = null;
+            try {
+                listeE = new ListeEtudiants();
+            } catch (SQLException ex) {
+                Logger.getLogger(AjoutConvention.class.getName()).log(Level.SEVERE, null, ex);
+            }
             listeE.setVisible(true);
         }
     }//GEN-LAST:event_cbb_etudiantsActionPerformed

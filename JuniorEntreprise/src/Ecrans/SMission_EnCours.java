@@ -565,9 +565,13 @@ public class SMission_EnCours extends javax.swing.JFrame {
     private void cbb_conventions1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbb_conventions1ActionPerformed
         String choix = (String) cbb_conventions1.getSelectedItem();
         if (choix.equals("Création")){
-            this.setVisible(false);
-            AjoutConvention ajoutC = new AjoutConvention();
-            ajoutC.setVisible(true);
+            try {
+                this.setVisible(false);
+                AjoutConvention ajoutC = new AjoutConvention();
+                ajoutC.setVisible(true);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(SMission_EnCours.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         if (choix.equals("Brouillons")){
             this.setVisible(false);

@@ -7,6 +7,9 @@ package Ecrans;
 
 import java.awt.GraphicsEnvironment;
 import java.awt.Rectangle;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -475,6 +478,8 @@ public class FicheClient_Paiement extends javax.swing.JFrame {
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Paiements"));
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -507,7 +512,7 @@ public class FicheClient_Paiement extends javax.swing.JFrame {
                 .addComponent(pan_Contact3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(75, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -640,9 +645,13 @@ public class FicheClient_Paiement extends javax.swing.JFrame {
             ajoutE.setVisible(true);
         }
         if (choix.equals("Liste des étudiants")){
-            this.setVisible(false);
-            ListeEtudiants listeE = new ListeEtudiants();
-            listeE.setVisible(true);
+            try {
+                this.setVisible(false);
+                ListeEtudiants listeE = new ListeEtudiants();
+                listeE.setVisible(true);
+            } catch (SQLException ex) {
+                Logger.getLogger(FicheClient_Paiement.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_cbb_etudiants1ActionPerformed
 

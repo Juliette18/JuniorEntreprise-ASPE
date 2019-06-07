@@ -1,5 +1,6 @@
 package Ecrans;
 
+import java.awt.PopupMenu;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -9,6 +10,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 
@@ -17,6 +19,8 @@ import javax.swing.JScrollPane;
  * @author Niakulu
  */
 public class ListeEtudiants extends javax.swing.JFrame {
+
+    private JLabel lb_NomBD;
 
     /**
      * Creates new form ListeEtudiants
@@ -627,7 +631,8 @@ public class ListeEtudiants extends javax.swing.JFrame {
             
             FicheEtudiant fEtu = null;
             fEtu = new FicheEtudiant();
-            fEtu.lb_NomBD.setText(nom);
+            fEtu.add(lb_NomBD);
+            lb_NomBD.setText(nom);
             this.setVisible(false);   
             fEtu.setVisible(true);
        

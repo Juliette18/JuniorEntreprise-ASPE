@@ -9,6 +9,9 @@ import java.awt.FileDialog;
 import java.awt.GraphicsEnvironment;
 import java.awt.Rectangle;
 import java.io.File;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -511,7 +514,12 @@ public class Upload extends javax.swing.JFrame {
         }
         if (choix.equals("Liste des étudiants")){
             this.setVisible(false);
-            ListeEtudiants listeE = new ListeEtudiants();
+            ListeEtudiants listeE = null;
+            try {
+                listeE = new ListeEtudiants();
+            } catch (SQLException ex) {
+                Logger.getLogger(Upload.class.getName()).log(Level.SEVERE, null, ex);
+            }
             listeE.setVisible(true);
         }
     }//GEN-LAST:event_cbb_etudiantsActionPerformed

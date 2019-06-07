@@ -779,7 +779,7 @@ public class AjoutClient extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Le numéro de téléphone est vide ou erroné", "Erreur de saisie", JOptionPane.INFORMATION_MESSAGE);
         }else if (N.equals("") || isValid(M)==false) {
             JOptionPane.showMessageDialog(this, "L'adresse mail est vide ou erronée", "Erreur de saisie", JOptionPane.INFORMATION_MESSAGE);
-        }else if(!S.matches(regex) || N.equals("")||N.length()!=18){
+        }else if(!S.matches(regex) || S.equals("")||S.length()!=18){
             JOptionPane.showMessageDialog(this, "Le numéro Siret est vide ou erroné", "Erreur de saisie", JOptionPane.INFORMATION_MESSAGE);
         }else{
             int input = JOptionPane.showConfirmDialog(this, "Ajouter à la base de données?", "", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);

@@ -581,9 +581,13 @@ public class ListeConventionA extends javax.swing.JFrame {
             ajoutE.setVisible(true);
         }
         if (choix.equals("Liste des étudiants")){
-            this.setVisible(false);
-            ListeEtudiants listeE = new ListeEtudiants();
-            listeE.setVisible(true);
+            try {
+                this.setVisible(false);
+                ListeEtudiants listeE = new ListeEtudiants();
+                listeE.setVisible(true);
+            } catch (SQLException ex) {
+                Logger.getLogger(ListeConventionA.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_cbb_etudiantsActionPerformed
 

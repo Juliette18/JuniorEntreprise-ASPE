@@ -7,6 +7,9 @@ package Ecrans;
 
 import java.awt.GraphicsEnvironment;
 import java.awt.Rectangle;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -435,9 +438,13 @@ public class ListeClients extends javax.swing.JFrame {
             ajoutE.setVisible(true);
         }
         if (choix.equals("Liste des étudiants")){
-            this.setVisible(false);
-            ListeEtudiants listeE = new ListeEtudiants();
-            listeE.setVisible(true);
+            try {
+                this.setVisible(false);
+                ListeEtudiants listeE = new ListeEtudiants();
+                listeE.setVisible(true);
+            } catch (SQLException ex) {
+                Logger.getLogger(ListeClients.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_cbb_etudiants1ActionPerformed
 

@@ -7,9 +7,12 @@ package Ecrans;
 
 import java.awt.GraphicsEnvironment;
 import java.awt.Rectangle;
+import java.sql.PreparedStatement;
 import java.util.regex.Pattern;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import java.sql.*;
+import static java.sql.Statement.RETURN_GENERATED_KEYS;
 
 /**
  *
@@ -675,6 +678,33 @@ public class AjoutEtudiant extends javax.swing.JFrame {
         }else {
             int input = JOptionPane.showConfirmDialog(this, "Ajouter à la base de données?", "", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
             if (input == JOptionPane.OK_OPTION) {
+                
+                PreparedStatement ps;
+                final String requete = "insert into user values (?,?,?,default,?,?,?)",Statement.RETURN_GENERATED_KEYS);
+                
+                
+                try {
+                    ps= ConnexionBD.getConnection().prepareStatement(requete);
+                    
+                    ResultSet rs = ps.getGeneratedKeys();
+                    rs.next();
+                    int ai= rs.getInt(1);
+                    //int n = ps.executeUpdate();
+                    ps.setString(1,P);
+                    ps.setString(3,"mdp");
+                    ps.setString(2,M);
+                    ps.setString(6,No);
+                    ps.setString(7,P);
+                    ps.setBoolean(5,false);
+                    ps.setInt(4,ai);
+                    
+                    
+                    ps.executeUpdate();
+                                        
+                }
+                catch (Exception e){
+                    System.out.println(e);
+                }
                 System.out.println("Application Fermée");
                 this.dispose();
                 System.exit(0);

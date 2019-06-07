@@ -30,12 +30,12 @@ public class ListeClients extends javax.swing.JFrame {
     public ListeClients() throws SQLException {
         initComponents();
         this.setVisible(true);
-        modelListeClient = new DefaultListModel();
-        listeClients.setModel(modelListeClient);
+        
         
         JScrollPane jsp = new JScrollPane();
         listeClients.add(jsp);
-        
+        modelListeClient = new DefaultListModel();
+        listeClients.setModel(modelListeClient);
        //rempli la liste avec les noms des clients dans la bdd
         final String maRequete = "select nomentreprise from entreprise ";
         PreparedStatement ps;
@@ -333,7 +333,7 @@ public class ListeClients extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pan_Menu5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pan_Menu5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(pan_Nav1, javax.swing.GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE)
+                    .addComponent(pan_Nav1, javax.swing.GroupLayout.DEFAULT_SIZE, 282, Short.MAX_VALUE)
                     .addComponent(pan_Profil5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(13, 13, 13))
         );
@@ -363,7 +363,6 @@ public class ListeClients extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("Liste Clients");
 
-        listeClients.setModel(modelListeClient);
         jScrollPane1.setViewportView(listeClients);
 
         bt_chercher.setText("Chercher");
@@ -567,9 +566,13 @@ public class ListeClients extends javax.swing.JFrame {
     private void cbb_conventions1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbb_conventions1ActionPerformed
         String choix = (String) cbb_conventions1.getSelectedItem();
         if (choix.equals("Création")){
-            this.setVisible(false);
-            AjoutConvention ajoutC = new AjoutConvention();
-            ajoutC.setVisible(true);
+            try {
+                this.setVisible(false);
+                AjoutConvention ajoutC = new AjoutConvention();
+                ajoutC.setVisible(true);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(ListeClients.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         if (choix.equals("Brouillons")){
             this.setVisible(false);

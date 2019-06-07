@@ -1,5 +1,6 @@
 package Ecrans;
 
+import static com.sun.org.apache.xalan.internal.lib.ExsltStrings.split;
 import java.awt.PopupMenu;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -58,6 +59,11 @@ public class ListeEtudiants extends javax.swing.JFrame {
             
         
 
+    }
+    
+    public String[] mOoooo (String str){
+        String [] parts=str.split(" ");
+        return parts;
     }
 
     /**
@@ -645,16 +651,51 @@ public class ListeEtudiants extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosing
 
     private void bt_chercherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_chercherActionPerformed
-        
-            String nom = listEtudiant.getSelectedValue();
+        if (listEtudiant.getSelectedIndex()!=-1){
             
-            FicheEtudiant fEtu = null;
-            fEtu = new FicheEtudiant();
-            fEtu.add(lb_NomBD);
-            lb_NomBD.setText(nom);
-            this.setVisible(false);   
-            fEtu.setVisible(true);
-       
+            String nom = listEtudiant.getSelectedValue();
+            String parts [] = mOoooo(nom);
+            String name = parts[0];
+            String prenom=parts[1];
+            
+            PreparedStatement ps;
+            ResultSet rs;
+            final String requete = "select * from user  ";
+        //"select emp from user where username = ? and password = ?;";
+
+        try {
+
+            ps = ConnexionBD.getConnection().prepareStatement(requete);
+            
+            rs = ps.executeQuery();
+            
+
+            if (rs.next()) {
+                
+                if (rs.getString("nom").equals(name)&&rs.getString("prenom").equals(prenom)){
+                
+                String info = rs.getString("prenom")+" "+rs.getString("nom")+"\n"+rs.getString("email");
+                JOptionPane.showMessageDialog(this, info, "Informations", JOptionPane.INFORMATION_MESSAGE);
+            }
+            }
+
+                
+
+            
+            
+              
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+                
+                
+                
+                
+            
+        }else{
+             JOptionPane.showMessageDialog(this, "Selectionnez un client dans la liste", "Erreur de selection", JOptionPane.INFORMATION_MESSAGE);
+        }
         
     }//GEN-LAST:event_bt_chercherActionPerformed
 

@@ -680,15 +680,13 @@ public class AjoutEtudiant extends javax.swing.JFrame {
             if (input == JOptionPane.OK_OPTION) {
                 
                 PreparedStatement ps;
-                final String requete = "insert into user values (?,?,?,default,?,?,?)",Statement.RETURN_GENERATED_KEYS);
+                final String requete = "insert into user values (?,?,?,?,?,?,?)";
                 
                 
                 try {
-                    ps= ConnexionBD.getConnection().prepareStatement(requete);
+                    ps= ConnexionBD.getConnection().prepareStatement(requete,Statement.RETURN_GENERATED_KEYS);
                     
-                    ResultSet rs = ps.getGeneratedKeys();
-                    rs.next();
-                    int ai= rs.getInt(1);
+                    
                     //int n = ps.executeUpdate();
                     ps.setString(1,P);
                     ps.setString(3,"mdp");
@@ -696,10 +694,13 @@ public class AjoutEtudiant extends javax.swing.JFrame {
                     ps.setString(6,No);
                     ps.setString(7,P);
                     ps.setBoolean(5,false);
-                    ps.setInt(4,ai);
+                    ps.setInt(4,0);
                     
                     
                     ps.executeUpdate();
+                    ResultSet rs = ps.getGeneratedKeys();
+                    rs.next();
+                    int ai= rs.getInt(1);
                                         
                 }
                 catch (Exception e){

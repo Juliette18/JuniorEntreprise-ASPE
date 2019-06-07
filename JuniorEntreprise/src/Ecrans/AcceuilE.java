@@ -147,7 +147,7 @@ public class AcceuilE extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(lbl_profil, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
                 .addContainerGap())
-            .addComponent(lbl_conventions, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lbl_conventions, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE)
             .addComponent(lbl_accueil, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         pan_NavLayout.setVerticalGroup(
@@ -159,7 +159,7 @@ public class AcceuilE extends javax.swing.JFrame {
                 .addComponent(lbl_accueil)
                 .addGap(28, 28, 28)
                 .addComponent(lbl_conventions)
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout pan_MenuLayout = new javax.swing.GroupLayout(pan_Menu);

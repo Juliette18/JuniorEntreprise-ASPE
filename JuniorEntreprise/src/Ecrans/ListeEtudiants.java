@@ -323,7 +323,7 @@ public class ListeEtudiants extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pan_MenuLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pan_MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(pan_Nav, javax.swing.GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE)
+                    .addComponent(pan_Nav, javax.swing.GroupLayout.DEFAULT_SIZE, 282, Short.MAX_VALUE)
                     .addComponent(pan_Profil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(13, 13, 13))
         );
@@ -350,7 +350,11 @@ public class ListeEtudiants extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         listEtudiant.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        listEtudiant.setModel(modelListeEtu);
+        listEtudiant.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1, Item 2, Item 3, Item 4, Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
         jScrollPane1.setViewportView(listEtudiant);
 
         lb_titre.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -491,9 +495,13 @@ public class ListeEtudiants extends javax.swing.JFrame {
             ajoutC.setVisible(true);
         }
         if (choix.equals("Liste des entreprises")){
-            this.setVisible(false);
-            ListeClients listeC = new ListeClients();
-            listeC.setVisible(true);
+            try {
+                this.setVisible(false);
+                ListeClients listeC = new ListeClients();
+                listeC.setVisible(true);
+            } catch (SQLException ex) {
+                Logger.getLogger(ListeEtudiants.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_cbb_entreprisesActionPerformed
 
@@ -556,9 +564,13 @@ public class ListeEtudiants extends javax.swing.JFrame {
     private void cbb_conventionsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbb_conventionsActionPerformed
         String choix = (String) cbb_conventions.getSelectedItem();
         if (choix.equals("Création")){
-            this.setVisible(false);
-            AjoutConvention ajoutC = new AjoutConvention();
-            ajoutC.setVisible(true);
+            try {
+                this.setVisible(false);
+                AjoutConvention ajoutC = new AjoutConvention();
+                ajoutC.setVisible(true);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(ListeEtudiants.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         if (choix.equals("Brouillons")){
             this.setVisible(false);

@@ -497,9 +497,13 @@ public class SMission_EnCours extends javax.swing.JFrame {
             ajoutC.setVisible(true);
         }
         if (choix.equals("Liste des entreprises")){
-            this.setVisible(false);
-            ListeClients listeC = new ListeClients();
-            listeC.setVisible(true);
+            try {
+                this.setVisible(false);
+                ListeClients listeC = new ListeClients();
+                listeC.setVisible(true);
+            } catch (SQLException ex) {
+                Logger.getLogger(SMission_EnCours.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_cbb_entreprises1ActionPerformed
 

@@ -505,9 +505,13 @@ public class AfficheFact extends javax.swing.JFrame {
             ajoutC.setVisible(true);
         }
         if (choix.equals("Liste des entreprises")){
-            this.setVisible(false);
-            ListeClients listeC = new ListeClients();
-            listeC.setVisible(true);
+            try {
+                this.setVisible(false);
+                ListeClients listeC = new ListeClients();
+                listeC.setVisible(true);
+            } catch (SQLException ex) {
+                Logger.getLogger(AfficheFact.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_cbb_entreprisesActionPerformed
 
@@ -569,9 +573,13 @@ public class AfficheFact extends javax.swing.JFrame {
     private void cbb_conventionsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbb_conventionsActionPerformed
         String choix = (String) cbb_conventions.getSelectedItem();
         if (choix.equals("Création")){
-            this.setVisible(false);
-            AjoutConvention ajoutC = new AjoutConvention();
-            ajoutC.setVisible(true);
+            try {
+                this.setVisible(false);
+                AjoutConvention ajoutC = new AjoutConvention();
+                ajoutC.setVisible(true);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(AfficheFact.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         if (choix.equals("Brouillons")){
             this.setVisible(false);

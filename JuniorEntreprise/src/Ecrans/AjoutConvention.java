@@ -30,6 +30,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import java.io.FileOutputStream;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
@@ -42,16 +44,32 @@ public class AjoutConvention extends javax.swing.JFrame {
     /**
      * Creates new form AjoutConvention
      */
-    public AjoutConvention() {
+    public AjoutConvention() throws ClassNotFoundException {
         initComponents();
         this.setVisible(true);
         
         clients = new DefaultListModel();
         etudiants= new DefaultListModel();
-        remplirListeModels();
+        //remplirListeModels();
         jlistClients.setModel(clients);
         jlistEtudiants.setModel(etudiants);
         //remplir les listes avec les données de la bdd
+        PreparedStatement ps;
+        ResultSet rs;
+        final String requete="select nom,prenom from user";
+        
+        try {
+            ps= ConnexionBD.getConnection().prepareStatement(requete);
+            rs=ps.executeQuery();
+            
+            while (rs.next()){
+                String np = rs.getString("prenom")+" "+rs.getString("nom");
+                etudiants.addElement(np);
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(AjoutConvention.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -336,7 +354,7 @@ public class AjoutConvention extends javax.swing.JFrame {
                 .addGroup(pan_NavLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_facturation)
                     .addComponent(cbb_facturation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(372, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout pan_MenuLayout = new javax.swing.GroupLayout(pan_Menu);
@@ -346,7 +364,7 @@ public class AjoutConvention extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pan_MenuLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pan_MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(pan_Nav, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
+                    .addComponent(pan_Nav, javax.swing.GroupLayout.DEFAULT_SIZE, 282, Short.MAX_VALUE)
                     .addComponent(pan_Profil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(13, 13, 13))
         );
@@ -356,7 +374,7 @@ public class AjoutConvention extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(pan_Profil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(pan_Nav, javax.swing.GroupLayout.DEFAULT_SIZE, 639, Short.MAX_VALUE)
+                .addComponent(pan_Nav, javax.swing.GroupLayout.DEFAULT_SIZE, 683, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -440,6 +458,11 @@ public class AjoutConvention extends javax.swing.JFrame {
         jspListeClients.setViewportView(jlistClients);
 
         jlistEtudiants.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        jlistEtudiants.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "item1", "item" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
         jspListeEtudiant.setViewportView(jlistEtudiants);
 
         tf_choixClient.addActionListener(new java.awt.event.ActionListener() {
@@ -660,9 +683,13 @@ public class AjoutConvention extends javax.swing.JFrame {
             ajoutC.setVisible(true);
         }
         if (choix.equals("Liste des entreprises")){
-            this.setVisible(false);
-            ListeClients listeC = new ListeClients();
-            listeC.setVisible(true);
+            try {
+                this.setVisible(false);
+                ListeClients listeC = new ListeClients();
+                listeC.setVisible(true);
+            } catch (SQLException ex) {
+                Logger.getLogger(AjoutConvention.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_cbb_entreprisesActionPerformed
 
@@ -724,9 +751,13 @@ public class AjoutConvention extends javax.swing.JFrame {
     private void cbb_conventionsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbb_conventionsActionPerformed
         String choix = (String) cbb_conventions.getSelectedItem();
         if (choix.equals("Création")){
-            this.setVisible(false);
-            AjoutConvention ajoutC = new AjoutConvention();
-            ajoutC.setVisible(true);
+            try {
+                this.setVisible(false);
+                AjoutConvention ajoutC = new AjoutConvention();
+                ajoutC.setVisible(true);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(AjoutConvention.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         if (choix.equals("Brouillons")){
             this.setVisible(false);
@@ -866,12 +897,28 @@ public class AjoutConvention extends javax.swing.JFrame {
         ajoutE.setVisible(true);
     }//GEN-LAST:event_bt_newEtudiantActionPerformed
     
-    public void remplirListeModels()
-    {
+////    public void remplirListeModels() throws ClassNotFoundException
+//    {
+//        PreparedStatement ps;
+//        ResultSet rs;
+//        final String requete="select nom,prenom from user";
+//        
+//        try {
+//            ps= ConnexionBD.getConnection().prepareStatement(requete);
+//            rs=ps.executeQuery();
+//            
+//            while (rs.next()){
+//                String np = rs.getString("prenom")+" "+rs.getString("nom");
+//                etudiants.addElement(np);
+//            }
+//            
+//        } catch (SQLException ex) {
+//            Logger.getLogger(AjoutConvention.class.getName()).log(Level.SEVERE, null, ex);
+//        }
         
         /*clients.addElement();
         etudiants.addElement();*/
-    }
+    //}
     
     private void tf_choixClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_choixClientActionPerformed
         // TODO add your handling code here:
@@ -907,7 +954,11 @@ public class AjoutConvention extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AjoutConvention().setVisible(true);
+                try {
+                    new AjoutConvention().setVisible(true);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(AjoutConvention.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }

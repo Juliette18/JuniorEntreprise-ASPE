@@ -522,9 +522,13 @@ public class AjoutEtudiant extends javax.swing.JFrame {
             ajoutC.setVisible(true);
         }
         if (choix.equals("Liste des entreprises")){
-            this.setVisible(false);
-            ListeClients listeC = new ListeClients();
-            listeC.setVisible(true);
+            try {
+                this.setVisible(false);
+                ListeClients listeC = new ListeClients();
+                listeC.setVisible(true);
+            } catch (SQLException ex) {
+                Logger.getLogger(AjoutEtudiant.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_cbb_entreprises1ActionPerformed
 
@@ -586,9 +590,13 @@ public class AjoutEtudiant extends javax.swing.JFrame {
     private void cbb_conventions1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbb_conventions1ActionPerformed
         String choix = (String) cbb_conventions1.getSelectedItem();
         if (choix.equals("Création")){
-            this.setVisible(false);
-            AjoutConvention ajoutC = new AjoutConvention();
-            ajoutC.setVisible(true);
+            try {
+                this.setVisible(false);
+                AjoutConvention ajoutC = new AjoutConvention();
+                ajoutC.setVisible(true);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(AjoutEtudiant.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         if (choix.equals("Brouillons")){
             this.setVisible(false);

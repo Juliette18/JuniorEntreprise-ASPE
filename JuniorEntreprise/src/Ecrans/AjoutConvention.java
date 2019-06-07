@@ -54,17 +54,24 @@ public class AjoutConvention extends javax.swing.JFrame {
         jlistClients.setModel(clients);
         jlistEtudiants.setModel(etudiants);
         //remplir les listes avec les données de la bdd
-        PreparedStatement ps;
-        ResultSet rs;
+        PreparedStatement ps,ps2;
+        ResultSet rs,rs2;
         final String requete="select nom,prenom from user";
+        final String query="select nomentreprise from entreprise";
         
         try {
             ps= ConnexionBD.getConnection().prepareStatement(requete);
+            ps2=ConnexionBD.getConnection().prepareStatement(query);
             rs=ps.executeQuery();
+            rs2=ps2.executeQuery();
             
             while (rs.next()){
                 String np = rs.getString("prenom")+" "+rs.getString("nom");
                 etudiants.addElement(np);
+            }
+            
+            while (rs2.next()){
+                clients.addElement(rs2.getString("nomentreprise"));
             }
             
         } catch (SQLException ex) {

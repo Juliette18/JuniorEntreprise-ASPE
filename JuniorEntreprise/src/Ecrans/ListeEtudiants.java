@@ -1,6 +1,7 @@
 package Ecrans;
 
 import java.awt.PopupMenu;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -30,21 +31,31 @@ public class ListeEtudiants extends javax.swing.JFrame {
         this.setVisible(true);
         JScrollPane jsp = new JScrollPane();
         listEtudiant.add(jsp);
+        modelListeEtu = new DefaultListModel();
         
        //rempli la liste avec les noms et prenoms des etudiants dans la bdd
-        final String maRequete = "SELECT nom, prenom FROM ??? ";
-        Statement st;
-        ConnexionBD conn = new ConnexionBD();
+        final String maRequete = "SELECT nom, prenom FROM user where emp==0 ";
+        PreparedStatement ps;
+        ResultSet rs;
         
-            st = conn.createStatement();
-            ResultSet rs = st.executeQuery(maRequete);
+        try {
+            ps= ConnexionBD.getConnection().prepareStatement(maRequete);
+            rs=ps.executeQuery();
+            
             while (rs.next()) 
             {
-                String nom = rs.getString("Nom");
-                String prenom = rs.getString("Prenom");
-                modelListeEtu.addElement(nom + " " + prenom);
+                String np = rs.getString("nom")+" "+rs.getString("prenom");
+                
+                modelListeEtu.addElement(np);
             }
-        if(conn != null) conn.close(); 
+            
+            
+        } catch (ClassNotFoundException ex) {     
+            Logger.getLogger(ListeEtudiants.class.getName()).log(Level.SEVERE, null, ex);
+        }
+                
+            
+        
 
     }
 
